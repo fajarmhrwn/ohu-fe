@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Suspense } from "react";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { Routing } from "./routing";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <BrowserRouter>
+        <Routes>
+          {Routing.map((route) => {
+            const Component = route.component;
+            return (
+              <Route
+                caseSensitive
+                path={route.path}
+                key={route.path}
+                element={<Component />}
+              />
+            );
+          })}
+        </Routes>
+      </BrowserRouter>
+    </Suspense>
   );
 }
 
