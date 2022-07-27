@@ -1,6 +1,6 @@
-import { Suspense } from "react";
-import { Route, BrowserRouter, Routes } from "react-router-dom";
-import { Routing } from "./routing";
+import { Suspense } from 'react';
+import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import { Routing } from './routing';
 
 function App() {
   return (
