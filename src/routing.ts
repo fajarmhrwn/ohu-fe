@@ -4,6 +4,10 @@ const DefPage = React.lazy(() =>
   import('@pages/Example').then((module) => ({ default: module.Example }))
 );
 
+const HomePage = React.lazy(() =>
+  import('@pages/Homepage').then((module) => ({ default: module.Homepage }))
+);
+
 const PageNotFound = React.lazy(() =>
   import('@pages/PageNotFound').then((module) => ({
     default: module.PageNotFound,
@@ -24,9 +28,9 @@ const PageNotFoundRouting: PageRouting = {
 
 export const Routing: PageRouting[] = [
   {
-    title: 'Default Page',
+    title: 'Home Page',
     path: '/',
-    component: DefPage,
+    component: HomePage,
   },
   PageNotFoundRouting,
 ];
