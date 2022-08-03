@@ -1,0 +1,54 @@
+.Footer {
+    background: #ffa06e;
+    padding: 36.75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.LogoLayout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14.7px;
+}
+
+.Logo{
+    width: 136.71px;
+    height: 136.71px;
+    background: #D9D9D9;
+    border-radius: 100%;
+    margin: 0px 11.025px;
+}
+
+.KatItb{
+    margin: 0px 11.025px;
+    justify-content: center;
+    align-items: center;
+}
+
+.KatItb li{
+    list-style: none;
+    font-family: 'Alegreya';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 53.655px;
+    line-height: 92%;
+}
+
+.ContentLayout{
+    background: #D9D9D9;
+    padding: 59.535px;
+    height: 168.315px;
+    width: 73.5%;
+    margin-top: 22.05px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Alegreya';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 53.655px;
+    line-height: 92%;
+}
