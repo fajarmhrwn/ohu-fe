@@ -12,11 +12,11 @@ const Card = ({ label, isActive, isInView, color }: CardProps) => {
   return (
     <Box
       h={{
-        base: '17em',
+        base: '20em',
         lg: '28em',
       }}
       w={{
-        base: '11em',
+        base: '12em',
         lg: '17em',
       }}
       bg={'dark' + color}
@@ -33,7 +33,10 @@ const Card = ({ label, isActive, isInView, color }: CardProps) => {
         bg={color}
         position="absolute"
         w="100%"
-        h={isActive && isInView ? '75%' : '100%'}
+        h={{
+          base: isActive ? '75%' : '100%',
+          lg: isActive && isInView ? '75%' : '100%',
+        }}
         borderRadius="30px"
         transition="200ms"
       ></Box>
@@ -46,7 +49,10 @@ const Card = ({ label, isActive, isInView, color }: CardProps) => {
         justifyContent="center"
       >
         <Heading
-          opacity={isActive && isInView ? '1' : '0'}
+          opacity={{
+            base: isActive ? '1' : '0',
+            lg: isActive && isInView ? '1' : '0',
+          }}
           transitionDelay="200ms"
           transition="200ms ease-out"
           color="#eeeeee"

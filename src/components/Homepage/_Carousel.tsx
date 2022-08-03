@@ -45,21 +45,15 @@ const Carousel = () => {
     <Box pt="5em">
       <Swiper
         breakpoints={{
-          1300: {
-            slidesPerView: 5,
+          1024: {
             allowTouchMove: false,
           },
-          768: {
-            slidesPerView: 4,
-          },
-          1: {
-            slidesPerView: 2,
-          },
         }}
+        slidesPerView={5}
         centeredSlides={true}
       >
         {slide.map((s, index) => (
-          <SwiperSlide>
+          <SwiperSlide key={index}>
             {({ isActive }) => (
               <Card
                 label={s.label}
@@ -88,6 +82,7 @@ const Carousel = () => {
               position={position}
               color={s.color}
               setPosition={setPosition}
+              key={index}
             />
           ))}
         </Flex>

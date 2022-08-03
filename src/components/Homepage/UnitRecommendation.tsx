@@ -35,7 +35,7 @@ const UnitRecommendation = () => {
 
   return (
     <Box
-      bg="#ACF1FF"
+      bg="#BFE99F"
       h="100%"
       w="100%"
       borderTopRadius={{
@@ -48,7 +48,7 @@ const UnitRecommendation = () => {
       <Flex alignItems="center" flexDir="column" pt={3}>
         <motion.div animate={animation}>
           <Flex flexDir="column" alignItems="center" gap={5}>
-            <Heading size="2xl" ref={ref}>
+            <Heading size="2xl" ref={ref} textAlign="center">
               Unit Recommendation
             </Heading>
             <Button
