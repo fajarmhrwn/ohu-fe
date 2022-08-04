@@ -118,7 +118,7 @@ const PaginationIcon: React.FC<PaginationIconProps> = props => {
     }
 
     return (
-        <Stack direction='row' spacing="47px">
+        <Stack direction='row' spacing="47px" fontFamily="Alegreya Sans">
             {createButtons()}
         </Stack>
     );
