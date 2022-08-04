@@ -4,6 +4,10 @@ const DefPage = React.lazy(() =>
   import('@pages/Example').then((module) => ({ default: module.Example }))
 );
 
+const LegendPage = React.lazy(() =>
+  import('@pages/Legend').then((module) => ({ default: module.Test }))
+)
+
 const PageNotFound = React.lazy(() =>
   import('@pages/PageNotFound').then((module) => ({
     default: module.PageNotFound,
@@ -27,6 +31,11 @@ export const Routing: PageRouting[] = [
     title: 'Default Page',
     path: '/',
     component: DefPage,
+  },
+  {
+    title: 'Legend Page',
+    path: '/legend-tour',
+    component: LegendPage
   },
   PageNotFoundRouting,
 ];
