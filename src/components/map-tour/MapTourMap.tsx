@@ -1,36 +1,36 @@
 import { Box, Center, Text, theme, useMediaQuery } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, useMap, Marker, useMapEvents } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
 import { useNavigate } from 'react-router-dom';
+import 'leaflet/dist/leaflet.css';
 
 interface MapData {
-    centerPosition: [number, number];
-    markers: {
-      position: [number, number];
-      linkTo: string;
-    }[];
-  }
-  
-  const DUMMY_DATA: MapData = {
-    centerPosition: [-6.889871, 107.610327],
-    markers: [
-      {
-        position: [-6.889871, 107.612327],
-        linkTo: '/',
-      },
-      {
-        position: [-6.88836480365328, 107.60846698935434],
-        linkTo: '/',
-      },
-      {
-        position: [-6.888641905321302, 107.6120546576714],
-        linkTo: '/',
-      },
-    ],
-  };
-  
-function MapMarker({position,linkTo}: {position:[number,number], linkTo: string}) {
+  centerPosition: [number, number];
+  markers: {
+    position: [number, number];
+    linkTo: string;
+  }[];
+}
+
+const DUMMY_DATA: MapData = {
+  centerPosition: [-6.889871, 107.610327],
+  markers: [
+    {
+      position: [-6.889871, 107.612327],
+      linkTo: '/',
+    },
+    {
+      position: [-6.88836480365328, 107.60846698935434],
+      linkTo: '/',
+    },
+    {
+      position: [-6.888641905321302, 107.6120546576714],
+      linkTo: '/',
+    },
+  ],
+};
+
+function MapMarker({position, linkTo}: {position: [number,number], linkTo: string}) {
   const navigate = useNavigate()
   const map = useMapEvents({
     click() {
@@ -40,7 +40,6 @@ function MapMarker({position,linkTo}: {position:[number,number], linkTo: string}
 
   return <Marker position={position}/>
 }
-
 
 export default function MapTourMap() {
   const [isLoading, setIsLoading] = useState(true);
@@ -52,7 +51,7 @@ export default function MapTourMap() {
       setIsLoading(false);
       setMapData(DUMMY_DATA);
     }, 1000);
-  });
+  }, [mapData]);
 
   return (
     <Box h={isMobile[0] ? '260px' : '560px'} w={isMobile[0] ? '100%' : '92%'} m="auto">

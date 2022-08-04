@@ -1,8 +1,6 @@
 import { Text, theme } from '@chakra-ui/react';
 import MapTourMap from '@components/map-tour/MapTourMap';
 
-
-
 export const Tour = () => {
   return (
     <>

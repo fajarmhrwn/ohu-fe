@@ -4,17 +4,17 @@ const DefPage = React.lazy(() =>
   import('@pages/Example').then((module) => ({ default: module.Example }))
 );
 
-const PageNotFound = React.lazy(() =>
-  import('@pages/PageNotFound').then((module) => ({
-    default: module.PageNotFound,
-  }))
-);
-
 const TourPage = React.lazy(() => 
   import('@pages/MapTour').then((module) => ({
     default: module.Tour
   }))
 )
+
+const PageNotFound = React.lazy(() =>
+  import('@pages/PageNotFound').then((module) => ({
+    default: module.PageNotFound,
+  }))
+);
 
 interface PageRouting {
   title: string;
@@ -30,14 +30,14 @@ const PageNotFoundRouting: PageRouting = {
 
 export const Routing: PageRouting[] = [
   {
-    title: 'OHU Tour',
-    path: '/map-tour',
-    component: TourPage
-  },
-  {
     title: 'Default Page',
     path: '/',
     component: DefPage,
+  },
+  {
+    title: 'OHU Tour',
+    path: '/map-tour',
+    component: TourPage
   },
   PageNotFoundRouting,
 ];
