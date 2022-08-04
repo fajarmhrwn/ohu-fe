@@ -10,6 +10,12 @@ const PageNotFound = React.lazy(() =>
   }))
 );
 
+const TourPage = React.lazy(() => 
+  import('@pages/MapTour').then((module) => ({
+    default: module.Tour
+  }))
+)
+
 interface PageRouting {
   title: string;
   path: string;
@@ -23,6 +29,11 @@ const PageNotFoundRouting: PageRouting = {
 };
 
 export const Routing: PageRouting[] = [
+  {
+    title: 'OHU Tour',
+    path: '/map-tour',
+    component: TourPage
+  },
   {
     title: 'Default Page',
     path: '/',
