@@ -1,35 +1,60 @@
-import React from 'react';
-import {
-  ChakraProvider,
-  Box,
-  Button,
-  Image,
-  Heading
-} from "@chakra-ui/react"
-import theme from "@theme/theme"
-
-declare var require: any
+import { Box, Button, Image, Heading, Flex } from '@chakra-ui/react';
+import pageNotFoundImage from '@assets/page-not-found-image.svg';
 
 export const PageNotFound = () => {
   return (
-    <ChakraProvider theme={theme}>
-      <Box display= "flex" flexDirection="column" alignItems="center" >
-        <Box mt={{base:"46px", md:"0px"}} >
-          <Image objectFit="cover" src={require("@assets/Prisma nungguin sprout.png")} h={{base:"413px", md:"648px"}}/>
-        </Box>
-        <Box mt={{base:"10px", md:"20px"}}>
-          <Heading>
-            <Box fontFamily="Magilio" fontWeight="400" fontSize={{base:"42px", md:"96px"}} color="#231A51" lineHeight="92%" textAlign="center" pr= "50px" pl= "50px">
-              Halaman Tidak Ditemukan
-            </Box>
-          </Heading>
-        </Box>
-        <Box mt={{base:"30px", md:"110px"}} mb={{base:"168px", md:"205px"}}>
-          <Button as="a" href="https://www.google.com" width={{base:"245px", md:"533px"}} height={{base:"40px", md:"69px"}} background="#FFA06F" borderRadius="50px" fontFamily= 'Alegreya Sans Regular' fontWeight="500" fontSize={{base:"18px", md:"40px"}} line-height="92%">
-            Kembali ke halaman utama
-          </Button>
-        </Box>
+    <Flex
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      h="100vh"
+      position="relative"
+    >
+      <Image
+        objectFit="cover"
+        src={pageNotFoundImage}
+        w={{
+          base: '100%',
+          md: '50%',
+        }}
+      />
+      <Box pt={10}>
+        <Heading
+          fontWeight="400"
+          fontSize={{
+            base: '3em',
+            md: '4em',
+          }}
+          color="#231A51"
+          lineHeight="92%"
+          textAlign="center"
+          pr="50px"
+          pl="50px"
+        >
+          Halaman Tidak Ditemukan
+        </Heading>
       </Box>
-    </ChakraProvider>
+      <Button
+        as="a"
+        href="https://www.google.com"
+        background="#FFA06F"
+        borderRadius="50px"
+        fontFamily="Alegreya"
+        fontWeight="500"
+        mt={{
+          base: 5,
+          md: 8,
+        }}
+        p={{
+          md: '1em',
+        }}
+        fontSize={{
+          base: '1em',
+          md: '1.5em',
+        }}
+      >
+        Kembali ke halaman utama
+      </Button>
+    </Flex>
   );
 };
