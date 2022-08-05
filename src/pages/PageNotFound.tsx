@@ -8,6 +8,8 @@ import {
 } from "@chakra-ui/react"
 import theme from "@theme/theme"
 
+declare var require: any
+
 export const PageNotFound = () => {
   return (
     <ChakraProvider theme={theme}>
