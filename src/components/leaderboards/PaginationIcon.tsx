@@ -6,6 +6,9 @@ interface PaginationIconProps {
     parentPageSetter: Function;
 };
 
+interface PageProps {
+    page: number;
+};
 
 const PaginationIcon: React.FC<PaginationIconProps> = props => {
 
@@ -17,25 +20,22 @@ const PaginationIcon: React.FC<PaginationIconProps> = props => {
         setCurrentPage(destination);
     }
 
-    function createPageButton(page: number) : JSX.Element {
-        return (
-            <Button 
+    const PageButton: React.FC<PageProps> = (props) => (
+        <Button 
                 w="58px" 
                 h="56px" 
                 borderRadius="10px" 
-                background={page == currentPage ? "#FFA06F" : "transparent"} 
-                onClick={() => changePage(page)}
+                background={props.page == currentPage ? "#FFA06F" : "transparent"} 
+                onClick={() => changePage(props.page)}
             >
-                <Text fontSize="40px" fontWeight="500" color={page == currentPage ? "#FFFBF2" : "#000000"}>
-                    {page}
+                <Text fontSize="40px" fontWeight="500" color={props.page == currentPage ? "#FFFBF2" : "#000000"}>
+                    {props.page}
                 </Text>
             </Button>
-        );
-    }
+    );
 
-    function createPreviousButton() : JSX.Element {
-        return (
-            <Button 
+    const PreviousButton = () => (
+        <Button 
                 w="58px" 
                 h="56px" 
                 borderRadius="10px" 
@@ -46,12 +46,10 @@ const PaginationIcon: React.FC<PaginationIconProps> = props => {
                     {"<"}
                 </Text>
             </Button>
-        );
-    }
+    );
 
-    function createNextButton() : JSX.Element {
-        return (
-            <Button 
+    const NextButton = () => (
+        <Button 
                 w="58px" 
                 h="56px" 
                 borderRadius="10px" 
@@ -62,12 +60,10 @@ const PaginationIcon: React.FC<PaginationIconProps> = props => {
                     {">"}
                 </Text>
             </Button>
-        );
-    }
+    );
 
-    function createLastButton() : JSX.Element {
-        return (
-            <Button 
+    const LastButton = () => (
+        <Button 
                 w="58px" 
                 h="56px" 
                 borderRadius="10px" 
@@ -78,12 +74,10 @@ const PaginationIcon: React.FC<PaginationIconProps> = props => {
                     {"..."}
                 </Text>
             </Button>
-        );
-    }
+    );
 
-    function createFirstButton() : JSX.Element {
-        return (
-            <Button 
+    const FirstButton = () => (
+        <Button 
                 w="58px" 
                 h="56px" 
                 borderRadius="10px" 
@@ -94,33 +88,37 @@ const PaginationIcon: React.FC<PaginationIconProps> = props => {
                     {"..."}
                 </Text>
             </Button>
-        );
-    }
+    );
 
-    function createButtons() : JSX.Element[] {
-        let returnValue : JSX.Element[] = [createPreviousButton()];
+    const Buttons = () => {
+        let buttonsToRender : number[] = [];
 
-        let firstDisplay = Math.max(1,Math.min(currentPage-2,pageSize-4))
-        if (firstDisplay > 1 && pageSize > 5) returnValue.push(createFirstButton());
+        let firstDisplayedPage = Math.max(1,Math.min(currentPage-2,pageSize-4))
+        let displayFirst: boolean = firstDisplayedPage > 1 && pageSize > 5;
+        let displayLast: boolean = false;
         let count = 0;
-        for (let i = firstDisplay ; i <= pageSize ; i++) {
+        for (let i = firstDisplayedPage ; i <= pageSize ; i++) {
             if (count == 5) {
-                returnValue.push(createLastButton());
+                displayLast = true;
                 break;
             }
-            returnValue.push(createPageButton(i));
+            buttonsToRender.push(i);
             count++;
         }
 
-        returnValue.push(createNextButton());
-
-        return returnValue;
-    }
+        return (
+            <Stack direction='row' spacing="47px" fontFamily="Alegreya Sans">
+                <PreviousButton />
+                { displayFirst ? <FirstButton /> : null }
+                { buttonsToRender.map(pageNumber => <PageButton page={pageNumber} />)}
+                { displayLast ? <LastButton /> : null }
+                <NextButton />
+            </Stack>
+        );
+    };
 
     return (
-        <Stack direction='row' spacing="47px" fontFamily="Alegreya Sans">
-            {createButtons()}
-        </Stack>
+        <Buttons/>
     );
 };
   
