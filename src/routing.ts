@@ -5,7 +5,7 @@ const DefPage = React.lazy(() =>
 );
 
 const TourPage = React.lazy(() => 
-  import('@pages/MapTour').then((module) => ({
+  import('@pages/PageTour').then((module) => ({
     default: module.Tour
   }))
 )
@@ -36,7 +36,7 @@ export const Routing: PageRouting[] = [
   },
   {
     title: 'OHU Tour',
-    path: '/map-tour',
+    path: '/tour',
     component: TourPage
   },
   PageNotFoundRouting,
