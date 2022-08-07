@@ -9,7 +9,7 @@ export const Leaderboards = () => {
         return (
             <div>
                 Halaman ke-{currentPage}
-                <PaginationIcon pageSize={10} parentPageSetter={setCurrentPage} />
+                <PaginationIcon pageSize={500} parentPageSetter={setCurrentPage} />
             </div>
         );
     };
