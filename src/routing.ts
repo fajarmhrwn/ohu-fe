@@ -10,6 +10,12 @@ const PageNotFound = React.lazy(() =>
   }))
 );
 
+const Leaderboards = React.lazy(() => 
+  import('@pages/Leaderboards').then((module) => ({
+    default: module.Leaderboards,
+  }))
+);
+
 interface PageRouting {
   title: string;
   path: string;
@@ -27,6 +33,11 @@ export const Routing: PageRouting[] = [
     title: 'Default Page',
     path: '/',
     component: DefPage,
+  },
+  {
+    title: 'OHU Leaderboards',
+    path: '/leaderboards',
+    component: Leaderboards
   },
   PageNotFoundRouting,
 ];

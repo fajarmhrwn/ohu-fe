@@ -6,7 +6,7 @@ export const Example = () => {
     <Box>
       <Navbar />
       <Heading>Heading</Heading>
-      <Heading fontFamily="Alegreya Semibold">Sub Heading</Heading>
+      <Heading fontFamily="Subheading">Sub Heading</Heading>
       <Text>
         Body: Lorem ipsum dolor sit, amet consectetur adipisicing elit.
       </Text>
