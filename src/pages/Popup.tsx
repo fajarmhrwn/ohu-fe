@@ -1,6 +1,6 @@
 import {  Box, Center, Flex, Text, Button, AspectRatio, useDisclosure, ModalOverlay, ModalContent, Modal, Link} from '@chakra-ui/react';
 
-export const Example = () => {
+export const Popup = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <Center h="100%">
