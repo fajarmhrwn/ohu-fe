@@ -9,6 +9,7 @@ export const Tour = () => {
         m="0.5em"
         fontSize="2rem"
         textAlign="center"
+        fontWeight={700}
       >
         OHU MAP TOUR
       </Text>

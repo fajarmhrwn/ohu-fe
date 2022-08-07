@@ -1,4 +1,4 @@
-import { Box, Center, Text, theme, useMediaQuery } from '@chakra-ui/react';
+import { Box, Center, Spinner, Text, theme, useMediaQuery } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, useMap, Marker, useMapEvents } from 'react-leaflet';
 import { useNavigate } from 'react-router-dom';
@@ -64,7 +64,7 @@ export default function MapTourMap() {
           justifyContent="center"
           alignItems="center"
         >
-          LOADING ...
+          <Spinner height="10%" width="10%" color='white' fontWeight={800}/>
         </Box>
       ) : (
         <MapContainer
