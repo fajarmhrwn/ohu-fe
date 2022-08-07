@@ -18,7 +18,7 @@ export const TourMap = ({ data, setMap, isLoading } : { data: TourData, setMap: 
           justifyContent="center"
           alignItems="center"
         >
-          <Spinner height="10%" width="10%" color="white" fontWeight={800} />
+          <Spinner size="xl" color="white" fontWeight={800} />
         </Box>
       ) : (
         <MapContainer
@@ -33,7 +33,7 @@ export const TourMap = ({ data, setMap, isLoading } : { data: TourData, setMap: 
             <Marker position={marker.position}>
               <Popup>
                 <Link href={marker.linkTo} isExternal>
-                  Visit Site <ExternalLinkIcon />
+                  {marker.title} <ExternalLinkIcon />
                 </Link>
               </Popup>
             </Marker>

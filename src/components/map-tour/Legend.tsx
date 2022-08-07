@@ -29,7 +29,7 @@ export const TourLegend = ({ data, map, isLoading } : { data: TourData, map: Map
     
     return (
         <>
-            { isLoading ? <Spinner height="10%" width="10%" color="white" fontWeight={800} /> : 
+            { isLoading ? <Spinner size="xl" color="black" fontWeight={800} /> : // SPINNER INI KETENGAHIN
                 <Flex p={'5%'}  >
                     <Box mr={isMobile[0] ? '10px' : '100px'} p="10px" m="auto">
                         <Heading fontSize="67px" m="auto">Legends</Heading>
