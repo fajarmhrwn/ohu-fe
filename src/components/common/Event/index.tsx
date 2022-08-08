@@ -1,80 +1,81 @@
-import React from 'react'
-import { Box, 
-        Text, 
-        Heading,
-        Image,
-        Flex,
-        Stack,
-        Button } from '@chakra-ui/react'
+import {
+    Box, 
+    Text, 
+    Heading,
+    Image,
+    Flex,
+    Stack,
+    Button, 
+    Show
+} from '@chakra-ui/react'
+import { Link } from 'react-router-dom';
 
-        
+import ImageBalloon from '../../../assets/events_balloon.svg';
+import ImageJoget from '../../../assets/events_joget.svg';
+
 export const Event: () => JSX.Element = () => {
+    // TODO: link mission where
+    const links = [
+        { label: 'OHU Map Tour', to: '/tour' },
+        { label: 'Mission', to: '/' },
+        { label: 'Leaderboards', to: '/leaderboards' }
+    ]
 
     return (
-            <Box backgroundColor='#FFEBB0'
-            w={{lg: 'auto', base: '640px'}}
-            h='3600px'>
-            <Flex justifyContent='space-around'>
-                <Text fontSize={{xl: '2vw', lg:'2vw'}}
-                    display={{lg: 'block', base:'none'}}
-                    pos='relative' 
-                    top='12vw' 
-                    h='40px'
-                    left='2%'>
-                    Apa saja yang dapat kita lakukan di OHU Event?
-                </Text>
-
-                <Heading fontSize={{xl: '6vw',lg: '6vw', base:'70px'}}
-                    pos='relative'
-                    left={{xl:'1vw',lg: '0vw', base:'20%'}}
-                    top={{lg: '5vw', base:'370px'}}
-                    w='70%px'>
+        <Box backgroundColor='#FFEBB0' py={5}>
+            <Flex 
+                justifyContent={{ base: 'center', lg: 'space-around' }} 
+                alignItems='center'
+                ml={{ base: '12ch', lg: 0 }}
+                mb={{ base: '-5ch', lg: 0 }}
+            >
+                <Show above='lg'>
+                    <Text fontSize='2xl' fontFamily='Subheading'>
+                        Apa saja yang dapat kita lakukan di OHU Event?
+                    </Text>
+                </Show>
+                <Heading fontSize={{ base: '4xl', lg: '6xl'}} fontFamily='Heading'>
                     Events
                 </Heading> 
             </Flex>
-            <Flex justifyContent='space-between'>
-                <Image pos='absolute'
-                    display={{'2xl': 'block', lg: 'block', base:'none'}} 
-                    top='16vw' 
-                    marginRight='auto' 
-                    marginLeft='2%' 
-                    w='40%' 
-                    src='https://i.postimg.cc/NGPR6LNw/Group-5479.png'/>
-            
-                <Stack direction='column' 
-                    pos='relative'
-                    top={{lg: '18vw', base:'600px'}}
-                    left={{xl:'44vw',lg: '44vw', base:'20%'}}
-                    spacing = {{xl: '1.5vw', lg:'1.5vw',base: '8'}}>
-                    <Button backgroundColor='#FFA06F' 
-                        w={{xl: '20vw',lg:'20vw', base:'400px'}} 
-                        h={{xl: '3vw', lg:'3vw', base:'70px'}} 
-                        borderRadius={{xl: '70vw', lg:'70vw',base:'50px'}} 
-                        fontSize={{xl: '2vw',lg:'2vw', base:'35px'}}>
-                        OHU Map Tour
-                    </Button>
-                    <Button backgroundColor='#FFA06F' 
-                        w={{xl: '20vw',lg:'20vw', base:'400px'}} 
-                        h={{xl: '3vw', lg:'3vw', base:'70px'}} 
-                        borderRadius={{xl: '70vw', lg:'70vw',base:'50px'}} 
-                        fontSize={{xl: '2vw',lg:'2vw', base:'35px'}}>
-                        Missions
-                    </Button>  
-                    <Button backgroundColor='#FFA06F' 
-                        w={{xl: '20vw',lg:'20vw', base:'400px'}} 
-                        h={{xl: '3vw', lg:'3vw', base:'70px'}} 
-                        borderRadius={{xl: '70vw', lg:'70vw',base:'50px'}} 
-                        fontSize={{xl: '2vw',lg:'2vw', base:'35px'}}>
-                        Leaderboards
-                    </Button>  
+            <Flex
+                justifyContent={{ base: 'center', lg: 'space-evenly' }}
+                flexDirection={{ base: 'column-reverse', lg: 'row' }}
+                alignItems='center'
+            >
+                <Image
+                    display={{ base: 'none', lg: 'block' }}
+                    src={ImageBalloon}
+                    w='20%'
+                    h='20%'
+                    objectFit='contain'
+                />
+                <Stack direction='column' spacing={{ base: 5, lg: 8 }} justify='center'>
+                    {links.map((item) => {
+                        return (
+                            <Link to={item.to} key={item.label}>
+                                <Button
+                                    backgroundColor='#FFA06F' 
+                                    w={{ base: '250px', lg: '20vw' }}
+                                    borderRadius='lg' 
+                                    fontSize={{ base: 'lg', lg: '2xl' }}
+                                    color='white'
+                                >
+                                    {item.label}
+                                </Button>  
+                            </Link>
+                            
+                        )
+                    })}
                 </Stack>
-                <Image pos='absolute' 
-                    w={{lg: '30%', base:'300px'}} 
-                    top={{lg: '16vw', base:'420px'}} 
-                    marginRight='auto' 
-                    marginLeft={{lg: '68%', base:'180px'}}
-                    src='https://i.postimg.cc/W3N0nZLs/21-22-joget-2-1.png'/>
+                <Image
+                    src={ImageJoget}
+                    w={{ base: '220px', lg: '15%' }}
+                    h={{ base: '200px', lg: '15%' }}
+                    objectFit='contain'
+                    alignSelf={{ base: 'center', lg: 'flex-start' }}
+                />
             </Flex>
-            </Box>
+        </Box>
     )
 }
