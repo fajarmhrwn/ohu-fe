@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 
 interface Props {
   nim: string;
@@ -8,100 +8,65 @@ interface Props {
   rank: number;
 }
 
-export const Card = ({ nim, name, score, rank }: Props) =>  {
+export const Card = ({ nim, name, score, rank }: Props) => {
   return (
     <Flex
-      display="inline-flex"
-      sx={{ gap: ".5rem" }}
-      dir="row"
+      direction="row"
       boxSizing="border-box"
-      // width={["294px", "930px"]}
-      minWidth="294px"
-      maxWidth="930px"
-      paddingX={["5px", 0]}
-      height={["auto"]}
-      background="#FFFFFF"
       border="2px solid #FFA06F"
       borderRadius="10px"
-      marginBottom={["12.07px", "17px"]}
+      background="#FFFFFF"
+      marginBottom={{ md: "17px", base: "12.07px" }}
+      // paddingTop={{md:"3.5px",base:"11px"}}
+      // paddingBottom={{md:"3.5px",base:"9px"}}
+      paddingLeft={{ md: "25px", base: "9px" }}
+      paddingRight={{ md: "27px", base: "8px" }}
     >
-      <Flex
-        // width={["52.93px", "93px"]}
-        minWidth="52.93px"
-        maxWidth="93px"
-        // height={["29px", "59px"]}
-        marginLeft={["9px", "25px"]}
-        marginRight={["0px", "50px"]}
-        marginTop={["11px", "17px"]}
-        marginBottom={["12.93px", "17px"]}
+      <Text
+        fontWeight="500"
         fontFamily="Alegreya Sans"
         fontStyle="normal"
-        fontWeight="500"
-        fontSize={["32px", "64px"]}
-        lineHeight="92%"
-        justifyContent="center"
-        alignItems="center"
+        fontSize={{ md: "64px", base: "32px" }}
+        paddingRight={{ md: "25px", base: "9px" }}
       >
         #{rank}
-      </Flex>
-
+      </Text>
       <Flex
-        dir="column"
-        display="table-row"
-        height="auto"
-        marginTop={["11px", "17px"]}
-        marginBottom={["8.93px", "17px"]}
-        // marginRight={[]}
-        // marginLeft={[]}
+        justifyContent="center"
+        direction="column"
+        paddingLeft={{ md: "25px", base: "8px" }}
+        marginRight={{ md: "100px", base: "100px" }}
       >
-        <Flex
-          position="relative"
-          // width={["184px", "647px"]}
-          minWidth="184px"
-          maxWidth="647px"
-          //height={["18px","33px"]}
-
+        <Text
           fontFamily="Alegreya Sans"
           fontStyle="normal"
           fontWeight="500"
           fontSize={["20px", "36px"]}
-          lineHeight="92%"
           color="#000000"
+          paddingBottom={{ md: "4px" }}
         >
           {name}
-        </Flex>
-
-        <Flex
-          position="relative"
-          width={["60px", "90px"]}
-          height={["15px", "22px"]}
+        </Text>
+        <Text
           fontFamily="Alegreya Sans"
           fontStyle="normal"
           fontWeight="500"
           fontSize={["16px", "24px"]}
-          lineHeight="92%"
         >
           {nim}
-        </Flex>
+        </Text>
       </Flex>
-      <Flex
-        justifyContent="flex-end"
-        alignItems="center"
-        width={["47px", "124px"]}
-        // height={["22px","59px"]}
-
-        // marginLeft={["-15px", "0"]}
+      <Text
         marginLeft="auto"
         fontFamily="Alegreya Sans"
         fontStyle="normal"
         fontWeight="500"
         fontSize={["24px", "64px"]}
-        lineHeight="92%"
       >
         {score}
-      </Flex>
+      </Text>
     </Flex>
   );
-}
+};
 
 export default Card;
