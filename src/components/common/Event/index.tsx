@@ -47,22 +47,22 @@ export const Event: () => JSX.Element = () => {
                     left={{lg: '45%', base:'20%'}}
                     spacing = {8}>
                     <Button backgroundColor='#FFA06F' 
-                        w='150%' 
-                        h='90%'
+                        w='400px' 
+                        h='70px'
                         borderRadius='50px' 
-                        fontSize='200%'>
+                        fontSize='35px'>
                         OHU Map Tour
                     </Button>
                     <Button backgroundColor='#FFA06F' 
-                        w='150%' 
-                        h='90%'
+                        w='400px' 
+                        h='70px'
                         borderRadius='50px' 
                         fontSize='200%'>
                         Missions
                     </Button>  
                     <Button backgroundColor='#FFA06F' 
-                        w='150%' 
-                        h='90%'
+                        w='400px' 
+                        h='70px'
                         borderRadius='50px' 
                         fontSize='200%'>
                         Leaderboards
