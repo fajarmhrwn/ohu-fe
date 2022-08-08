@@ -1,8 +1,10 @@
-import {  Box, Center, Flex, Text, Button, AspectRatio, useDisclosure, ModalOverlay, ModalContent, Modal, Link} from '@chakra-ui/react';
+import { ChakraProvider, Circle, Box, Center, Flex, Text, Button, AspectRatio, useDisclosure, ModalOverlay, ModalContent, Modal, Link } from '@chakra-ui/react';
 
 export const Popup = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const onAir = true //dummy data
   return (
+    <ChakraProvider>
     <Center h="100%">
       <Button onClick={onOpen}>Open Modal</Button>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -22,13 +24,40 @@ export const Popup = () => {
       alignItems="center"
       justifyContent="space-between"
       >  
-        <Text
-          fontFamily='Alegreya'
-          fontSize="32pt" 
-          fontWeight="bold" 
-          mt={0}>
-          Unit A 
-        </Text>
+        <Flex 
+          flexDirection = "row" 
+          alignItems = "center">
+          <Text
+            fontFamily='Alegreya'
+            fontSize="32pt" 
+            fontWeight="bold" 
+            mt={0}>
+            Unit A 
+          </Text>
+          <Flex
+            background = "#79C7D4"
+            boxShadow = "0px 1px 7px 2px rgba(121, 199, 212, 0.62)"
+            borderRadius = "8.5px"
+            flexDirection = "row"
+            justifyContent = "space-evenly"
+            alignItems = "center"
+            w = "4em"
+            h = "1.3em"
+            ml = "1em"> 
+              <Circle
+                size = "0.6em"
+                bg = {onAir ? "#CB3946" : "#363636"}>
+              </Circle>
+              <Text
+                fontWeight = "500"
+                fontSize = "0.7em"
+                color = "#FFFFFF"
+                fontFamily = "Alegreya Sans"
+                fontStyle = "normal">
+                {onAir ? "On Air" : "Off Air"}
+              </Text>    
+          </Flex>
+        </Flex>
         <Button className='CloseButton'
           onClick={onClose}
           fontSize={32}
@@ -129,5 +158,6 @@ export const Popup = () => {
       </ModalContent>
       </Modal>
     </Center>
+    </ChakraProvider>
   );
 };
