@@ -35,7 +35,7 @@ export const Event: () => JSX.Element = () => {
                     </Text>
                 </Show>
                 <Heading fontSize={{ base: '4xl', lg: '6xl'}} fontFamily='Heading'>
-                    Events
+                    vens
                 </Heading> 
             </Flex>
             <Flex

@@ -114,7 +114,7 @@ const PaginationIcon: React.FC<PaginationIconProps> = props => {
                     pageChange={() => changePage(currentPage-1 < 1 ? 1 : currentPage-1)}
                 />
                 { displayFirst ? <ExtremeIcon icon={"..."} pageChange={() => changePage(1)} /> : null }
-                { buttonsToRender.map(pageNumber => <PageButton page={pageNumber} />)}
+                { buttonsToRender.map(pageNumber => <PageButton key={pageNumber} page={pageNumber} />)}
                 { displayLast ? <ExtremeIcon icon={"..."} pageChange={() => changePage(pageSize)} /> : null }
                 <ButtonIcon
                     icon={<ChevronRightIcon w={6} h={6} />}

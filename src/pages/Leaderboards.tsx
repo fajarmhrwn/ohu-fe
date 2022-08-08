@@ -12,11 +12,6 @@ export const Leaderboards = () => {
 
   const dummyData = [
     {
-      nim: 'xxx22000',
-      name: '? ? ? ? ?',
-      score: 100
-    },
-    {
       nim: 'xxx22001',
       name: '? ? ? ? ?',
       score: 100
@@ -60,6 +55,11 @@ export const Leaderboards = () => {
       nim: 'xxx22009',
       name: '? ? ? ? ?',
       score: 100
+    },
+    {
+      nim: 'xxx22010',
+      name: '? ? ? ? ?',
+      score: 100
     }
   ]
 
@@ -77,7 +77,7 @@ export const Leaderboards = () => {
           textAlign='center'
           mb={4}
         >
-          Leaderboard
+          Laerboad
         </Heading>
         {/* <Search /> */}
         <Flex flexDirection='row' justifyContent='space-evenly' w='100%'>

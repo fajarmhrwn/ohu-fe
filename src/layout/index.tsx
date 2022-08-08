@@ -21,8 +21,9 @@ const pageAnimation = {
 
 export const PageAnimate = ({ children, title }: Props) => {
   useEffect(() => {
-    document.title = title + ' - OHU'
-  })
+    document.title = title + ' - OHU';
+  }, [])
+
   return (
     <motion.div
       variants={pageAnimation}
@@ -38,8 +39,9 @@ export const PageAnimate = ({ children, title }: Props) => {
 
 export const PageLayoutNoNavbar = ({ children, title }: Props) => {
   useEffect(() => {
-    document.title = title + ' - OHU'
-  })
+    document.title = title + ' - OHU';
+  }, [])
+
   return (
     <>
       <Navbar />
@@ -58,8 +60,9 @@ export const PageLayoutNoNavbar = ({ children, title }: Props) => {
 
 export const PageLayout = ({ children, title}: Props) => {
   useEffect(() => {
-    document.title = title + ' - OHU'
-  })
+    document.title = title + ' - OHU';
+  }, [])
+  
   return (
     <>
       <Navbar />

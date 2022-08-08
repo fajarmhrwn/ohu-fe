@@ -93,7 +93,7 @@ export const Popup = () => {
             fontFamily='Heading'
             fontSize="32pt"  
             mt={6}>
-            Rundown
+            unow
           </Text>
           <Box
             borderRadius='5px'
@@ -116,7 +116,7 @@ export const Popup = () => {
             fontFamily='Heading'
             fontSize="32pt" 
             mt={6}>
-            Mission
+            iio
           </Text>
           <Box
             borderRadius='5px'
@@ -135,12 +135,12 @@ export const Popup = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed diam tellus, sodales non mauris id, placerat fringilla elit. In non sem porta, tristique velit in, vestibulum turpis. Nulla quis elit ipsum. Nunc non mi id diam accumsan posuere tincidunt in lectus. Vivamus tempus purus dui, in luctus nisi commodo eget. Fusce imperdiet metus arcu, ullamcorper vehicula nulla tempus sit amet. In tortor purus, malesuada ac tempus sed, pharetra ut leo. Ut sit amet turpis ut turpis iaculis elementum. Quisque convallis auctor turpis eget pulvinar. Vestibulum blandit massa eu ipsum lobortis, ac malesuada turpis pharetra.
           </Text>
           <Text 
-            fontFamily='Subheading'
+            fontFamily='Heading'
             fontSize="24pt"
             mt={4} 
             align="center"
           >
-            Interested?
+            ntresed?
           </Text>
           <Link href='https://google.com' isExternal>
             <Button type='button'

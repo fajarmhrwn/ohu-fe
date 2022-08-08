@@ -34,7 +34,7 @@ export const PageNotFound = () => {
             pr="50px"
             pl="50px"
           >
-            Halaman Tidak Ditemukan
+            alamn idak itemuan
           </Heading>
         </Box>
         <Link to="/">

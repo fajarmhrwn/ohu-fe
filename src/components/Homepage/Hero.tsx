@@ -40,7 +40,7 @@ const Hero = () => {
         <Box h="100%" w="100%" borderRadius="0% 0% 50% 50% / 0% 0% 20% 20% " pt={10} pb={10} bg="#FFEBB0">
             <motion.div animate={animation}>
                 <Flex flexDir="column" alignItems="center" gap={10} mt={7}>
-                    <Heading size={['xl', '3xl']} ref={ref} mb={[1, 8]} text-align="center">Open House Unit</Heading>
+                    <Heading size={['xl', '3xl']} ref={ref} mb={[1, 8]} text-align="center">pn oue ni</Heading>
                 </Flex>
                 <Flex mt="3" w='100%'>
                     <Hide below="md">
