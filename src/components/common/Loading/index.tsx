@@ -14,7 +14,7 @@ const animation = `${animationKeyframes} 3s ease-in-out infinite`;
 
 export const Loading = () => {
   return (
-    <PageLayoutNoNavbar>
+    <PageLayoutNoNavbar title='Loading'>
       <Container display='flex' alignItems='center' justifyContent='center' minH='90vh' flexDirection='column'>
         <Box
           as={motion.div}

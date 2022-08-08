@@ -23,12 +23,11 @@ import {
   useDisclosure,
   IconButton
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { Link, matchPath } from "react-router-dom";
 
 const Navbar = () => {
   // TODO: handle login (BE)
-  // TODO: apply font, di branch ini belum ke apply fontnya soalnya
   const [isLogin, setIsLogin] = useState<boolean>(false);
   const links = [
     { label: "Home", link: "/" },
@@ -86,7 +85,7 @@ const Navbar = () => {
   return (
     <Flex
       w="100%"
-      px={10}
+      px={8}
       py={2}
       bg="#FFEBB0"
       flexDirection="row"
@@ -98,15 +97,16 @@ const Navbar = () => {
       zIndex="999"
     >
       <Box alignItems={"center"}>
-        <HStack>
-          {/* TODO: ganti logo */}
-          <Image src={Logo} mb={3} />
-          <Text fontSize="2xl" fontFamily='Heading'>
-            KAT ITB 2022
-          </Text>
-        </HStack>
+        <Link to='/'>
+          <HStack>
+            {/* TODO: ganti logo */}
+            <Image src={Logo} mb={3} />
+            <Text fontSize="2xl" fontFamily='Heading' color='#F4A641'>
+              KAT ITB 2022
+            </Text>
+          </HStack>
+        </Link>
       </Box>
-      {/* TODO liat font */}
       <Show above="lg">
         <Flex
           gap={20}
@@ -121,9 +121,12 @@ const Navbar = () => {
               <Link key={item.label} to={item.link}>
                 <Text
                   textUnderlineOffset={5}
+                  color={match ? '#F4A641' : '#000000'}
                   textDecoration={match ? "underline" : "none"}
                   textDecorationColor="#FF7D4B"
+                  transition='all 0.15s ease-in-out'
                   _hover={{
+                    color: '#F4A641',
                     textDecoration: "underline",
                     textDecorationColor: "#FF7D4B"
                   }}
@@ -166,9 +169,12 @@ const Navbar = () => {
                     <Link key={item.label} to={item.link}>
                       <Text
                         textUnderlineOffset={5}
+                        color={match ? '#F4A641' : '#000000'}
                         textDecoration={match ? "underline" : "none"}
                         textDecorationColor="#FF7D4B"
+                        transition='all 0.15s ease-in-out'
                         _hover={{
+                          color: '#F4A641',
                           textDecoration: "underline",
                           textDecorationColor: "#FF7D4B"
                         }}

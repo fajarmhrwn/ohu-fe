@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Footer, Navbar } from '@components/common';
 import { motion } from 'framer-motion';
 
 interface Props {
   children: React.ReactNode;
+  title: string;
 }
 
 const pageAnimation = {
@@ -18,7 +19,10 @@ const pageAnimation = {
   },
 };
 
-export const PageAnimate = ({ children }: Props) => {
+export const PageAnimate = ({ children, title }: Props) => {
+  useEffect(() => {
+    document.title = title + ' - OHU'
+  })
   return (
     <motion.div
       variants={pageAnimation}
@@ -32,7 +36,10 @@ export const PageAnimate = ({ children }: Props) => {
   )
 }
 
-export const PageLayoutNoNavbar = ({ children }: Props) => {
+export const PageLayoutNoNavbar = ({ children, title }: Props) => {
+  useEffect(() => {
+    document.title = title + ' - OHU'
+  })
   return (
     <>
       <Navbar />
@@ -49,7 +56,10 @@ export const PageLayoutNoNavbar = ({ children }: Props) => {
   )
 }
 
-export const PageLayout = ({ children }: Props) => {
+export const PageLayout = ({ children, title}: Props) => {
+  useEffect(() => {
+    document.title = title + ' - OHU'
+  })
   return (
     <>
       <Navbar />

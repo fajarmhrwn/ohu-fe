@@ -151,6 +151,7 @@ export const Popup = () => {
               bg="#ff7d4c"
               borderRadius="150px"
               fontWeight="semibold"
+              transition='all 0.15s ease-in-out'
               _hover={{
                 bg: "#d85526",
               }}

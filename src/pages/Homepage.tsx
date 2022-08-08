@@ -4,7 +4,7 @@ import { PageLayout } from 'src/layout';
 
 export const Homepage = () => {
   return (
-    <PageLayout>
+    <PageLayout title='Home'>
       <Hero />
       <Event />
     </PageLayout>

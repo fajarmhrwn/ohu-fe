@@ -64,11 +64,12 @@ export const Leaderboards = () => {
   ]
 
   return (
-    <PageLayout>
+    <PageLayout title='Leaderboard'>
       <Flex
         flexDirection='column'
         justifyContent='center'
         alignItems='center'
+        px={5}
       >
         <Heading
           py={6}
@@ -91,7 +92,7 @@ export const Leaderboards = () => {
               h='20%'
             />
           </Show>
-          <Flex flexDirection='column' gap={2} w='100%' alignContent='center' maxW='70ch'>
+          <Flex flexDirection='column' gap={2} w='100%' alignContent='center' maxW='80ch'>
             {dummyData.map((item, idx) => {
               return (
                 <Card key={item.nim} rank={idx+1} {...item} />
@@ -111,7 +112,7 @@ export const Leaderboards = () => {
           </Show>
         </Flex>
       </Flex>
-      <Center mt={6}>
+      <Center mt={6} mb={5}>
         <PaginationIcon pageSize={500} parentPageSetter={setCurrentPage} />
       </Center>
     </PageLayout>

@@ -34,6 +34,7 @@ const PaginationIcon: React.FC<PaginationIconProps> = props => {
                 justifyContent="center"
                 color='white'
                 cursor='pointer'
+                transition='all 0.15s ease-in-out'
                 _hover={{ background: '#FFB08D' }}
             >
                 {icon}
@@ -54,6 +55,7 @@ const PaginationIcon: React.FC<PaginationIconProps> = props => {
                 alignItems="center"
                 justifyContent="center"
                 cursor='pointer'
+                transition='all 0.15s ease-in-out'
                 _hover={{ bg: '#FFA06F', color: '#FFFFFF' }}
             >
                 { icon }
@@ -74,6 +76,7 @@ const PaginationIcon: React.FC<PaginationIconProps> = props => {
             alignItems="center"
             justifyContent="center"
             cursor='pointer'
+            transition='all 0.15s ease-in-out'
             _hover={{ bg: '#FFA06F', color: '#FFFFFF' }}
         >
             {props.page}

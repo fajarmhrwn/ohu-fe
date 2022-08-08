@@ -6,6 +6,7 @@ const baseStyle: SystemStyleFunction = () => {
     borderRadius: '7px',
     bg: 'transparent',
     paddingY: '1em',
+    transition: 'all 0.15s ease-in-out',
     _hover: {
       _disabled: {
         bg: 'initial',
@@ -18,6 +19,7 @@ const solid: SystemStyleFunction = () => {
   return {
     color: 'white',
     bg: '#FFA06E',
+    transition: 'all 0.15s ease-in-out',
     _hover: {
       color: 'white',
       bg: '#FFA06E',

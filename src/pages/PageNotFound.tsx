@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export const PageNotFound = () => {
   return (
-    <PageAnimate>
+    <PageAnimate title='Not Found'>
       <Flex
         flexDirection="column"
         alignItems="center"
