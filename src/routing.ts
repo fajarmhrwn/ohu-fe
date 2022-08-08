@@ -1,7 +1,7 @@
 import React, { LazyExoticComponent } from 'react';
 
 const DefPage = React.lazy(() =>
-  import('@pages/Example').then((module) => ({ default: module.Example }))
+  import('@pages/Homepage').then((module) => ({ default: module.Homepage }))
 );
 
 const PageNotFound = React.lazy(() =>
