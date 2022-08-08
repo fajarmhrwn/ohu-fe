@@ -60,6 +60,7 @@ export const Event: () => JSX.Element = () => {
                                     borderRadius='lg' 
                                     fontSize={{ base: 'lg', lg: '2xl' }}
                                     color='white'
+                                    _hover={{ backgroundColor: '#FFB08D' }}
                                 >
                                     {item.label}
                                 </Button>  
