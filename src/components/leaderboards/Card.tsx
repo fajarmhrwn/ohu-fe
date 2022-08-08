@@ -1,9 +1,14 @@
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 
-function Card(props:any) {
-  const { nim, name, score, rank } = props;
+interface Props {
+  nim: string;
+  name: string;
+  score: number;
+  rank: number;
+}
 
+export const Card = ({ nim, name, score, rank }: Props) =>  {
   return (
     <Flex
       display="inline-flex"
