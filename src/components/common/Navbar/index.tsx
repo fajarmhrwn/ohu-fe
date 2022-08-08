@@ -46,19 +46,21 @@ const Navbar = () => {
             as={Button}
             rightIcon={<ChevronDownIcon />}
             bg="transparent"
+            textColor="black"
             fontSize="lg"
             px={0}
+            fontFamily='Alegreya Sans'
           >
             {/* TODO: Ganti sama user yang login? */}
             Lorem Ipsum
           </MenuButton>
           <MenuList borderColor="#FFA06E">
-            <MenuItem>
+            <MenuItem fontFamily='Alegreya Sans'>
               <Image src={DashboardLogo} mr="4" alt="dashboard_logo" />
               <Text>Dashboard</Text>
             </MenuItem>
             <MenuDivider />
-            <MenuItem onClick={() => setIsLogin(false)}>
+            <MenuItem onClick={() => setIsLogin(false)} fontFamily='Alegreya Sans'>
               <Image src={LogoutLogo} mr="4" alt="logout_logo" />
               <Text>Logout</Text>
             </MenuItem>
@@ -72,6 +74,7 @@ const Navbar = () => {
           color="white"
           bgColor="#F4A641"
           onClick={() => setIsLogin(true)}
+          fontFamily='Alegreya Sans'
         >
           Log In
         </Button>
@@ -97,7 +100,7 @@ const Navbar = () => {
         <HStack>
           {/* TODO: ganti logo */}
           <Image src={Logo} mb={3} />
-          <Text as="b" fontSize="2xl">
+          <Text as="b" fontSize="2xl" fontFamily='Magilio'>
             KAT ITB 2022
           </Text>
         </HStack>
@@ -109,6 +112,7 @@ const Navbar = () => {
           fontSize="xl"  
           alignItems="center"
           fontWeight={400}
+          fontFamily="Alegreya Sans"
         >
           {links.map((item) => {
             const match = matchPath({ path: item.link }, window.location.pathname);
@@ -136,7 +140,7 @@ const Navbar = () => {
           bg="transparent"
           aria-label="Open Menu"
           size="lg"
-          icon={<HamburgerIcon w={6} h={6} />} onClick={onOpen}
+          icon={<HamburgerIcon w={6} h={6} color="black" />} onClick={onOpen}
         />
         <Drawer
           isOpen={isOpen}
