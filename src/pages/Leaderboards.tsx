@@ -1,39 +1,64 @@
 import { useState } from 'react';
 import PaginationIcon from '@components/leaderboards/PaginationIcon';
 import { PageLayout } from 'src/layout';
-import { Heading, Flex, Container, Image, Show, Center } from '@chakra-ui/react';
+import { Heading, Flex, Image, Show, Center } from '@chakra-ui/react';
 import Card from '@components/leaderboards/Card';
 
 import Image1 from '../assets/leaderboard_blue.svg'
 import Image2 from '../assets/leaderboard_yellow.svg';
 
 export const Leaderboards = () => {
-  const [currentPage,setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const dummyData = [
     {
       nim: 'xxx22000',
-      name: 'Peserta OHU 1',
+      name: '? ? ? ? ?',
       score: 100
     },
     {
       nim: 'xxx22001',
-      name: 'Peserta OHU 2',
+      name: '? ? ? ? ?',
       score: 100
     },
     {
       nim: 'xxx22002',
-      name: 'Peserta OHU 32246567',
-      score: 10000
+      name: '? ? ? ? ?',
+      score: 100
     },
     {
       nim: 'xxx22003',
-      name: 'Peserta OHU 4',
+      name: '? ? ? ? ?',
       score: 100
     },
     {
       nim: 'xxx22004',
-      name: 'Peserta OHU 5',
+      name: '? ? ? ? ?',
+      score: 100
+    },
+    {
+      nim: 'xxx22005',
+      name: '? ? ? ? ?',
+      score: 100
+    },
+    {
+      nim: 'xxx22006',
+      name: '? ? ? ? ?',
+      score: 100
+    },
+    {
+      nim: 'xxx22007',
+      name: '? ? ? ? ?',
+      score: 100
+    },
+    {
+      nim: 'xxx22008',
+      name: '? ? ? ? ?',
+      score: 100
+    },
+    {
+      nim: 'xxx22009',
+      name: '? ? ? ? ?',
       score: 100
     }
   ]
@@ -54,35 +79,41 @@ export const Leaderboards = () => {
           Leaderboard
         </Heading>
         {/* <Search /> */}
-        {/* <Flex flexDirection='row' justifyContent='space-between' w='100%'> */}
-          {/* <Show above='lg'>
+        <Flex flexDirection='row' justifyContent='space-evenly' w='100%'>
+          <Show above='lg'>
             <Image
               src={Image2}
               alt='Nyemangatin2' 
               objectFit='contain'
-              mt={20} 
+              alignSelf='flex-end'
+              mb={5}
+              w='20%'
+              h='20%'
             />
-          </Show> */}
-          {/* <Flex flexDirection='column' gap={2} w='100%'>
+          </Show>
+          <Flex flexDirection='column' gap={2} w='100%' alignContent='center' maxW='70ch'>
             {dummyData.map((item, idx) => {
               return (
-                <Card key={item.nim} rank={idx + 1} {...item} />
+                <Card key={item.nim} rank={idx+1} {...item} />
               )
             })}
-          </Flex> */}
-          {/* <Show above='lg'>
+          </Flex>
+          <Show above='lg'>
             <Image
               src={Image1}
               alt='Nyemangatin1'
               objectFit='contain'
-              mb={40}   
+              alignSelf='flex-start'
+              mt={5}
+              w='20%'
+              h='20%'
             />
-          </Show> */}
-        {/* </Flex> */}
-        <Center mt={6}>
-          <PaginationIcon pageSize={500} parentPageSetter={setCurrentPage} />
-        </Center>
+          </Show>
+        </Flex>
       </Flex>
+      <Center mt={6}>
+        <PaginationIcon pageSize={500} parentPageSetter={setCurrentPage} />
+      </Center>
     </PageLayout>
   );
 };

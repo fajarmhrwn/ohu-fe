@@ -1,4 +1,3 @@
-import React from "react";
 import { Flex, Text } from "@chakra-ui/react";
 
 interface Props {
@@ -9,6 +8,7 @@ interface Props {
 }
 
 export const Card = ({ nim, name, score, rank }: Props) => {
+  const colors = ["#C9B037", "#B4B4B4", "#AD8A56"];
   return (
     <Flex
       direction="row"
@@ -16,52 +16,43 @@ export const Card = ({ nim, name, score, rank }: Props) => {
       border="2px solid #FFA06F"
       borderRadius="10px"
       background="#FFFFFF"
-      marginBottom={{ md: "17px", base: "12.07px" }}
-      // paddingTop={{md:"3.5px",base:"11px"}}
-      // paddingBottom={{md:"3.5px",base:"9px"}}
       paddingLeft={{ md: "25px", base: "9px" }}
       paddingRight={{ md: "27px", base: "8px" }}
+      py={2}
+      alignItems="center"
     >
       <Text
-        fontWeight="500"
-        fontFamily="Alegreya Sans"
-        fontStyle="normal"
-        fontSize={{ md: "64px", base: "32px" }}
-        paddingRight={{ md: "25px", base: "9px" }}
+        fontFamily="Subheading"
+        fontSize="3xl"
+        color={colors[rank - 1] ?? "#000000"}
+        w="5ch"
       >
         #{rank}
       </Text>
       <Flex
         justifyContent="center"
         direction="column"
-        paddingLeft={{ md: "25px", base: "8px" }}
-        marginRight={{ md: "100px", base: "100px" }}
+        ml={2}
       >
         <Text
-          fontFamily="Alegreya Sans"
-          fontStyle="normal"
-          fontWeight="500"
-          fontSize={["20px", "36px"]}
+          fontFamily="Heading"
+          fontSize="2xl"
           color="#000000"
-          paddingBottom={{ md: "4px" }}
+          mb={-4}
         >
           {name}
         </Text>
         <Text
-          fontFamily="Alegreya Sans"
-          fontStyle="normal"
-          fontWeight="500"
-          fontSize={["16px", "24px"]}
+          fontFamily="Caption"
+          fontSize="2xl"
         >
           {nim}
         </Text>
       </Flex>
       <Text
         marginLeft="auto"
-        fontFamily="Alegreya Sans"
-        fontStyle="normal"
-        fontWeight="500"
-        fontSize={["24px", "64px"]}
+        fontFamily="Subheading"
+        fontSize="4xl"
       >
         {score}
       </Text>

@@ -33,7 +33,7 @@ const Navbar = () => {
   const links = [
     { label: "Home", link: "/" },
     { label: "Tour", link: "/tour" },
-    { label: "Leaderboard", link: "/leaderboards" }
+    { label: "Leaderboard", link: "/leaderboard" }
   ];
   const { isOpen, onOpen, onClose } = useDisclosure();
   const drawerRef = useRef<HTMLButtonElement>(null);

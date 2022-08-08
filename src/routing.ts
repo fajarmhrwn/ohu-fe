@@ -35,8 +35,8 @@ export const Routing: PageRouting[] = [
     component: DefPage,
   },
   {
-    title: 'OHU Leaderboards',
-    path: '/leaderboards',
+    title: 'OHU Leaderboard',
+    path: '/leaderboard',
     component: Leaderboards
   },
   PageNotFoundRouting,
