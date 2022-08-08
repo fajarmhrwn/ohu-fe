@@ -34,7 +34,7 @@ const PaginationIcon: React.FC<PaginationIconProps> = props => {
                 justifyContent="center"
                 color='white'
                 cursor='pointer'
-                _hover={{ background: '#F4A641' }}
+                _hover={{ background: '#FFB08D' }}
             >
                 {icon}
             </Box>
