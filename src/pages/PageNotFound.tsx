@@ -41,8 +41,7 @@ export const PageNotFound = () => {
           <Button
             background="#FFA06F"
             borderRadius="50px"
-            fontFamily="Alegreya"
-            fontWeight="500"
+            fontFamily="Subheading"
             mt={{
               base: 5,
               md: 8,

@@ -49,18 +49,19 @@ const Navbar = () => {
             textColor="black"
             fontSize="lg"
             px={0}
-            fontFamily='Alegreya Sans'
+            fontFamily='Subheading'
+            _hover={{ bg: "transparent", textColor: "#F4A641" }}
           >
             {/* TODO: Ganti sama user yang login? */}
             Lorem Ipsum
           </MenuButton>
           <MenuList borderColor="#FFA06E">
-            <MenuItem fontFamily='Alegreya Sans'>
+            <MenuItem fontFamily='Subheading'>
               <Image src={DashboardLogo} mr="4" alt="dashboard_logo" />
               <Text>Dashboard</Text>
             </MenuItem>
             <MenuDivider />
-            <MenuItem onClick={() => setIsLogin(false)} fontFamily='Alegreya Sans'>
+            <MenuItem onClick={() => setIsLogin(false)} fontFamily='Subheading'>
               <Image src={LogoutLogo} mr="4" alt="logout_logo" />
               <Text>Logout</Text>
             </MenuItem>
@@ -74,7 +75,7 @@ const Navbar = () => {
           color="white"
           bgColor="#F4A641"
           onClick={() => setIsLogin(true)}
-          fontFamily='Alegreya Sans'
+          fontFamily='Subheading'
         >
           Log In
         </Button>
@@ -100,7 +101,7 @@ const Navbar = () => {
         <HStack>
           {/* TODO: ganti logo */}
           <Image src={Logo} mb={3} />
-          <Text as="b" fontSize="2xl" fontFamily='Magilio'>
+          <Text fontSize="2xl" fontFamily='Heading'>
             KAT ITB 2022
           </Text>
         </HStack>
@@ -112,7 +113,7 @@ const Navbar = () => {
           fontSize="xl"  
           alignItems="center"
           fontWeight={400}
-          fontFamily="Alegreya Sans"
+          fontFamily="Subheading"
         >
           {links.map((item) => {
             const match = matchPath({ path: item.link }, window.location.pathname);

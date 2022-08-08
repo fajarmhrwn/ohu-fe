@@ -13,7 +13,7 @@ const Footer = () => {
         <HStack spacing={{ base: '17px', lg: '30px' }}>
           <Circle size={{ base: '91px', lg: '186px' }} bg='#D9D9D9'></Circle>
           <Box
-            fontFamily='Alegreya Semibold'
+            fontFamily='Subheading'
             fontSize={{ base: '36px', lg: '73px' }}
             lineHeight={{ base: '33.12px', lg: '67.16px' }}
           >
@@ -24,7 +24,7 @@ const Footer = () => {
         </HStack>
         <Center bg='#D9D9D9' h={[209, 209, 229]} w={[0, 0, 0, 1320]}>
           <Text
-            fontFamily='Alegreya Semibold'
+            fontFamily='Subheading'
             fontSize={{ base: '0px', lg: '73px' }}
             lineHeight={{ base: '33.12px', lg: '67.16px' }}
           >

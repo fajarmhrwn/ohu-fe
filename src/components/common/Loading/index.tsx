@@ -25,7 +25,7 @@ export const Loading = () => {
           height="12"
           display="flex"
         />
-        <Text fontSize="2xl" fontFamily='SubHeading' mt={8}>Loading...</Text>
+        <Text fontSize="3xl" fontFamily='Heading' mt={12}>Loading...</Text>
       </Container>
     </PageLayoutNoNavbar>
   )
