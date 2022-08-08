@@ -93,12 +93,13 @@ const PaginationIcon: React.FC<PaginationIconProps> = props => {
     const Buttons = () => {
         let buttonsToRender : number[] = [];
 
-        let firstDisplayedPage = Math.max(1,Math.min(currentPage-2,pageSize-4))
-        let displayFirst: boolean = firstDisplayedPage > 1 && pageSize > 5;
+        let firstDisplayedPage = Math.max(1,Math.min(currentPage-2,pageSize-5))
+        if (firstDisplayedPage == 2) firstDisplayedPage--;
+        let displayFirst: boolean = firstDisplayedPage > 1 && pageSize > 7;
         let displayLast: boolean = false;
-        let count = 0;
+        let count = displayFirst ? 1 : 0;
         for (let i = firstDisplayedPage ; i <= pageSize ; i++) {
-            if (count == 5) {
+            if (count == 6 && i != pageSize) {
                 displayLast = true;
                 break;
             }
