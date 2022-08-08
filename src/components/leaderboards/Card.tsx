@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 
-function Card(props) {
+function Card(props:any) {
   const { nim, name, score, rank } = props;
 
   return (
