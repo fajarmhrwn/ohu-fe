@@ -28,15 +28,11 @@ const PageNotFoundRouting: PageRouting = {
   component: PageNotFound,
 };
 
-const EventPage = React.lazy(() =>
-  import('@pages/Event').then((module) => ({ default: module.HomePage }))
-)
-
 export const Routing: PageRouting[] = [
   {
     title: 'Default Page',
     path: '/',
-    component: EventPage,
+    component: DefPage,
   },
   {
     title: 'OHU Leaderboards',

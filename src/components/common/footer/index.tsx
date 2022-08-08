@@ -7,7 +7,6 @@ const Footer = () => {
       bg='#ffa06e'
       px={4}
       py={6}
-      mt={5}
     >
       <VStack spacing={{ base: '0px', lg: '20px' }} mt={{ base: '0px', lg: '20px' }}>
         <HStack spacing={{ base: '17px', lg: '30px' }}>
