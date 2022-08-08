@@ -140,7 +140,7 @@ const Navbar = () => {
           bg="transparent"
           aria-label="Open Menu"
           size="lg"
-          icon={<HamburgerIcon w={6} h={6} color="black"/>} onClick={onOpen}
+          icon={<HamburgerIcon w={6} h={6} color="black" />} onClick={onOpen}
         />
         <Drawer
           isOpen={isOpen}
