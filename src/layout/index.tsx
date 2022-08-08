@@ -32,6 +32,23 @@ export const PageAnimate = ({ children }: Props) => {
   )
 }
 
+export const PageLayoutNoNavbar = ({ children }: Props) => {
+  return (
+    <>
+      <Navbar />
+      <motion.div
+        variants={pageAnimation}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        transition={{ delay: 0.3 }}
+      >
+        {children}
+      </motion.div>
+    </>
+  )
+}
+
 export const PageLayout = ({ children }: Props) => {
   return (
     <>

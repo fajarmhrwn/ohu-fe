@@ -1,6 +1,7 @@
 import { Box, Button, Image, Heading, Flex } from '@chakra-ui/react';
 import pageNotFoundImage from '@assets/page-not-found-image.svg';
 import { PageAnimate } from 'src/layout';
+import { Link } from 'react-router-dom';
 
 export const PageNotFound = () => {
   return (
@@ -36,29 +37,28 @@ export const PageNotFound = () => {
             Halaman Tidak Ditemukan
           </Heading>
         </Box>
-        <Button
-          as="a"
-          href="https://www.google.com"
-          background="#FFA06F"
-          borderRadius="50px"
-          fontFamily="Alegreya"
-          fontWeight="500"
-          mt={{
-            base: 5,
-            md: 8,
-          }}
-          p={{
-            md: '1em',
-          }}
-          fontSize={{
-            base: '1em',
-            md: '1.5em',
-          }}
-        >
-          Kembali ke halaman utama
-        </Button>
+        <Link to="/">
+          <Button
+            background="#FFA06F"
+            borderRadius="50px"
+            fontFamily="Alegreya"
+            fontWeight="500"
+            mt={{
+              base: 5,
+              md: 8,
+            }}
+            p={{
+              md: '1em',
+            }}
+            fontSize={{
+              base: '1em',
+              md: '1.5em',
+            }}
+          >
+            Kembali ke halaman utama
+          </Button>
+        </Link>
       </Flex>
     </PageAnimate>
-    
   );
 };
