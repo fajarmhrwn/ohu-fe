@@ -1,5 +1,5 @@
 import { Box, Heading, Text } from '@chakra-ui/react';
-import { Navbar, Legend } from '@components/common';
+import { Navbar} from '@components/common';
 
 export const Example = () => {
   return (
