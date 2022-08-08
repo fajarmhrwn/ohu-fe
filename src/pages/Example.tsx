@@ -1,5 +1,5 @@
 import { Box, Heading, Text } from '@chakra-ui/react';
-import { Navbar } from '@components/common';
+import { Navbar, Footer } from '@components/common';
 
 export const Example = () => {
   return (
@@ -10,7 +10,10 @@ export const Example = () => {
       <Text>
         Body: Lorem ipsum dolor sit, amet consectetur adipisicing elit.
       </Text>
-      <Text fontFamily="Caption">Caption: Lorem ipsum dolor sit amet.</Text>
+      <Text fontFamily="Alegreya Sans Light">
+        Caption: Lorem ipsum dolor sit amet.
+      </Text>
+      <Footer />
     </Box>
   );
 };
