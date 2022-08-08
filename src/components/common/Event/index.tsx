@@ -14,34 +14,33 @@ export const Event: () => JSX.Element = () => {
             <Box backgroundColor='#FFEBB0'
             w={{lg: 'auto', base: '640px'}}
             h='3600px'>
-            <Flex>
-            <Heading fontSize={{'2xl': '240px',lg: '124px', base:'70px'}}
-                pos='relative'
-                marginLeft={{lg: '75%', base:'330px'}} 
-                marginRight='10%'
-                top={{lg: '150px', base:'370px'}}
-                w='70%px'>
-                Events
-            </Heading> 
+            <Flex justifyContent='space-around'>
+                <Text fontSize={{xl: '80px', lg:'43px'}}
+                    display={{lg: 'block', base:'none'}}
+                    pos='relative' 
+                    top='350px' 
+                    h='40px'
+                    left='2%'>
+                    Apa saja yang dapat kita lakukan di OHU Event?
+                </Text>
+
+                <Heading fontSize={{xl: '200px',lg: '124px', base:'70px'}}
+                    pos='relative'
+                    left={{lg: '0', base:'20%'}}
+                    top={{lg: '150px', base:'370px'}}
+                    w='70%px'>
+                    Events
+                </Heading> 
             </Flex>
-                    <Text fontSize='43px'
-                        display={{lg: 'block', base:'none'}} 
-                        pos='relative' 
-                        left='10%' 
-                        top='3%' 
-                        w='855px' 
-                        h='40px'
-                        >
-                        Apa saja yang dapat kita lakukan di OHU Event?
-                    </Text>
-                    <Image pos='absolute'
-                        display={{'2xl': 'block', lg: 'block', base:'none'}} 
-                        top='15%' 
-                        marginRight='auto' 
-                        marginLeft='5%' 
-                        w='40%' 
-                        src='https://i.postimg.cc/NGPR6LNw/Group-5479.png'/>
-            <Flex>
+            <Flex justifyContent='space-between'>
+                <Image pos='absolute'
+                    display={{'2xl': 'block', lg: 'block', base:'none'}} 
+                    top='15%' 
+                    marginRight='auto' 
+                    marginLeft='5%' 
+                    w='40%' 
+                    src='https://i.postimg.cc/NGPR6LNw/Group-5479.png'/>
+            
                 <Stack direction='column' 
                     pos='relative'
                     top={{lg: '450px', base:'600px'}}
