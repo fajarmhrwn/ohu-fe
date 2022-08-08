@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Button, Stack,Text } from '@chakra-ui/react'
+import { Stack, Box } from '@chakra-ui/react'
+import { ChevronRightIcon, ChevronLeftIcon } from '@chakra-ui/icons';
 
 interface PaginationIconProps {
     pageSize: number;
@@ -20,74 +21,63 @@ const PaginationIcon: React.FC<PaginationIconProps> = props => {
         setCurrentPage(destination);
     }
 
+    const ButtonIcon = ({ icon, pageChange }: { icon: React.ReactNode, pageChange: React.MouseEventHandler }) => {
+        return (
+            <Box
+                borderRadius="10px" 
+                background="#FFA06F"
+                onClick={pageChange}
+                w={10}
+                h={10}
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                color='white'
+                cursor='pointer'
+                _hover={{ background: '#F4A641' }}
+            >
+                {icon}
+            </Box>
+        )
+    }
+
+    const ExtremeIcon = ({ icon, pageChange }: { icon: React.ReactNode, pageChange: React.MouseEventHandler }) => {
+        return (
+            <Box 
+                borderRadius="10px" 
+                background="transparent"
+                onClick={pageChange}
+                color='black'
+                w={10}
+                h={10}
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                cursor='pointer'
+                _hover={{ bg: '#FFA06F', color: '#FFFFFF' }}
+            >
+                { icon }
+            </Box>
+        )
+    }
+
     const PageButton: React.FC<PageProps> = (props) => (
-        <Button 
-                w="58px" 
-                h="56px" 
-                borderRadius="10px" 
-                background={props.page == currentPage ? "#FFA06F" : "transparent"} 
-                onClick={() => changePage(props.page)}
-            >
-                <Text fontSize="40px" fontWeight="500" color={props.page == currentPage ? "#FFFBF2" : "#000000"}>
-                    {props.page}
-                </Text>
-            </Button>
-    );
-
-    const PreviousButton = () => (
-        <Button 
-                w="58px" 
-                h="56px" 
-                borderRadius="10px" 
-                background="#FFA06F"
-                onClick={() => changePage(currentPage-1 < 1 ? 1 : currentPage-1)}
-            >
-                <Text fontSize="40px" fontWeight="500" color="#FFFBF2">
-                    {"<"}
-                </Text>
-            </Button>
-    );
-
-    const NextButton = () => (
-        <Button 
-                w="58px" 
-                h="56px" 
-                borderRadius="10px" 
-                background="#FFA06F"
-                onClick={() => changePage(currentPage+1 > pageSize ? pageSize : currentPage+1)}
-            >
-                <Text fontSize="40px" fontWeight="500" color="#FFFBF2">
-                    {">"}
-                </Text>
-            </Button>
-    );
-
-    const LastButton = () => (
-        <Button 
-                w="58px" 
-                h="56px" 
-                borderRadius="10px" 
-                background="transparent"
-                onClick={() => changePage(pageSize)}
-            >
-                <Text fontSize="40px" fontWeight="500" color="#000000">
-                    {"..."}
-                </Text>
-            </Button>
-    );
-
-    const FirstButton = () => (
-        <Button 
-                w="58px" 
-                h="56px" 
-                borderRadius="10px" 
-                background="transparent"
-                onClick={() => changePage(1)}
-            >
-                <Text fontSize="40px" fontWeight="500" color="#000000">
-                    {"..."}
-                </Text>
-            </Button>
+        <Box
+            borderRadius="10px" 
+            background={props.page == currentPage ? "#FFA06F" : "transparent"} 
+            onClick={() => props.page !== currentPage ? changePage(props.page) : null}
+            color={props.page == currentPage ? "#FFFFFF" : "#000000"}
+            fontSize='xl'
+            w={10}
+            h={10}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            cursor='pointer'
+            _hover={{ bg: '#FFA06F', color: '#FFFFFF' }}
+        >
+            {props.page}
+        </Box>
     );
 
     const Buttons = () => {
@@ -108,12 +98,25 @@ const PaginationIcon: React.FC<PaginationIconProps> = props => {
         }
 
         return (
-            <Stack direction='row' spacing="47px" fontFamily="Alegreya Sans">
-                <PreviousButton />
-                { displayFirst ? <FirstButton /> : null }
+            <Stack
+                direction='row'
+                spacing="1"
+                fontFamily="Body"
+                justify='center'
+                userSelect='none'
+                w={{ base: '70%', lg: 'fit-content' }}
+            >
+                <ButtonIcon
+                    icon={<ChevronLeftIcon w={6} h={6} />}
+                    pageChange={() => changePage(currentPage-1 < 1 ? 1 : currentPage-1)}
+                />
+                { displayFirst ? <ExtremeIcon icon={"..."} pageChange={() => changePage(1)} /> : null }
                 { buttonsToRender.map(pageNumber => <PageButton page={pageNumber} />)}
-                { displayLast ? <LastButton /> : null }
-                <NextButton />
+                { displayLast ? <ExtremeIcon icon={"..."} pageChange={() => changePage(pageSize)} /> : null }
+                <ButtonIcon
+                    icon={<ChevronRightIcon w={6} h={6} />}
+                    pageChange={() => changePage(currentPage+1 > pageSize ? pageSize : currentPage+1)}
+                />
             </Stack>
         );
     };
@@ -122,6 +125,5 @@ const PaginationIcon: React.FC<PaginationIconProps> = props => {
         <Buttons/>
     );
 };
-  
+
 export default PaginationIcon;
-  
