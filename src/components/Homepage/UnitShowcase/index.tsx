@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { Box, Button, Flex, Heading, Image } from '@chakra-ui/react';
-import { motion, useAnimation, useInView } from 'framer-motion';
+import { Box, Flex, Heading } from '@chakra-ui/react';
+import { useAnimation, useInView } from 'framer-motion';
 import Card from './_Card';
 import ReactSVG from '../../../assets/react.svg';
 
@@ -35,32 +35,52 @@ const UnitShowcase = () => {
   }, [isInView]);
 
   return (
-    <Box
-      h="100%"
-      w="100%"
-      overflowX="hidden"
-      overflowY="hidden"
-    >
-        <Box p={14} pt={180} overflowY="hidden">
-                <Heading size="2xl" ref={ref} >
-                    Unit Showcase
-                </Heading>
-                <Box 
-                    display="flex"
-                    flexWrap="wrap"
-                    justifyContent="center"
-                    alignItems="center"
-                    gap={20}
-                    mt={20}
-                    mb={20}
-                >
-                    <Card img={ReactSVG} label={'Unit A'} />
-                    <Card img={ReactSVG} label={'Unit B'} />
-                    <Card img={ReactSVG} label={'Unit C'} />
-               
-                </Box>
-        </Box>
-
+    <Box h="100%" w="100%" overflowX="hidden" overflowY="hidden">
+      <Box
+        pt={{
+          base: 10,
+          lg: 24,
+        }}
+        px={{
+          md: 8,
+          lg: 20,
+        }}
+        overflowY="hidden"
+      >
+        <Heading
+          size={{
+            base: 'xl',
+          }}
+          textAlign={{
+            base: 'center',
+            md: 'left',
+          }}
+          ref={ref}
+        >
+          Unit Showcase
+        </Heading>
+        <Flex
+          flexDir={{
+            base: 'column',
+            md: 'row',
+          }}
+          justifyContent="space-between"
+          alignItems={{
+            base: 'center',
+          }}
+          gap={{
+            base: 10,
+          }}
+          mt={{
+            base: 10,
+          }}
+          pb={20}
+        >
+          <Card img={ReactSVG} label={'Unit A'} />
+          <Card img={ReactSVG} label={'Unit B'} />
+          <Card img={ReactSVG} label={'Unit C'} />
+        </Flex>
+      </Box>
     </Box>
   );
 };
