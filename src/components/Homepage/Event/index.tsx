@@ -10,15 +10,15 @@ import {
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
-import ImageBalloon from '../../../assets/events_balloon.svg';
-import ImageJoget from '../../../assets/events_joget.svg';
+import ImageBalloon from '@assets/events_balloon.svg';
+import ImageJoget from '@assets/events_joget.svg';
 
 const Event: () => JSX.Element = () => {
   // TODO: link mission where
   const links = [
     { label: 'OHU Map Tour', to: '/tour' },
     { label: 'Mission', to: '/' },
-    { label: 'Leaderboards', to: '/leaderboards' },
+    { label: 'Leaderboards', to: '/leaderboard' },
   ];
 
   return (
@@ -27,15 +27,15 @@ const Event: () => JSX.Element = () => {
         <Flex
           justifyContent={{ base: 'center', lg: 'space-around' }}
           alignItems="center"
-          ml={{ base: '12ch', lg: 0 }}
+          ml={{ base: '14ch', lg: 0 }}
           mb={{ base: '-5ch', lg: 0 }}
         >
           <Show above="lg">
-            <Text fontSize="2xl" fontFamily="Subheading">
+            <Text fontSize="4xl" fontFamily="Subheading">
               Apa saja yang dapat kita lakukan di OHU Event?
             </Text>
           </Show>
-          <Heading fontSize={{ base: '4xl', lg: '6xl' }} fontFamily="Heading">
+          <Heading  fontSize={{ base: '6xl', lg: '7xl' }} fontFamily="Heading">
             vens
           </Heading>
         </Flex>
@@ -47,8 +47,8 @@ const Event: () => JSX.Element = () => {
           <Image
             display={{ base: 'none', lg: 'block' }}
             src={ImageBalloon}
-            w="20%"
-            h="20%"
+            w="30%"
+            h="30%"
             objectFit="contain"
           />
           <Stack
@@ -62,7 +62,7 @@ const Event: () => JSX.Element = () => {
                   <Button
                     backgroundColor="#FFA06F"
                     w={{ base: '250px', lg: '20vw' }}
-                    borderRadius="lg"
+                    borderRadius="full"
                     fontSize={{ base: 'lg', lg: '2xl' }}
                     color="white"
                     transition="all 0.15s ease-in-out"
@@ -76,8 +76,8 @@ const Event: () => JSX.Element = () => {
           </Stack>
           <Image
             src={ImageJoget}
-            w={{ base: '220px', lg: '15%' }}
-            h={{ base: '200px', lg: '15%' }}
+            w={{ base: '220px', lg: '20%' }}
+            h={{ base: '200px', lg: '20%' }}
             objectFit="contain"
             alignSelf={{ base: 'center', lg: 'flex-start' }}
           />
