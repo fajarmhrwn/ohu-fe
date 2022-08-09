@@ -1,0 +1,23 @@
+/* Heading */
+@font-face {
+  font-family: 'Heading';
+  src: url('./assets/fonts/Magilio.otf');
+}
+
+/* Sub Heading */
+@font-face {
+  font-family: 'Subheading';
+  src: url('./assets/fonts/Alegreya-SemiBold.ttf');
+}
+
+/* Body */
+@font-face {
+  font-family: 'Body';
+  src: url('./assets/fonts/AlegreyaSans-Regular.ttf');
+}
+
+/* Caption */
+@font-face {
+  font-family: 'Caption';
+  src: url('./assets/fonts/AlegreyaSans-Light.ttf');
+}
