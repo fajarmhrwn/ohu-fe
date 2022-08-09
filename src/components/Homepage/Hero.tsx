@@ -24,20 +24,18 @@ const Hero = () => {
       animation.start({
         y: 0,
         opacity: 1,
-        visibility: 'visible',
         transition: {
           type: 'spring',
-          duration: 1,
+          duration: 1.3,
         },
       });
     }
     if (!isInView) {
       animation.start({
+        y: -50,
         opacity: 0,
-        visibility: 'hidden',
-        y: -20,
         transition: {
-          duration: 0.5,
+          duration: 0.3,
         },
       });
     }
@@ -66,13 +64,15 @@ const Hero = () => {
             pn oue ni
           </Heading>
         </Flex>
-        <Flex mt="3" w="100%">
-          <Hide below="md">
-            <Box boxSize="md" ml="-155" mt="-120px">
-              <Image src={gedungKiri} alt="saya" w={[0, 0, 0, 500]} />
-            </Box>
-          </Hide>
-          <Spacer />
+      </motion.div>
+      <Flex mt="3" w="100%">
+        <Hide below="md">
+          <Box boxSize="md" ml="-155" mt="-120px">
+            <Image src={gedungKiri} alt="saya" w={[0, 0, 0, 500]} />
+          </Box>
+        </Hide>
+        <Spacer />
+        <motion.div animate={animation}>
           <Center>
             <AspectRatio
               w={{
@@ -92,14 +92,14 @@ const Hero = () => {
               />
             </AspectRatio>
           </Center>
-          <Spacer />
-          <Hide below="md">
-            <Box boxSize="280px" mr="auto" mt="-120px">
-              <Image src={gedungKanan} alt="" w={[0, 0, 0, 500]} />
-            </Box>
-          </Hide>
-        </Flex>
-      </motion.div>
+        </motion.div>
+        <Spacer />
+        <Hide below="md">
+          <Box boxSize="280px" mr="auto" mt="-120px">
+            <Image src={gedungKanan} alt="" w={[0, 0, 0, 500]} />
+          </Box>
+        </Hide>
+      </Flex>
     </Box>
   );
 };

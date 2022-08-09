@@ -26,7 +26,7 @@ const UnitRecommendation = () => {
       animation.start({
         opacity: 0,
         visibility: 'hidden',
-        y: -20,
+        y: -40,
         transition: {
           duration: 0.5,
         },
@@ -49,7 +49,7 @@ const UnitRecommendation = () => {
         <Flex alignItems="center" flexDir="column" pt={3}>
           <motion.div animate={animation}>
             <Flex flexDir="column" alignItems="center" gap={5}>
-              <Heading size="2xl" ref={ref} textAlign="center">
+              <Heading size="2xl" ref={ref} textAlign="center" mb={8}>
                 ni eommedato
               </Heading>
               <Button
