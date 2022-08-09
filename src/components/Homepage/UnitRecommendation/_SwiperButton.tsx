@@ -32,10 +32,10 @@ const SwiperButton = ({
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       onClick={() => handleClick(index)}
+      cursor="pointer"
     >
       <Text
-        cursor="pointer"
-        fontSize="xl"
+        fontSize="21px"
         fontWeight={hover || position === index ? 'bold' : ''}
         position="relative"
       >
@@ -44,7 +44,7 @@ const SwiperButton = ({
       <Box
         h="4px"
         w="40%"
-        bg={color}
+        bg="#37662F"
         borderRadius="13px"
         transition="200ms"
         transform={hover || position === index ? 'scaleX(1)' : 'scaleX(0)'}
