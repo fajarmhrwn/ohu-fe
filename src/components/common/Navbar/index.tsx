@@ -1,7 +1,7 @@
-import { useRef, useState } from "react";
-import Logo from "../../../assets/react.svg";
-import DashboardLogo from "../../../assets/dashboard_menu.svg";
-import LogoutLogo from "../../../assets/logout_menu.svg";
+import { useRef, useState } from 'react';
+import Logo from '@assets/react.svg';
+import DashboardLogo from '@assets/dashboard_menu.svg';
+import LogoutLogo from '@assets/logout_menu.svg';
 import {
   Box,
   Button,
@@ -21,66 +21,64 @@ import {
   Show,
   Text,
   useDisclosure,
-  IconButton
-} from "@chakra-ui/react";
-import { HamburgerIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import { Link, matchPath } from "react-router-dom";
+  IconButton,
+} from '@chakra-ui/react';
+import { HamburgerIcon, ChevronDownIcon } from '@chakra-ui/icons';
+import { Link, matchPath } from 'react-router-dom';
 
 const Navbar = () => {
   // TODO: handle login (BE)
   const [isLogin, setIsLogin] = useState<boolean>(false);
   const links = [
-    { label: "Home", link: "/" },
-    { label: "Tour", link: "/tour" },
-    { label: "Leaderboard", link: "/leaderboard" }
+    { label: 'Home', link: '/' },
+    { label: 'Tour', link: '/tour' },
+    { label: 'Leaderboard', link: '/leaderboard' },
   ];
   const { isOpen, onOpen, onClose } = useDisclosure();
   const drawerRef = useRef<HTMLButtonElement>(null);
 
   const UtilNav = () => {
-    return (
-      isLogin ? (
-        <Menu>
-          <MenuButton
-            as={Button}
-            rightIcon={<ChevronDownIcon />}
-            bg="transparent"
-            textColor="black"
-            fontSize="lg"
-            px={0}
-            fontFamily='Subheading'
-            _hover={{ bg: "transparent", textColor: "#F4A641" }}
-          >
-            {/* TODO: Ganti sama user yang login? */}
-            Lorem Ipsum
-          </MenuButton>
-          <MenuList borderColor="#FFA06E">
-            <MenuItem fontFamily='Subheading'>
-              <Image src={DashboardLogo} mr="4" alt="dashboard_logo" />
-              <Text>Dashboard</Text>
-            </MenuItem>
-            <MenuDivider />
-            <MenuItem onClick={() => setIsLogin(false)} fontFamily='Subheading'>
-              <Image src={LogoutLogo} mr="4" alt="logout_logo" />
-              <Text>Logout</Text>
-            </MenuItem>
-          </MenuList>
-        </Menu>
-      ) : (
-        <Button
-          boxShadow="0px 1px 7px 2px rgba(244, 166, 65, 0.62)"
-          fontSize="md"
-          px={8}
-          color="white"
-          bgColor="#F4A641"
-          onClick={() => setIsLogin(true)}
-          fontFamily='Subheading'
+    return isLogin ? (
+      <Menu>
+        <MenuButton
+          as={Button}
+          rightIcon={<ChevronDownIcon />}
+          bg="transparent"
+          textColor="black"
+          fontSize="lg"
+          px={0}
+          fontFamily="Subheading"
+          _hover={{ bg: 'transparent', textColor: '#F4A641' }}
         >
-          Log In
-        </Button>
-      )
-    )
-  }
+          {/* TODO: Ganti sama user yang login? */}
+          Lorem Ipsum
+        </MenuButton>
+        <MenuList borderColor="#FFA06E">
+          <MenuItem fontFamily="Subheading">
+            <Image src={DashboardLogo} mr="4" alt="dashboard_logo" />
+            <Text>Dashboard</Text>
+          </MenuItem>
+          <MenuDivider />
+          <MenuItem onClick={() => setIsLogin(false)} fontFamily="Subheading">
+            <Image src={LogoutLogo} mr="4" alt="logout_logo" />
+            <Text>Logout</Text>
+          </MenuItem>
+        </MenuList>
+      </Menu>
+    ) : (
+      <Button
+        boxShadow="0px 1px 7px 2px rgba(244, 166, 65, 0.62)"
+        fontSize="md"
+        px={8}
+        color="white"
+        bgColor="#F4A641"
+        onClick={() => setIsLogin(true)}
+        fontFamily="Subheading"
+      >
+        Log In
+      </Button>
+    );
+  };
 
   return (
     <Flex
@@ -96,12 +94,12 @@ const Navbar = () => {
       top="0"
       zIndex="999"
     >
-      <Box alignItems={"center"}>
-        <Link to='/'>
+      <Box alignItems={'center'}>
+        <Link to="/">
           <HStack>
             {/* TODO: ganti logo */}
             <Image src={Logo} />
-            <Text fontSize="2xl" fontFamily='Heading' color='#F4A641'>
+            <Text fontSize="2xl" fontFamily="Heading" color="#F4A641">
               KAT ITB 2022
             </Text>
           </HStack>
@@ -109,26 +107,29 @@ const Navbar = () => {
       </Box>
       <Flex
         gap={20}
-        fontSize="xl"  
+        fontSize="xl"
         alignItems="center"
         fontWeight={400}
         fontFamily="Subheading"
         display={{ base: 'none', lg: 'flex' }}
       >
         {links.map((item) => {
-          const match = matchPath({ path: item.link }, window.location.pathname);
+          const match = matchPath(
+            { path: item.link },
+            window.location.pathname
+          );
           return (
             <Link key={item.label} to={item.link}>
               <Text
                 textUnderlineOffset={5}
                 color={match ? '#F4A641' : '#000000'}
-                textDecoration={match ? "underline" : "none"}
+                textDecoration={match ? 'underline' : 'none'}
                 textDecorationColor="#FF7D4B"
-                transition='all 0.15s ease-in-out'
+                transition="all 0.15s ease-in-out"
                 _hover={{
                   color: '#F4A641',
-                  textDecoration: "underline",
-                  textDecorationColor: "#FF7D4B"
+                  textDecoration: 'underline',
+                  textDecorationColor: '#FF7D4B',
                 }}
               >
                 {item.label}
@@ -143,7 +144,8 @@ const Navbar = () => {
           bg="transparent"
           aria-label="Open Menu"
           size="lg"
-          icon={<HamburgerIcon w={6} h={6} color="black" />} onClick={onOpen}
+          icon={<HamburgerIcon w={6} h={6} color="black" />}
+          onClick={onOpen}
         />
         <Drawer
           isOpen={isOpen}
@@ -163,19 +165,22 @@ const Navbar = () => {
                 gap={4}
               >
                 {links.map((item) => {
-                  const match = matchPath({ path: item.link }, window.location.pathname);
+                  const match = matchPath(
+                    { path: item.link },
+                    window.location.pathname
+                  );
                   return (
                     <Link key={item.label} to={item.link}>
                       <Text
                         textUnderlineOffset={5}
                         color={match ? '#F4A641' : '#000000'}
-                        textDecoration={match ? "underline" : "none"}
+                        textDecoration={match ? 'underline' : 'none'}
                         textDecorationColor="#FF7D4B"
-                        transition='all 0.15s ease-in-out'
+                        transition="all 0.15s ease-in-out"
                         _hover={{
                           color: '#F4A641',
-                          textDecoration: "underline",
-                          textDecorationColor: "#FF7D4B"
+                          textDecoration: 'underline',
+                          textDecorationColor: '#FF7D4B',
                         }}
                       >
                         {item.label}
