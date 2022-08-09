@@ -45,11 +45,14 @@ const Hero = () => {
 
   return (
     <Box
-      h="100vh"
+      h="100%"
       w="100%"
       borderRadius="0% 0% 50% 50% / 0% 0% 10% 10% "
       pt={3}
-      pb={10}
+      pb={{
+        base: 14,
+        lg: 28,
+      }}
       bg="#FFEBB0"
     >
       <motion.div animate={animation}>
@@ -71,7 +74,15 @@ const Hero = () => {
           </Hide>
           <Spacer />
           <Center>
-            <AspectRatio w={[290, 400, '49vw']} ratio={16 / 9} ref={ref}>
+            <AspectRatio
+              w={{
+                base: 280,
+                md: 500,
+                lg: '49vw',
+              }}
+              ratio={16 / 9}
+              ref={ref}
+            >
               <iframe
                 src="https://www.youtube.com/embed/Ku1zqLj_be4"
                 title="YouTube video player"
