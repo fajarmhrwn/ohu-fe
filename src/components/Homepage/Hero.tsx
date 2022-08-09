@@ -37,7 +37,7 @@ const Hero = () => {
     return (
 
 
-        <Box h="100%" w="100%" borderRadius="0% 0% 50% 50% / 0% 0% 20% 20% " pt={10} pb={10} bg="#FFEBB0">
+        <Box h="100%" w="100%" borderRadius="0% 0% 50% 50% / 0% 0% 10% 10% " pt={10} pb={10} bg="#FFEBB0">
             <motion.div animate={animation}>
                 <Flex flexDir="column" alignItems="center" gap={10} mt={7}>
                     <Heading size={['xl', '3xl']} ref={ref} mb={[1, 8]} text-align="center">pn oue ni</Heading>
@@ -50,7 +50,7 @@ const Hero = () => {
                     </Hide>
                     <Spacer />
                     <Center>
-                        <AspectRatio w={[290, 400, 650]} ratio={16 / 9} mb={[5, 120]} ref={ref}>
+                        <AspectRatio w={[290, 400, '45vw']} ratio={16 / 9} ref={ref}>
                             <iframe
                                 src="https://www.youtube.com/embed/Ku1zqLj_be4"
                                 title="YouTube video player"

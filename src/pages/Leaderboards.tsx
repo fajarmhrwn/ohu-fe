@@ -1,11 +1,35 @@
 import { useState } from 'react';
 import PaginationIcon from '@components/leaderboards/PaginationIcon';
 import { PageLayout } from 'src/layout';
-import { Heading, Flex, Image, Show, Center } from '@chakra-ui/react';
+import { Heading, Flex, Image, Show, Center, transform } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import Card from '@components/leaderboards/Card';
 
 import Image1 from '../assets/leaderboard_blue.svg'
 import Image2 from '../assets/leaderboard_yellow.svg';
+
+const cardAnimation = {
+  initialLeft: {
+    opacity: 0,
+    transform: 'translateX(-300px)'
+  },
+  initialRight: {
+    opacity: 0,
+    transform: 'translateX(300px)'
+  },
+  animate: {
+    opacity: 1,
+    transform: 'translateX(0px)'
+  },
+  exitLeft: {
+    opacity: 0,
+    transform: 'translateX(-300px)'
+  },
+  exitRight: {
+    opacity: 0,
+    transform: 'translateX(300px)'
+  },
+};
 
 export const Leaderboards = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -95,7 +119,19 @@ export const Leaderboards = () => {
           <Flex flexDirection='column' gap={2} w='100%' alignContent='center' maxW='80ch'>
             {dummyData.map((item, idx) => {
               return (
-                <Card key={item.nim} rank={idx+1} {...item} />
+                <motion.div
+                  key={item.nim}
+                  variants={cardAnimation}
+                  initial={idx % 2 === 0 ? 'initialLeft' : 'initialRight'}
+                  animate='animate'
+                  exit={idx % 2 === 0 ? 'exitLeft' : 'exitRight'}
+                  transition={{
+                    duration: 0.35, 
+                    delay: idx*0.12 
+                  }}
+                >
+                  <Card key={item.nim} rank={idx+1} {...item} />
+                </motion.div>
               )
             })}
           </Flex>

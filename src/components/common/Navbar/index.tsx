@@ -100,45 +100,44 @@ const Navbar = () => {
         <Link to='/'>
           <HStack>
             {/* TODO: ganti logo */}
-            <Image src={Logo} mb={3} />
+            <Image src={Logo} />
             <Text fontSize="2xl" fontFamily='Heading' color='#F4A641'>
               KAT ITB 2022
             </Text>
           </HStack>
         </Link>
       </Box>
-      <Show above="lg">
-        <Flex
-          gap={20}
-          fontSize="xl"  
-          alignItems="center"
-          fontWeight={400}
-          fontFamily="Subheading"
-        >
-          {links.map((item) => {
-            const match = matchPath({ path: item.link }, window.location.pathname);
-            return (
-              <Link key={item.label} to={item.link}>
-                <Text
-                  textUnderlineOffset={5}
-                  color={match ? '#F4A641' : '#000000'}
-                  textDecoration={match ? "underline" : "none"}
-                  textDecorationColor="#FF7D4B"
-                  transition='all 0.15s ease-in-out'
-                  _hover={{
-                    color: '#F4A641',
-                    textDecoration: "underline",
-                    textDecorationColor: "#FF7D4B"
-                  }}
-                >
-                  {item.label}
-                </Text>
-              </Link>
-            );
-          })}
-          <UtilNav />
-        </Flex>
-      </Show>
+      <Flex
+        gap={20}
+        fontSize="xl"  
+        alignItems="center"
+        fontWeight={400}
+        fontFamily="Subheading"
+        display={{ base: 'none', lg: 'flex' }}
+      >
+        {links.map((item) => {
+          const match = matchPath({ path: item.link }, window.location.pathname);
+          return (
+            <Link key={item.label} to={item.link}>
+              <Text
+                textUnderlineOffset={5}
+                color={match ? '#F4A641' : '#000000'}
+                textDecoration={match ? "underline" : "none"}
+                textDecorationColor="#FF7D4B"
+                transition='all 0.15s ease-in-out'
+                _hover={{
+                  color: '#F4A641',
+                  textDecoration: "underline",
+                  textDecorationColor: "#FF7D4B"
+                }}
+              >
+                {item.label}
+              </Text>
+            </Link>
+          );
+        })}
+        <UtilNav />
+      </Flex>
       <Show below="lg">
         <IconButton
           bg="transparent"
