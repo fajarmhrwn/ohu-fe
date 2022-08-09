@@ -1,7 +1,7 @@
 import React, { LazyExoticComponent } from 'react';
 
 const DefPage = React.lazy(() =>
-  import('@pages/Example').then((module) => ({ default: module.Example }))
+  import('@pages/Homepage').then((module) => ({ default: module.Homepage }))
 );
 
 const HomePage = React.lazy(() =>
@@ -11,6 +11,12 @@ const HomePage = React.lazy(() =>
 const PageNotFound = React.lazy(() =>
   import('@pages/PageNotFound').then((module) => ({
     default: module.PageNotFound,
+  }))
+);
+
+const Leaderboards = React.lazy(() => 
+  import('@pages/Leaderboards').then((module) => ({
+    default: module.Leaderboards,
   }))
 );
 
@@ -32,5 +38,12 @@ export const Routing: PageRouting[] = [
     path: '/',
     component: HomePage,
   },
+  {
+    title: 'OHU Leaderboard',
+    path: '/leaderboard',
+    component: Leaderboards
+  },
   PageNotFoundRouting,
 ];
+
+
