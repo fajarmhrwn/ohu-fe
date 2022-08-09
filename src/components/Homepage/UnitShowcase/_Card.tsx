@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Heading, Flex, Image, Text, Grid, GridItem } from '@chakra-ui/react';
+import { Box, Heading, Flex, Image, Text, Grid, GridItem, AspectRatio} from '@chakra-ui/react';
 
 export default function Card(){
 const unit = [
@@ -26,10 +26,15 @@ const unit = [
 const Card =(u) => {
     return (
         <Box
-        marginTop={10}
-        opacity='black'
-        height={[300,350,400,430]}
-        width={[200,250,300,350]}
+        marginTop='{10}'
+        h={{
+            base :'17em',
+            lg:'26em',
+        }}
+        w={{
+            base : '16em',
+            lg : '23em',
+        }}
         bg='white'
         border={10}
         borderColor='black'
@@ -40,22 +45,37 @@ const Card =(u) => {
             <Flex
             borderTopRadius='lg'
             maxW='sm' 
-            overflow='hidden'>
+            overflow='hidden'
+            w={{
+                base : '16em',
+                lg : '23em',
+            }}
+            h={{
+                base :'12em',
+                lg:'18em',
+            }}>
                 <Image src={u.imgUrl}/>
             </Flex>
             
             <Flex
-            marginTop={10}
+            marginTop='1em'
             marginLeft={5}
             color='black'
             fontWeight='bold'
-            fontSize='28'
+            fontSize={{base:'20px', lg:'28px'}}
             justifyContent='space-between'
-            >{u.label}
+            w={{
+                base : '3em',
+                lg : '5 em',
+            }}
+            h={{
+                base :'0em',
+                lg:'2 em',
+            }}>{u.label}
             </Flex>
             
             <Flex
-            marginTop={5}
+            marginTop='2em'
             marginLeft={5}
             borderRadius='lg'
             color='black'
@@ -69,7 +89,7 @@ const Card =(u) => {
 
 return(
     <Grid
-    h="550px"
+    h="600px"
     templateRows="repeat(1, 1fr)"
     templateColumns="repeat(3, 1fr)"
     columnGap={20}
