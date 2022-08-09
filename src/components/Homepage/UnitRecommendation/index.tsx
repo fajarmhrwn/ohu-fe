@@ -50,7 +50,7 @@ const UnitRecommendation = () => {
           <motion.div animate={animation}>
             <Flex flexDir="column" alignItems="center" gap={5}>
               <Heading size="2xl" ref={ref} textAlign="center">
-                Unit Recommendation
+                ni eommedato
               </Heading>
               <Button
                 bg="#588E50"
