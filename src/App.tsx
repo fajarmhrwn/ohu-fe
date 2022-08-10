@@ -1,11 +1,13 @@
 import { Suspense } from 'react';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import { Routing } from './routing';
+import { Loading } from '@components/common/Loading';
 
 function App() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <BrowserRouter>
+    <BrowserRouter>
+      <AnimatePresence exitBeforeEnter>
         <Routes>
           {Routing.map((route) => {
             const Component = route.component;
@@ -14,13 +16,17 @@ function App() {
                 caseSensitive
                 path={route.path}
                 key={route.path}
-                element={<Component />}
+                element={
+                  <Suspense fallback={<Loading />}>
+                    <Component />
+                  </Suspense>
+                }
               />
             );
           })}
         </Routes>
-      </BrowserRouter>
-    </Suspense>
+      </AnimatePresence>
+    </BrowserRouter>
   );
 }
 

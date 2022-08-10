@@ -1,0 +1,107 @@
+import { useEffect, useRef } from 'react';
+import {
+  Box,
+  Flex,
+  Heading,
+  Center,
+  Image,
+  Spacer,
+  Hide,
+  AspectRatio,
+} from '@chakra-ui/react';
+import { motion, useAnimation, useInView } from 'framer-motion';
+import gedungKiri from '@assets/gedung_2.png';
+import gedungKanan from '@assets/gedung_1.png';
+
+const Hero = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+
+  const animation = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      animation.start({
+        y: 0,
+        opacity: 1,
+        transition: {
+          type: 'spring',
+          duration: 1.3,
+        },
+      });
+    }
+    if (!isInView) {
+      animation.start({
+        y: -50,
+        opacity: 0,
+        transition: {
+          duration: 0.3,
+        },
+      });
+    }
+  }, [isInView]);
+
+  return (
+    <Box
+      h="100%"
+      w="100%"
+      borderRadius="0% 0% 50% 50% / 0% 0% 10% 10% "
+      pt={3}
+      pb={{
+        base: 14,
+        lg: 28,
+      }}
+      bg="#FFEBB0"
+    >
+      <motion.div animate={animation}>
+        <Flex flexDir="column" alignItems="center" gap={10} mt={7}>
+          <Heading
+            size={['xl', '3xl']}
+            ref={ref}
+            mb={[1, 8]}
+            text-align="center"
+          >
+            pn oue ni
+          </Heading>
+        </Flex>
+      </motion.div>
+      <Flex mt="3" w="100%">
+        <Hide below="md">
+          <Box boxSize="md" ml="-155" mt="-120px">
+            <Image src={gedungKiri} alt="saya" w={[0, 0, 0, 500]} />
+          </Box>
+        </Hide>
+        <Spacer />
+        <motion.div animate={animation}>
+          <Center>
+            <AspectRatio
+              w={{
+                base: 280,
+                md: 500,
+                lg: '49vw',
+              }}
+              ratio={16 / 9}
+              ref={ref}
+            >
+              <iframe
+                src="https://www.youtube.com/embed/Ku1zqLj_be4"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </AspectRatio>
+          </Center>
+        </motion.div>
+        <Spacer />
+        <Hide below="md">
+          <Box boxSize="280px" mr="auto" mt="-120px">
+            <Image src={gedungKanan} alt="" w={[0, 0, 0, 500]} />
+          </Box>
+        </Hide>
+      </Flex>
+    </Box>
+  );
+};
+
+export default Hero;
