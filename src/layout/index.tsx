@@ -65,7 +65,7 @@ export const PageLayout = ({ children, title }: Props) => {
   }, []);
 
   return (
-    <Box overflowX="hidden">
+    <>
       <Navbar />
       <motion.div
         variants={pageAnimation}
@@ -77,6 +77,6 @@ export const PageLayout = ({ children, title }: Props) => {
         {children}
       </motion.div>
       <Footer />
-    </Box>
+    </>
   );
 };
