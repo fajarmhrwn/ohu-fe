@@ -31,7 +31,7 @@ const Event: () => JSX.Element = () => {
           mb={{ base: '-5ch', lg: 0 }}
         >
           <Show above="lg">
-            <Text fontSize="4xl" fontFamily="Subheading">
+            <Text fontSize="3xl" fontFamily="Subheading">
               Apa saja yang dapat kita lakukan di OHU Event?
             </Text>
           </Show>

@@ -7,6 +7,7 @@ import Card from '@components/leaderboards/Card';
 
 import Image1 from '../assets/leaderboard_blue.svg'
 import Image2 from '../assets/leaderboard_yellow.svg';
+import Search from '@components/leaderboards/Search';
 
 const cardAnimation = {
   initialLeft: {
@@ -95,15 +96,10 @@ export const Leaderboards = () => {
         alignItems='center'
         px={5}
       >
-        <Heading
-          py={6}
-          fontSize='5xl'
-          textAlign='center'
-          mb={4}
-        >
+        <Heading py={6} fontSize='6xl' textAlign='center'>
           Laerboad
         </Heading>
-        {/* <Search /> */}
+        <Search />
         <Flex flexDirection='row' justifyContent='space-evenly' w='100%'>
           <Show above='lg'>
             <Image
@@ -114,6 +110,8 @@ export const Leaderboards = () => {
               mb={5}
               w='20%'
               h='20%'
+              maxW='50ch'
+              maxH='50ch'
             />
           </Show>
           <Flex flexDirection='column' gap={2} w='100%' alignContent='center' maxW='80ch'>
@@ -144,6 +142,8 @@ export const Leaderboards = () => {
               mt={5}
               w='20%'
               h='20%'
+              maxW='50ch'
+              maxH='50ch'
             />
           </Show>
         </Flex>

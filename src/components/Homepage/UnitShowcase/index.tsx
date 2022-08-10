@@ -49,7 +49,7 @@ const UnitShowcase = () => {
       >
         <Heading
           size={{
-            base: 'xl',
+            base: '2xl',
           }}
           textAlign={{
             base: 'center',
@@ -57,7 +57,7 @@ const UnitShowcase = () => {
           }}
           ref={ref}
         >
-          Unit Showcase
+          ni Soca
         </Heading>
         <Flex
           flexDir={{
