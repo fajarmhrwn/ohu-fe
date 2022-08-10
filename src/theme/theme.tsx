@@ -13,13 +13,7 @@ const theme = extendTheme({
       },
       '*': {
         '&::-webkit-scrollbar': {
-          w: '0.65vw'
-        },
-        '&::-webkit-scrollbar-track': {
-          backgroundColor: '#FFEBB0'
-        },
-        '&::-webkit-scrollbar-thumb': {
-          backgroundColor: '#FFA06E'
+          w: '0'
         }
       }
     }

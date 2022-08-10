@@ -14,7 +14,7 @@ const animation = `${animationKeyframes} 3s ease-in-out infinite`;
 
 export const LoadingOnly = () => {
   return (
-    <Container display='flex' alignItems='center' justifyContent='center' minH='40vh' flexDirection='column'>
+    <Container display='flex' alignItems='center' justifyContent='center' minH='67vh' flexDirection='column'>
       <Box
         as={motion.div}
         animation={animation}

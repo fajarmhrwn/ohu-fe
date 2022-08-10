@@ -18,7 +18,7 @@ const Event: () => JSX.Element = () => {
   const links = [
     { label: 'OHU Map Tour', to: '/tour' },
     { label: 'Mission', to: '/' },
-    { label: 'Leaderboards', to: '/leaderboard' },
+    { label: 'Leaderboard', to: '/leaderboard' },
   ];
 
   return (

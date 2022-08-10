@@ -62,7 +62,7 @@ const Hero = () => {
             mb={[1, 8]}
             text-align="center"
           >
-            pn oue ni
+            pn oue ni
           </Heading>
         </Flex>
       </motion.div>

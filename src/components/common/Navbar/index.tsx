@@ -1,8 +1,9 @@
 import { useRef, useState } from 'react';
-import Logo from '@assets/react.svg';
+import Logo from '@assets/logo_sementara.png';
 import DashboardLogo from '@assets/dashboard_menu.svg';
 import LogoutLogo from '@assets/logout_menu.svg';
 import {
+  Avatar,
   Box,
   Button,
   Drawer,
@@ -21,7 +22,7 @@ import {
   Show,
   Text,
   useDisclosure,
-  IconButton,
+  IconButton
 } from '@chakra-ui/react';
 import { HamburgerIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import { Link, matchPath } from 'react-router-dom';
@@ -83,7 +84,7 @@ const Navbar = () => {
   return (
     <Flex
       w="100%"
-      px={8}
+      px={16}
       py={2}
       bg="#FFEBB0"
       flexDirection="row"
@@ -98,9 +99,30 @@ const Navbar = () => {
         <Link to="/">
           <HStack>
             {/* TODO: ganti logo */}
-            <Image src={Logo} />
-            <Text fontSize="2xl" fontFamily="Heading" color="#F4A641">
-              KAT ITB 2022
+            {/* <Image src={Logo} w='25%' objectFit='contain' /> */}
+            <Avatar
+              src={Logo}
+              size='md'
+              mr={2} 
+              transition='all 0.15s ease-in-out'
+              _hover={{
+                transform: 'scale(1.1)',
+                color: '#FFEBB0'
+              }}
+            />
+            <Text
+              fontSize="3xl"
+              fontFamily="Heading"
+              color="#F4A641"
+              transition='all 0.15s ease-in-out'
+              textShadow='-1px -2px 0px #000000'
+              _hover={{
+                transform: 'scale(1.1)',
+                color: '#000000',
+                textShadow: '-1px -2px 0px #F4A641'
+              }}
+            >
+              OHU 2022
             </Text>
           </HStack>
         </Link>

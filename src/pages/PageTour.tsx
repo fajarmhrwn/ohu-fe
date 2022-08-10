@@ -58,7 +58,7 @@ export const Tour = () => {
     setTimeout(() => {
       setData(DUMMY_DATA);
       setIsLoading(false);
-    }, 3000)
+    }, 1000)
   }, [data]);
 
   return (
