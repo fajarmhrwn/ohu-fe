@@ -1,9 +1,11 @@
-import { Text, theme } from '@chakra-ui/react';
+import { Heading } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { Map } from 'leaflet';
 import { TourMap } from '@components/map-tour/Map';
 import { TourLegend } from '@components/map-tour/Legend';
 import 'leaflet/dist/leaflet.css';
+import { PageLayout } from 'src/layout';
+import { LoadingOnly } from '@components/common/Loading';
 
 export interface TourData {
   centerPosition: [number, number];
@@ -56,22 +58,22 @@ export const Tour = () => {
     setTimeout(() => {
       setData(DUMMY_DATA);
       setIsLoading(false);
-    }, 1000)
+    }, 3000)
   }, [data]);
 
   return (
-    <>
-      <Text
-        fontFamily={theme.fonts.heading}
-        m="0.5em"
-        fontSize="2rem"
-        textAlign="center"
-        fontWeight={700}
-      >
-        OHU MAP TOUR
-      </Text>
-      <TourMap data={data} setMap={setMap} isLoading={isLoading}/>
-      <TourLegend data={data} map={map} isLoading={isLoading}/>
-    </>
+    <PageLayout title='Map Tour'>
+      <Heading py={6} fontSize='6xl' textAlign='center'>
+        H ap our
+      </Heading>
+      {isLoading ? (
+        <LoadingOnly />
+      ) : (
+        <>
+          <TourMap data={data} setMap={setMap} />
+          <TourLegend data={data} map={map} />
+        </>
+      )}
+    </PageLayout>
   );
 };
