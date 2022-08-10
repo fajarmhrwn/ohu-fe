@@ -96,7 +96,7 @@ export const Leaderboards = () => {
         alignItems='center'
         px={5}
       >
-        <Heading py={6} fontSize='6xl' textAlign='center'>
+        <Heading py={6} fontSize={{ base: '4xl', lg: '6xl' }} textAlign='center'>
           Laerboad
         </Heading>
         <Search />
