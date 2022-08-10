@@ -8,6 +8,12 @@ const HomePage = React.lazy(() =>
   import('@pages/Homepage').then((module) => ({ default: module.Homepage }))
 );
 
+const TourPage = React.lazy(() => 
+  import('@pages/PageTour').then((module) => ({
+    default: module.Tour
+  }))
+)
+
 const PageNotFound = React.lazy(() =>
   import('@pages/PageNotFound').then((module) => ({
     default: module.PageNotFound,
@@ -42,6 +48,11 @@ export const Routing: PageRouting[] = [
     title: 'OHU Leaderboard',
     path: '/leaderboard',
     component: Leaderboards
+  },
+  {
+    title: 'OHU Tour',
+    path: '/tour',
+    component: TourPage
   },
   PageNotFoundRouting,
 ];
