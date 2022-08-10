@@ -12,6 +12,31 @@ const animationKeyframes = keyframes`
 
 const animation = `${animationKeyframes} 3s ease-in-out infinite`;
 
+export const LoadingOnly = () => {
+  return (
+    <Container display='flex' alignItems='center' justifyContent='center' minH='40vh' flexDirection='column'>
+      <Box
+        as={motion.div}
+        animation={animation}
+        padding="2"
+        bg="#FFA06E"
+        width="12"
+        height="12"
+        display="flex"
+      />
+      <Box
+        display='flex'
+        flexDirection='row'
+        fontSize="3xl"
+        fontFamily='Heading'
+        mt={12}
+      >
+        {textAnimation("Lodin.....")}
+      </Box>
+    </Container>
+  )
+}
+
 export const Loading = () => {
   return (
     <PageLayoutNoNavbar title='Loading'>

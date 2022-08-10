@@ -1,4 +1,4 @@
-import { 
+import {
   Circle,
   Box,
   Flex,
@@ -12,15 +12,22 @@ import {
   Link
 } from '@chakra-ui/react';
 
-export const Popup = () => {
+export const TourPopup = ({ children }: { children: React.ReactNode }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   // TODO: handle onair
   // TODO: handle data fix
   const onAir = true; //dummy data
   return (
     <>
-      {/* TODO: ganti button jadi children */}
-      <Button onClick={onOpen}>Open Modal</Button>
+      <Text
+        color='#278DB5' 
+        textAlign='center'
+        cursor='pointer' 
+        onClick={onOpen}
+        _hover={{ textDecoration: 'underline' }}
+      >
+        {children}
+      </Text>
       <Modal isOpen={isOpen} onClose={onClose} size="2xl">
         <ModalOverlay/>
         <ModalContent>
