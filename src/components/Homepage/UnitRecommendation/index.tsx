@@ -49,7 +49,7 @@ const UnitRecommendation = () => {
         <Flex alignItems="center" flexDir="column" pt={3}>
           <motion.div animate={animation}>
             <Flex flexDir="column" alignItems="center" gap={5}>
-              <Heading size="2xl" ref={ref} textAlign="center" mb={8}>
+              <Heading size="2xl" ref={ref} textAlign="center" mb={3}>
                 ni eommedato
               </Heading>
               <Button

@@ -10,8 +10,8 @@ import {
   AspectRatio,
 } from '@chakra-ui/react';
 import { motion, useAnimation, useInView } from 'framer-motion';
-import gedungKiri from '@assets/gedung_2.png';
-import gedungKanan from '@assets/gedung_1.png';
+import gedungKiri from '@assets/gedung_2.svg';
+import gedungKanan from '@assets/gedung_1.svg';
 
 const Hero = () => {
   const ref = useRef(null);
@@ -52,6 +52,7 @@ const Hero = () => {
         lg: 28,
       }}
       bg="#FFEBB0"
+      position="relative"
     >
       <motion.div animate={animation}>
         <Flex flexDir="column" alignItems="center" gap={10} mt={7}>
@@ -66,18 +67,13 @@ const Hero = () => {
         </Flex>
       </motion.div>
       <Flex mt="3" w="100%">
-        <Hide below="md">
-          <Box boxSize="md" ml="-155" mt="-120px">
-            <Image src={gedungKiri} alt="saya" w={[0, 0, 0, 500]} />
-          </Box>
-        </Hide>
         <Spacer />
         <motion.div animate={animation}>
           <Center>
             <AspectRatio
               w={{
-                base: 280,
-                md: 500,
+                base: '12em',
+                md: '25em',
                 lg: '49vw',
               }}
               ratio={16 / 9}
@@ -94,12 +90,39 @@ const Hero = () => {
           </Center>
         </motion.div>
         <Spacer />
-        <Hide below="md">
-          <Box boxSize="280px" mr="auto" mt="-120px">
-            <Image src={gedungKanan} alt="" w={[0, 0, 0, 500]} />
-          </Box>
-        </Hide>
       </Flex>
+      <Image
+        src={gedungKiri}
+        alt="Gedung Kiri"
+        position="absolute"
+        top="20px"
+        left={{
+          base: '-30px',
+          sm: '0',
+        }}
+        w={{
+          base: '6.3em',
+          md: '11em',
+          lg: '14.5em',
+          xl: '18em',
+        }}
+      />
+      <Image
+        src={gedungKanan}
+        alt="Gedung Kanan"
+        position="absolute"
+        top="20px"
+        right={{
+          base: '-30px',
+          sm: '0',
+        }}
+        w={{
+          base: '5.3em',
+          md: '9.1em',
+          lg: '12em',
+          xl: '15em',
+        }}
+      />
     </Box>
   );
 };
