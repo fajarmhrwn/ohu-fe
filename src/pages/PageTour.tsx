@@ -63,8 +63,8 @@ export const Tour = () => {
 
   return (
     <PageLayout title='Map Tour'>
-      <Heading py={6} fontSize='6xl' textAlign='center'>
-        H ap our
+      <Heading py={6} fontSize={{base: '4xl', lg: '6xl' }} textAlign='center'>
+        H ap our
       </Heading>
       {isLoading ? (
         <LoadingOnly />

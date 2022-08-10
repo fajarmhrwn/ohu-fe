@@ -31,7 +31,7 @@ export const TourLegend = ({ data, map } : { data: TourData, map: Map | null }) 
         <>
             <Flex p={'5%'}  >
                 <Box mr={isMobile[0] ? '10px' : '100px'} p="10px" m="auto">
-                    <Heading fontSize="67px" m="auto">Leen</Heading>
+                    <Heading fontSize={{ base: '3xl', lg: '5xl' }} m="auto">Leen</Heading>
                     <SimpleGrid columns={isMobile[0] ? 1 : 2} spacingY="5" spacingX="100px" mt="53px" >
                         { data.markers.map((marker) => <Legend {...marker} /> )}
                     </SimpleGrid>

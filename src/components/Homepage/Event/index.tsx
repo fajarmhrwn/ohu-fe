@@ -35,7 +35,7 @@ const Event: () => JSX.Element = () => {
               Apa saja yang dapat kita lakukan di OHU Event?
             </Text>
           </Show>
-          <Heading  fontSize={{ base: '6xl', lg: '7xl' }} fontFamily="Heading">
+          <Heading  fontSize={{ base: '5xl', lg: '6xl' }} fontFamily="Heading">
             vens
           </Heading>
         </Flex>
