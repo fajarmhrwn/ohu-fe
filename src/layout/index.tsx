@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Footer, Navbar } from '@components/common';
 import { motion } from 'framer-motion';
 import { Box } from '@chakra-ui/react';
+import { TempFooter } from '@components/common/footer/temp';
 
 interface Props {
   children: React.ReactNode;
@@ -22,7 +23,7 @@ const pageAnimation = {
 
 export const PageAnimate = ({ children, title }: Props) => {
   useEffect(() => {
-    document.title = title + ' - OHU';
+    document.title = title + ' - OHU 2022';
   }, []);
 
   return (
@@ -40,7 +41,7 @@ export const PageAnimate = ({ children, title }: Props) => {
 
 export const PageLayoutNoNavbar = ({ children, title }: Props) => {
   useEffect(() => {
-    document.title = title + ' - OHU';
+    document.title = title + ' - OHU 2022';
   }, []);
 
   return (
@@ -61,7 +62,7 @@ export const PageLayoutNoNavbar = ({ children, title }: Props) => {
 
 export const PageLayout = ({ children, title }: Props) => {
   useEffect(() => {
-    document.title = title + ' - OHU';
+    document.title = title + ' - OHU 2022';
   }, []);
 
   return (
@@ -76,7 +77,7 @@ export const PageLayout = ({ children, title }: Props) => {
       >
         {children}
       </motion.div>
-      <Footer />
+      <TempFooter />
     </>
   );
 };
