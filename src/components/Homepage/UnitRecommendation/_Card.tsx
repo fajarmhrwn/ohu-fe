@@ -6,10 +6,9 @@ interface CardProps {
   label: string;
   isActive: boolean;
   isInView: boolean;
-  color: string;
 }
 
-const Card = ({ label, isActive, isInView, color }: CardProps) => {
+const Card = ({ label, isActive, isInView }: CardProps) => {
   return (
     <Box
       h={{
@@ -49,6 +48,7 @@ const Card = ({ label, isActive, isInView, color }: CardProps) => {
             }}
             src={reactIcon}
             zIndex="10"
+            userSelect="none"
           />
         </Flex>
       </Box>

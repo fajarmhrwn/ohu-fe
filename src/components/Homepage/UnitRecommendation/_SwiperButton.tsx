@@ -6,7 +6,6 @@ interface SwiperButtonProps {
   index: number;
   label: string;
   position: number;
-  color: string;
   setPosition: (i: number) => void;
 }
 
@@ -14,7 +13,6 @@ const SwiperButton = ({
   index,
   label,
   position,
-  color,
   setPosition,
 }: SwiperButtonProps) => {
   const [hover, setHover] = useState(false);

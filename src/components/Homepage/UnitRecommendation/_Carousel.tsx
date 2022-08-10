@@ -11,27 +11,22 @@ const slide = [
   {
     id: 1,
     label: 'Unit A',
-    color: 'red',
   },
   {
     id: 2,
     label: 'Unit B',
-    color: 'blue',
   },
   {
     id: 3,
     label: 'Unit C',
-    color: 'green',
   },
   {
     id: 4,
     label: 'Unit D',
-    color: 'magenta',
   },
   {
     id: 5,
     label: 'Unit E',
-    color: 'orchid',
   },
 ];
 
@@ -43,25 +38,17 @@ const Carousel = () => {
 
   return (
     <Box pt="5em">
-      <Swiper
-        breakpoints={{
-          1024: {
-            allowTouchMove: false,
-          },
-        }}
-        slidesPerView={5}
-        centeredSlides={true}
-      >
+      <Swiper slidesPerView={5} centeredSlides={true}>
         {slide.map((s, index) => (
           <SwiperSlide key={index}>
-            {({ isActive }) => (
-              <Card
-                label={s.label}
-                isActive={isActive}
-                isInView={isInView}
-                color={s.color}
-              />
-            )}
+            {({ isActive }) => {
+              if (isActive) {
+                setPosition(index);
+              }
+              return (
+                <Card label={s.label} isActive={isActive} isInView={isInView} />
+              );
+            }}
           </SwiperSlide>
         ))}
         <Flex
@@ -80,7 +67,6 @@ const Carousel = () => {
               index={index}
               label={s.label}
               position={position}
-              color={s.color}
               setPosition={setPosition}
               key={index}
             />
