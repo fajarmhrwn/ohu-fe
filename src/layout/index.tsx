@@ -24,6 +24,7 @@ const pageAnimation = {
 export const PageAnimate = ({ children, title }: Props) => {
   useEffect(() => {
     document.title = title + ' - OHU 2022';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   return (
@@ -44,6 +45,7 @@ export const PageAnimate = ({ children, title }: Props) => {
 export const PageLayoutNoFooter = ({ children, title }: Props) => {
   useEffect(() => {
     document.title = title + ' - OHU 2022';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   return (
@@ -67,6 +69,7 @@ export const PageLayoutNoFooter = ({ children, title }: Props) => {
 export const PageLayout = ({ children, title }: Props) => {
   useEffect(() => {
     document.title = title + ' - OHU 2022';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   return (
