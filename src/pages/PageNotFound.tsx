@@ -16,16 +16,14 @@ export const PageNotFound = () => {
         <Image
           objectFit="cover"
           src={pageNotFoundImage}
-          w={{
-            base: '100%',
-            md: '50%',
-          }}
+          w='100%'
+          maxW='70ch'
         />
         <Box pt={10}>
           <Heading
             fontWeight="400"
             fontSize={{
-              base: '3em',
+              base: '2em',
               md: '4em',
             }}
             color="#231A51"

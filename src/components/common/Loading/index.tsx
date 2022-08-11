@@ -1,35 +1,25 @@
-import { Text, Container, keyframes, Box } from '@chakra-ui/react';
-import { PageLayoutNoNavbar } from 'src/layout';
+import { Container, Box, Image } from '@chakra-ui/react';
+import { PageLayoutNoFooter } from 'src/layout';
 import { motion } from 'framer-motion';
 
-const animationKeyframes = keyframes`
-  0% { transform: scale(0.5) translateX(0) rotate(0); border-radius: 50%; }
-  25% { transform: scale(2) translateX(-50px) rotate(-180deg); border-radius: 20%; }
-  50% { transform: scale(2) translateX(0) rotate(0); border-radius: 20%; }
-  75% { transform: scale(2) translateX(50px) rotate(180deg); border-radius: 20%; }
-  100% { transform: scale(0.5) translateX(0) rotate(0); border-radius: 50%; }
-`;
-
-const animation = `${animationKeyframes} 3s ease-in-out infinite`;
+import GIF from '@assets/loading_run.gif';
 
 export const LoadingOnly = () => {
   return (
-    <Container display='flex' alignItems='center' justifyContent='center' minH='67vh' flexDirection='column'>
-      <Box
-        as={motion.div}
-        animation={animation}
-        padding="2"
-        bg="#FFA06E"
-        width="12"
-        height="12"
-        display="flex"
-      />
+    <Container display='flex' minH='75vh' mb={20} alignItems='center' justifyContent='center' mt={-20} flexDirection='column' userSelect='none'>
+      <Image 
+          src={GIF}
+          objectFit='contain'
+          w='sm'
+          zIndex={-99}
+          ml={-24}
+        />
       <Box
         display='flex'
         flexDirection='row'
         fontSize="3xl"
         fontFamily='Heading'
-        mt={12}
+        mt={-14}
       >
         {textAnimation("Lodin.....")}
       </Box>
@@ -39,28 +29,26 @@ export const LoadingOnly = () => {
 
 export const Loading = () => {
   return (
-    <PageLayoutNoNavbar title='Loading'>
-      <Container display='flex' alignItems='center' justifyContent='center' minH='90vh' flexDirection='column'>
-        <Box
-          as={motion.div}
-          animation={animation}
-          padding="2"
-          bg="#FFA06E"
-          width="12"
-          height="12"
-          display="flex"
+    <PageLayoutNoFooter title='Loading'>
+      <Container display='flex' alignItems='center' justifyContent='center' minH='85vh' flexDirection='column' userSelect='none'>
+        <Image 
+          src={GIF}
+          objectFit='contain'
+          w='md'
+          zIndex={-99}
+          ml={-24}
         />
         <Box
           display='flex'
           flexDirection='row'
           fontSize="3xl"
           fontFamily='Heading'
-          mt={12}
+          mt={-14}
         >
           {textAnimation("Lodin.....")}
         </Box>
       </Container>
-    </PageLayoutNoNavbar>
+    </PageLayoutNoFooter>
   )
 };
 

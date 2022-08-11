@@ -34,12 +34,14 @@ export const PageAnimate = ({ children, title }: Props) => {
       exit="exit"
       transition={{ delay: 0.3 }}
     >
-      {children}
+      <Box minH='100vh'>
+        {children}
+      </Box>
     </motion.div>
   );
 };
 
-export const PageLayoutNoNavbar = ({ children, title }: Props) => {
+export const PageLayoutNoFooter = ({ children, title }: Props) => {
   useEffect(() => {
     document.title = title + ' - OHU 2022';
   }, []);
@@ -54,7 +56,9 @@ export const PageLayoutNoNavbar = ({ children, title }: Props) => {
         exit="exit"
         transition={{ delay: 0.3 }}
       >
-        {children}
+        <Box minH='100vh'>
+          {children}
+        </Box>
       </motion.div>
     </>
   );
@@ -75,7 +79,9 @@ export const PageLayout = ({ children, title }: Props) => {
         exit="exit"
         transition={{ delay: 0.3 }}
       >
-        {children}
+        <Box minH='100vh'>
+          {children}
+        </Box>
       </motion.div>
       <TempFooter />
     </>
