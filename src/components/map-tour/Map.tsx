@@ -23,7 +23,7 @@ export const TourMap = ({ data, setMap } : { data: TourData, setMap: (map: Map) 
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {data.markers.map((marker) => (
-          <Marker icon={icon} position={marker.position}>
+          <Marker key={marker.title} icon={icon} position={marker.position}>
             <Popup>
               <TourPopup>
                 {marker.title} <ExternalLinkIcon />

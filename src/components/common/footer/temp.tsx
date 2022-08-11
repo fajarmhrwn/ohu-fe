@@ -60,7 +60,7 @@ export const TempFooter = () => {
               }}
             />
             <Text
-              fontSize={{ base: '2xl', md: "3xl" }}
+              fontSize='3xl'
               fontFamily='Heading'
               transition='all 0.15s ease-in-out'
               textShadow='-1px -2px 0px #FFEBB0'
@@ -75,23 +75,23 @@ export const TempFooter = () => {
             </Text>
           </Flex>
         </Link>
-        <Text mt={1} fontSize={{ base: 'lg', md: "xl" }} fontFamily='Caption' textAlign='center'>
+        <Text mt={1} fontSize='xl' fontFamily='Caption' textAlign='center'>
           &copy; DEVA 2022 - Event & Attendance
         </Text>
       </Box>
       <Flex flexDirection='column' alignSelf='center' mt={{ base: 5, md: 0 }}>
-        <Text fontFamily='Subheading' fontSize={{ base: 'xl', md: "2xl" }} textAlign={{ base: 'center', md: 'right' }} mb={2}>
+        <Text fontFamily='Subheading' fontSize='2xl' textAlign={{ base: 'center', md: 'right' }} mb={2}>
           Find us on
         </Text>
         <Box>
           <Stack direction='row' spacing={{ base: 3, md: 6 }}>
             {socials.map(({ to, icon, hover }) => {
               return (
-                <Link key={to} to={to}>
+                <a key={to} href={to}>
                   <Box transition='all 0.15s ease-in-out' _hover={{ color: hover, transform: 'scale(1.2)' }}>
                     {icon}
                   </Box>
-                </Link>
+                </a>
               )
             })}
           </Stack>

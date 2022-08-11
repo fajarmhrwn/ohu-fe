@@ -29,6 +29,11 @@ const Search = () => {
             borderWidth='2px'
             borderColor="#FFA06F"
             focusBorderColor='#FFA06F'
+            onKeyUp={(e) => {
+              if (e.key === 'Enter' && keyword !== '') {
+                console.log(keyword);
+              }
+            }}
             _hover={ { borderColor: '#FFA06F' } }
             value={keyword}
             onChange={event => setKeyword(event.target.value)}
