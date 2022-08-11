@@ -74,7 +74,7 @@ const Hero = () => {
               w={{
                 base: '12em',
                 md: '25em',
-                lg: '49vw',
+                lg: '52em',
               }}
               ratio={16 / 9}
               ref={ref}

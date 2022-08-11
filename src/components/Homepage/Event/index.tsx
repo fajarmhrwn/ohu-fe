@@ -48,8 +48,8 @@ const Event: () => JSX.Element = () => {
             display={{ base: 'none', lg: 'block' }}
             src={ImageBalloon}
             w="30%"
-            h="30%"
             objectFit="contain"
+            maxW='50ch'
           />
           <Stack
             direction="column"
@@ -77,9 +77,9 @@ const Event: () => JSX.Element = () => {
           <Image
             src={ImageJoget}
             w={{ base: '220px', lg: '20%' }}
-            h={{ base: '200px', lg: '20%' }}
             objectFit="contain"
             alignSelf={{ base: 'center', lg: 'flex-start' }}
+            maxW='50ch'
           />
         </Flex>
       </Box>
