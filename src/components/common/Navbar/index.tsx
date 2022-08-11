@@ -99,15 +99,15 @@ const Navbar = () => {
         <Link to="/">
           <HStack>
             {/* TODO: ganti logo */}
-            {/* <Image src={Logo} w='25%' objectFit='contain' /> */}
-            <Avatar
+            <Image
               src={Logo}
-              size='md'
-              mr={2} 
+              w='50px'
+              objectFit='contain'
+              mr={{ base: 0, md: 2 }}
+              mb={{ base: 2, md: 0 }}
               transition='all 0.15s ease-in-out'
               _hover={{
-                transform: 'scale(1.1)',
-                color: '#FFEBB0'
+                transform: 'scale(1.25)',
               }}
             />
             <Text

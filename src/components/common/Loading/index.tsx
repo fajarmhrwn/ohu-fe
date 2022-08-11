@@ -10,9 +10,9 @@ export const LoadingOnly = () => {
       <Image 
           src={GIF}
           objectFit='contain'
-          w='sm'
+          w='md'
           zIndex={-99}
-          ml={-24}
+          ml={-20}
         />
       <Box
         display='flex'
@@ -36,7 +36,7 @@ export const Loading = () => {
           objectFit='contain'
           w='md'
           zIndex={-99}
-          ml={-24}
+          ml={-20}
         />
         <Box
           display='flex'

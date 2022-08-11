@@ -36,7 +36,7 @@ export const TempFooter = () => {
       bg='#ffa06e'
       alignItems='center'
       justifyContent={{ base: 'flex-start', md: 'space-between' }}
-      py={7}
+      py={5}
       px={{ base: 5, md: 16 }}
       flexDirection={{ base: 'column', md: 'row' }}
     >
@@ -47,16 +47,16 @@ export const TempFooter = () => {
             justifyContent={{ base: 'center', md: 'flex-start' }}
             flexDirection={{ base: 'column', md: 'row' }}
           >
-            {/* <Image src={Logo} w='20%' objectFit='contain' /> */}
-            <Avatar
+            <Image
               src={Logo}
-              size='md'
+              w='50px'
+              objectFit='contain'
               mr={{ base: 0, md: 2 }}
               mb={{ base: 2, md: 0 }}
+              borderRadius='50%'
               transition='all 0.15s ease-in-out'
               _hover={{
-                transform: 'scale(1.1)',
-                color: '#FFEBB0'
+                transform: 'scale(1.25)'
               }}
             />
             <Text
