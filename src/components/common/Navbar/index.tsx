@@ -84,7 +84,7 @@ const Navbar = () => {
   return (
     <Flex
       w="100%"
-      px={16}
+      px={{ base: 6, md: 16 }}
       py={2}
       bg="#FFEBB0"
       flexDirection="row"
