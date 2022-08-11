@@ -147,10 +147,10 @@ export const Leaderboards = () => {
             />
           </Show>
         </Flex>
+        <Center mt={6} mb={5}>
+          <PaginationIcon pageSize={500} parentPageSetter={setCurrentPage} />
+        </Center>
       </Flex>
-      <Center mt={6} mb={5}>
-        <PaginationIcon pageSize={500} parentPageSetter={setCurrentPage} />
-      </Center>
     </PageLayout>
   );
 };
