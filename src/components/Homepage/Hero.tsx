@@ -80,7 +80,7 @@ const Hero = () => {
               ref={ref}
             >
               <iframe
-                src="https://www.youtube.com/embed/Ku1zqLj_be4"
+                src="https://www.youtube.com/embed/9EqZRAUfkuo"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
