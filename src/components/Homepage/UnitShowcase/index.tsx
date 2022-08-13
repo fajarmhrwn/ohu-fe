@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Box, Flex, Heading } from '@chakra-ui/react';
-import { useAnimation, useInView } from 'framer-motion';
+import { useAnimation, useInView, motion } from 'framer-motion';
+import { getTransition } from 'src/util/transition';
 import Card from './_Card';
 import ReactSVG from '../../../assets/react.svg';
 
@@ -36,51 +37,53 @@ const UnitShowcase = () => {
 
   return (
     <Box h="100%" w="100%" overflowX="hidden" overflowY="hidden">
-      <Box
-        pt={{
-          base: 10,
-          lg: 24,
-        }}
-        px={{
-          md: 8,
-          lg: 20,
-        }}
-        overflowY="hidden"
-      >
-        <Heading
-          size={{
-            base: '2xl',
-          }}
-          textAlign={{
-            base: 'center',
-            md: 'left',
-          }}
-          ref={ref}
-        >
-          ni Soca
-        </Heading>
-        <Flex
-          flexDir={{
-            base: 'column',
-            md: 'row',
-          }}
-          justifyContent="space-between"
-          alignItems={{
-            base: 'center',
-          }}
-          gap={{
+      <motion.section {...getTransition('right')}>
+        <Box
+          pt={{
             base: 10,
+            lg: 24,
           }}
-          mt={{
-            base: 10,
+          px={{
+            md: 8,
+            lg: 20,
           }}
-          pb={20}
+          overflowY="hidden"
         >
-          <Card img={ReactSVG} label={'Unit A'} />
-          <Card img={ReactSVG} label={'Unit B'} />
-          <Card img={ReactSVG} label={'Unit C'} />
-        </Flex>
-      </Box>
+          <Heading
+            size={{
+              base: '2xl',
+            }}
+            textAlign={{
+              base: 'center',
+              md: 'left',
+            }}
+            ref={ref}
+          >
+            ni Soca
+          </Heading>
+          <Flex
+            flexDir={{
+              base: 'column',
+              md: 'row',
+            }}
+            justifyContent="space-between"
+            alignItems={{
+              base: 'center',
+            }}
+            gap={{
+              base: 10,
+            }}
+            mt={{
+              base: 10,
+            }}
+            pb={20}
+          >
+            <Card img={ReactSVG} label={'Unit A'} />
+            <Card img={ReactSVG} label={'Unit B'} />
+            <Card img={ReactSVG} label={'Unit C'} />
+          </Flex>
+        </Box>
+      </motion.section>
     </Box>
   );
 };
