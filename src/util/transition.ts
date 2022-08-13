@@ -1,8 +1,8 @@
-import { HTMLMotionProps, Variant } from 'framer-motion';
-import { ReactHTML } from 'react';
+import { Variant } from 'framer-motion';
 
 interface TransitionOptions {
   delay?: number;
+  duration?: number;
   once?: boolean;
   type?: string;
 }
@@ -27,7 +27,7 @@ export function getTransition(
         transition: {
           delay: options?.delay ?? 0.2,
           type: options?.type ?? 'spring',
-          duration: 1.5,
+          duration: options?.duration ?? 1.5,
         },
       },
     },

@@ -50,15 +50,13 @@ const Event: () => JSX.Element = () => {
         alignItems="center"
       >
         <motion.div
-          style={{ width: '30%' }}
+          style={{ width: '30%', maxWidth: '50ch' }}
           {...getTransition('left', { delay: 0.5 })}
         >
           <Image
             display={{ base: 'none', lg: 'block' }}
             src={ImageBalloon}
-            w="100%"
             objectFit="contain"
-            maxW="50ch"
           />
         </motion.div>
         <motion.div {...getTransition('bottom', { delay: 0.5 })}>
@@ -88,15 +86,13 @@ const Event: () => JSX.Element = () => {
         </motion.div>
 
         <motion.div
-          style={{ width: 'max(220px,20%)', maxWidth: '50ch' }}
+          style={{ width: 'max(220px,20%)', maxWidth: '40ch' }}
           {...getTransition('right', { delay: 0.5 })}
         >
           <Image
             src={ImageJoget}
-            w="100%"
             objectFit="contain"
             alignSelf={{ base: 'center', lg: 'flex-start' }}
-            maxW="100%"
           />
         </motion.div>
       </Flex>
