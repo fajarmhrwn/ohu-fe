@@ -9,7 +9,6 @@ import {
   Show,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-
 import ImageBalloon from '@assets/events_balloon.svg';
 import ImageJoget from '@assets/events_joget.svg';
 
@@ -34,7 +33,7 @@ const Event: () => JSX.Element = () => {
             Apa saja yang dapat kita lakukan di OHU Event?
           </Text>
         </Show>
-        <Heading  fontSize={{ base: '5xl', lg: '6xl' }} fontFamily="Heading">
+        <Heading fontSize={{ base: '5xl', lg: '6xl' }} fontFamily="Heading">
           vens
         </Heading>
       </Flex>
@@ -48,13 +47,9 @@ const Event: () => JSX.Element = () => {
           src={ImageBalloon}
           w="30%"
           objectFit="contain"
-          maxW='50ch'
+          maxW="50ch"
         />
-        <Stack
-          direction="column"
-          spacing={{ base: 5, lg: 8 }}
-          justify="center"
-        >
+        <Stack direction="column" spacing={{ base: 5, lg: 8 }} justify="center">
           {links.map((item) => {
             return (
               <Link to={item.to} key={item.label}>
@@ -78,7 +73,7 @@ const Event: () => JSX.Element = () => {
           w={{ base: '220px', lg: '20%' }}
           objectFit="contain"
           alignSelf={{ base: 'center', lg: 'flex-start' }}
-          maxW='50ch'
+          maxW="50ch"
         />
       </Flex>
     </Box>
