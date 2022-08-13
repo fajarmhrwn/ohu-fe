@@ -37,7 +37,7 @@ const Carousel = () => {
   const isInView = useInView(ref);
 
   return (
-    <Box pt="5em">
+    <Box pt={8}>
       <Swiper slidesPerView={5} centeredSlides={true}>
         {slide.map((s, index) => (
           <SwiperSlide key={index}>

@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react';
 import {
   Box,
   Flex,
@@ -6,40 +5,15 @@ import {
   Center,
   Image,
   Spacer,
-  Hide,
   AspectRatio,
 } from '@chakra-ui/react';
-import { motion, useAnimation, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { getTransition } from 'src/util/transition';
+
 import gedungKiri from '@assets/gedung_2.svg';
 import gedungKanan from '@assets/gedung_1.svg';
 
 const Hero = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref);
-
-  const animation = useAnimation();
-
-  useEffect(() => {
-    if (isInView) {
-      animation.start({
-        y: 0,
-        opacity: 1,
-        transition: {
-          type: 'spring',
-          duration: 1.3,
-        },
-      });
-    }
-    if (!isInView) {
-      animation.start({
-        y: -50,
-        opacity: 0,
-        transition: {
-          duration: 0.3,
-        },
-      });
-    }
-  }, [isInView]);
 
   return (
     <Box
@@ -48,36 +22,32 @@ const Hero = () => {
       borderRadius="0% 0% 50% 50% / 0% 0% 10% 10% "
       pt={3}
       pb={{
-        base: 14,
+        base: 10,
         lg: 28,
       }}
       bg="#FFEBB0"
       position="relative"
     >
-      <motion.div animate={animation}>
-        <Flex flexDir="column" alignItems="center" gap={10} mt={7}>
-          <Heading
-            size={['xl', '3xl']}
-            ref={ref}
-            mb={[1, 8]}
-            text-align="center"
-          >
-            pn oue ni
-          </Heading>
-        </Flex>
-      </motion.div>
-      <Flex mt="3" w="100%">
+      <Flex flexDir="column" alignItems="center" gap={10} mt={7}>
+        <Heading
+          fontSize={{ base: '4xl', lg: '6xl' }}
+          mb={{ base: 4, md: 10, lg: 16 }}
+          text-align="center"
+        >
+          pn oue ni
+        </Heading>
+      </Flex>
+      <Flex w="100%">
         <Spacer />
-        <motion.div animate={animation}>
+        <motion.section {...getTransition('bottom', { delay: 0.5 })}>
           <Center>
             <AspectRatio
               w={{
-                base: '12em',
+                base: '15em',
                 md: '25em',
-                lg: '52em',
+                lg: '40em',
               }}
               ratio={16 / 9}
-              ref={ref}
             >
               <iframe
                 src="https://www.youtube.com/embed/9EqZRAUfkuo"
@@ -88,7 +58,7 @@ const Hero = () => {
               />
             </AspectRatio>
           </Center>
-        </motion.div>
+        </motion.section>
         <Spacer />
       </Flex>
       <Image
