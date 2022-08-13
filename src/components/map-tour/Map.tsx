@@ -20,17 +20,17 @@ export const TourMap = ({ data, setMap } : { data: TourData, setMap: (map: Map) 
         style={{ height: '100%', width: '100%' }}
         scrollWheelZoom={false}
         ref={setMap}
-      >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        {data.markers.map((marker) => (
-          <Marker key={marker.title} icon={icon} position={marker.position}>
-            <Popup>
-              <TourPopup>
-                {marker.title} <ExternalLinkIcon />
-              </TourPopup>
-            </Popup>
-          </Marker>
-        ))}
+        >
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          {data.markers.map((marker) => (
+            <Marker key={marker.title} icon={icon} position={marker.position}>
+              <Popup>
+                <TourPopup>
+                  {marker.title} <ExternalLinkIcon />
+                </TourPopup>
+              </Popup>
+            </Marker>
+          ))}
       </MapContainer>
     </Box>
   );
