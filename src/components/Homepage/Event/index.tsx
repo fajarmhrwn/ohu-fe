@@ -23,35 +23,45 @@ const Event: () => JSX.Element = () => {
   ];
 
   return (
-    <Box backgroundColor="#FFEBB0" py={5}>
-      <motion.section {...getTransition('right')}>
-        <Flex
-          justifyContent={{ base: 'center', lg: 'space-around' }}
-          alignItems="center"
-          ml={{ base: '14ch', lg: 0 }}
-          mb={{ base: '-5ch', lg: 0 }}
-        >
+    <Box backgroundColor="#FFEBB0" py={5} overflow="hidden">
+      <Flex
+        justifyContent={{ base: 'center', lg: 'space-around' }}
+        alignItems="center"
+        ml={{ base: '14ch', lg: 0 }}
+        mb={{ base: '-5ch', lg: 0 }}
+      >
+        <motion.div {...getTransition('bottom', { delay: 0.5 })}>
           <Show above="lg">
             <Text fontSize="3xl" fontFamily="Subheading">
               Apa saja yang dapat kita lakukan di OHU Event?
             </Text>
           </Show>
+        </motion.div>
+        <motion.div {...getTransition('bottom', { delay: 0.5 })}>
           <Heading fontSize={{ base: '5xl', lg: '6xl' }} fontFamily="Heading">
             vens
           </Heading>
-        </Flex>
-        <Flex
-          justifyContent={{ base: 'center', lg: 'space-evenly' }}
-          flexDirection={{ base: 'column-reverse', lg: 'row' }}
-          alignItems="center"
+        </motion.div>
+      </Flex>
+
+      <Flex
+        justifyContent={{ base: 'center', lg: 'space-evenly' }}
+        flexDirection={{ base: 'column-reverse', lg: 'row' }}
+        alignItems="center"
+      >
+        <motion.div
+          style={{ width: '30%' }}
+          {...getTransition('left', { delay: 0.5 })}
         >
           <Image
             display={{ base: 'none', lg: 'block' }}
             src={ImageBalloon}
-            w="30%"
+            w="100%"
             objectFit="contain"
             maxW="50ch"
           />
+        </motion.div>
+        <motion.div {...getTransition('bottom', { delay: 0.5 })}>
           <Stack
             direction="column"
             spacing={{ base: 5, lg: 8 }}
@@ -75,15 +85,21 @@ const Event: () => JSX.Element = () => {
               );
             })}
           </Stack>
+        </motion.div>
+
+        <motion.div
+          style={{ width: 'max(220px,20%)', maxWidth: '50ch' }}
+          {...getTransition('right', { delay: 0.5 })}
+        >
           <Image
             src={ImageJoget}
-            w={{ base: '220px', lg: '20%' }}
+            w="100%"
             objectFit="contain"
             alignSelf={{ base: 'center', lg: 'flex-start' }}
-            maxW="50ch"
+            maxW="100%"
           />
-        </Flex>
-      </motion.section>
+        </motion.div>
+      </Flex>
     </Box>
   );
 };

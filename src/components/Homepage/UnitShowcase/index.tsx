@@ -37,7 +37,7 @@ const UnitShowcase = () => {
 
   return (
     <Box h="100%" w="100%" overflowX="hidden" overflowY="hidden">
-      <motion.section {...getTransition('right')}>
+      <motion.section {...getTransition('right',{delay:0.5})}>
         <Box
           pt={{
             base: 10,

@@ -46,7 +46,7 @@ const UnitRecommendation = () => {
       }}
       overflowX="hidden"
     >
-      <motion.section {...getTransition('left')}>
+      <motion.section {...getTransition('left',{delay:0.5})}>
         <Box p={10} pb={20}>
           <Flex alignItems="center" flexDir="column" pt={3}>
             <motion.div animate={animation}>
@@ -72,8 +72,8 @@ const UnitRecommendation = () => {
             <Carousel />
           </Flex>
         </Box>
-        <Image src={WaveTop} alt="wave_top" w="100%" h="20%" />
       </motion.section>
+      <Image src={WaveTop} alt="wave_top" w="100%" h="20%" />
     </Box>
   );
 };
