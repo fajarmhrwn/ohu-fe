@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PaginationIcon from '@components/leaderboards/PaginationIcon';
 import { PageLayout } from 'src/layout';
-import { Heading, Flex, Image, Show, Center, transform } from '@chakra-ui/react';
+import { Heading, Flex, Image, Show, Center, transform, Box } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import Card from '@components/leaderboards/Card';
 
@@ -31,6 +31,41 @@ const cardAnimation = {
     transform: 'translateX(300px)'
   },
 };
+
+const nyemangatinAnimation = {
+  initialTop: {
+    opacity: 0, 
+    transform: 'translateY(-50px)'
+  },
+  initialBottom: {
+    opacity: 0, 
+    transform: 'translateY(50px)'
+  },
+  view: {
+    opacity: 1, 
+    transform: 'translateY(0px)', 
+    transition: {
+      duration: 0.7, 
+      delay: 0.35
+    }
+  }
+}
+
+const pageButtonAnimation = {
+  initial: {
+    opacity: 0,
+    transform: 'translateY(50px)'
+  },
+  animate: {
+    opacity: 1,
+    transform: 'translateY(0px)',
+    transition: {
+      duration: 0.5,
+      delay: 1.32,
+      type: 'spring'
+    }
+  }
+}
 
 export const Leaderboards = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -102,9 +137,7 @@ export const Leaderboards = () => {
         <Search />
         <Flex flexDirection='row' justifyContent='space-evenly' w='100%'>
           <Show above='lg'>
-            <Image
-              src={Image2}
-              alt='Nyemangatin2' 
+            <Box
               objectFit='contain'
               alignSelf='flex-end'
               mb={5}
@@ -112,7 +145,18 @@ export const Leaderboards = () => {
               h='20%'
               maxW='50ch'
               maxH='50ch'
-            />
+            >
+              <motion.section
+                variants={nyemangatinAnimation}
+                initial='initialBottom'
+                whileInView='view'
+              >
+                <Image
+                  src={Image2}
+                  alt='Nyemangatin2' 
+                />
+              </motion.section>
+            </Box>
           </Show>
           <Flex flexDirection='column' gap={2} w='100%' alignContent='center' maxW='80ch'>
             {dummyData.map((item, idx) => {
@@ -134,21 +178,36 @@ export const Leaderboards = () => {
             })}
           </Flex>
           <Show above='lg'>
-            <Image
-              src={Image1}
-              alt='Nyemangatin1'
+            <Box
               objectFit='contain'
               alignSelf='flex-start'
-              mt={5}
+              mb={5}
               w='20%'
               h='20%'
               maxW='50ch'
               maxH='50ch'
-            />
+            >
+              <motion.section
+                variants={nyemangatinAnimation}
+                initial='initialTop'
+                whileInView='view'
+              >
+                <Image
+                  src={Image1}
+                  alt='Nyemangatin1'
+                />
+              </motion.section>
+            </Box>
           </Show>
         </Flex>
         <Center mt={6} mb={5}>
-          <PaginationIcon pageSize={500} parentPageSetter={setCurrentPage} />
+          <motion.section
+            variants={pageButtonAnimation}
+            initial='initial'
+            animate='animate'
+          >
+            <PaginationIcon pageSize={500} parentPageSetter={setCurrentPage} />
+          </motion.section>
         </Center>
       </Flex>
     </PageLayout>
