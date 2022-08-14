@@ -7,31 +7,35 @@ import { TourPopup } from './Popup';
 import L from 'leaflet';
 
 import MarkerIcon from '@assets/marker-icon.png';
+import { motion } from 'framer-motion';
+import { getTransition } from 'src/util/transition';
 
 export const TourMap = ({ data, setMap } : { data: TourData, setMap: (map: Map) => void | null }) => {
   const isMobile = useMediaQuery('(max-width: 640px)');
   const icon = L.icon({ iconUrl: MarkerIcon });
 
   return (
-    <Box h={isMobile[0] ? '260px' : '560px'} w={isMobile[0] ? '100%' : '92%'} m="auto">
-      <MapContainer
-        center={data.centerPosition}
-        zoom={data.zoom}
-        style={{ height: '100%', width: '100%' }}
-        scrollWheelZoom={false}
-        ref={setMap}
-        >
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          {data.markers.map((marker) => (
-            <Marker key={marker.title} icon={icon} position={marker.position}>
-              <Popup>
-                <TourPopup>
-                  {marker.title} <ExternalLinkIcon />
-                </TourPopup>
-              </Popup>
-            </Marker>
-          ))}
-      </MapContainer>
-    </Box>
+    <motion.div {...getTransition('bottom', { delay: 0.1 })}>
+      <Box h={isMobile[0] ? '260px' : '560px'} w={isMobile[0] ? '100%' : '92%'} m="auto">
+        <MapContainer
+          center={data.centerPosition}
+          zoom={data.zoom}
+          style={{ height: '100%', width: '100%' }}
+          scrollWheelZoom={false}
+          ref={setMap}
+          >
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            {data.markers.map((marker) => (
+              <Marker key={marker.title} icon={icon} position={marker.position}>
+                <Popup>
+                  <TourPopup>
+                    {marker.title} <ExternalLinkIcon />
+                  </TourPopup>
+                </Popup>
+              </Marker>
+            ))}
+        </MapContainer>
+      </Box>
+    </motion.div>
   );
 }

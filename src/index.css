@@ -21,3 +21,7 @@
   font-family: 'Caption';
   src: url('./assets/fonts/AlegreyaSans-Light.ttf');
 }
+
+.leaflet-control-attribution {
+  display: none
+}
