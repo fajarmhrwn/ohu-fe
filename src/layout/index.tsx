@@ -23,7 +23,7 @@ const pageAnimation = {
 
 export const PageAnimate = ({ children, title }: Props) => {
   useEffect(() => {
-    document.title = title + ' - OHU 2022';
+    document.title = title + ' - DEVA: OHU 2022';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
@@ -35,16 +35,14 @@ export const PageAnimate = ({ children, title }: Props) => {
       exit="exit"
       transition={{ delay: 0.3 }}
     >
-      <Box minH='100vh'>
-        {children}
-      </Box>
+      <Box minH="100vh">{children}</Box>
     </motion.div>
   );
 };
 
 export const PageLayoutNoFooter = ({ children, title }: Props) => {
   useEffect(() => {
-    document.title = title + ' - OHU 2022';
+    document.title = title + ' - DEVA: OHU 2022';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
@@ -58,9 +56,7 @@ export const PageLayoutNoFooter = ({ children, title }: Props) => {
         exit="exit"
         transition={{ delay: 0.3 }}
       >
-        <Box minH='100vh'>
-          {children}
-        </Box>
+        <Box minH="100vh">{children}</Box>
       </motion.div>
     </>
   );
@@ -68,7 +64,7 @@ export const PageLayoutNoFooter = ({ children, title }: Props) => {
 
 export const PageLayout = ({ children, title }: Props) => {
   useEffect(() => {
-    document.title = title + ' - OHU 2022';
+    document.title = title + ' - DEVA: OHU 2022';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
@@ -82,9 +78,7 @@ export const PageLayout = ({ children, title }: Props) => {
         exit="exit"
         transition={{ delay: 0.3 }}
       >
-        <Box minH='100vh'>
-          {children}
-        </Box>
+        <Box minH="100vh">{children}</Box>
       </motion.div>
       <TempFooter />
     </>
