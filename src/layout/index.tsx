@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { Footer, Navbar } from '@components/common';
 import { motion } from 'framer-motion';
 import { Box } from '@chakra-ui/react';
@@ -11,19 +12,19 @@ interface Props {
 
 const pageAnimation = {
   initial: {
-    opacity: 0,
+    opacity: 0
   },
   animate: {
-    opacity: 1,
+    opacity: 1
   },
   exit: {
-    opacity: 0,
-  },
+    opacity: 0
+  }
 };
 
 export const PageAnimate = ({ children, title }: Props) => {
   useEffect(() => {
-    document.title = title + ' - DEVA: OHU 2022';
+    document.title = `${title} - DEVA: OHU 2022`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
@@ -42,7 +43,7 @@ export const PageAnimate = ({ children, title }: Props) => {
 
 export const PageLayoutNoFooter = ({ children, title }: Props) => {
   useEffect(() => {
-    document.title = title + ' - DEVA: OHU 2022';
+    document.title = `${title} - DEVA: OHU 2022`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
@@ -64,7 +65,7 @@ export const PageLayoutNoFooter = ({ children, title }: Props) => {
 
 export const PageLayout = ({ children, title }: Props) => {
   useEffect(() => {
-    document.title = title + ' - DEVA: OHU 2022';
+    document.title = `${title} - DEVA: OHU 2022`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 

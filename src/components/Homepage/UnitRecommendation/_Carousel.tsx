@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { Box, Text, Flex, Container } from '@chakra-ui/react';
+import { useState, useRef } from 'react';
+import { Box, Flex } from '@chakra-ui/react';
 import { useInView } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -10,24 +10,24 @@ import Card from './_Card';
 const slide = [
   {
     id: 1,
-    label: 'Unit A',
+    label: 'Unit A'
   },
   {
     id: 2,
-    label: 'Unit B',
+    label: 'Unit B'
   },
   {
     id: 3,
-    label: 'Unit C',
+    label: 'Unit C'
   },
   {
     id: 4,
-    label: 'Unit D',
+    label: 'Unit D'
   },
   {
     id: 5,
-    label: 'Unit E',
-  },
+    label: 'Unit E'
+  }
 ];
 
 const Carousel = () => {
@@ -38,9 +38,9 @@ const Carousel = () => {
 
   return (
     <Box pt={8}>
-      <Swiper slidesPerView={5} centeredSlides={true}>
+      <Swiper slidesPerView={5} centeredSlides>
         {slide.map((s, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide key={s.id}>
             {({ isActive }) => {
               if (isActive) {
                 setPosition(index);
@@ -58,7 +58,7 @@ const Carousel = () => {
           gap={20}
           display={{
             base: 'none',
-            lg: 'flex',
+            lg: 'flex'
           }}
           ref={ref}
         >
@@ -68,7 +68,7 @@ const Carousel = () => {
               label={s.label}
               position={position}
               setPosition={setPosition}
-              key={index}
+              key={s.id}
             />
           ))}
         </Flex>

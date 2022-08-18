@@ -27,12 +27,12 @@ export function getTransition(
         transition: {
           delay: options?.delay ?? 0.2,
           type: options?.type ?? 'spring',
-          duration: options?.duration ?? 1.5,
-        },
-      },
+          duration: options?.duration ?? 1.5
+        }
+      }
     },
     initial: 'initial',
     whileInView: 'view',
-    viewport: { once: options?.once ?? true },
+    viewport: { once: options?.once ?? true }
   };
 }
