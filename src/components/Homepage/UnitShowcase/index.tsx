@@ -2,8 +2,8 @@ import { useEffect, useRef } from 'react';
 import { Box, Flex, Heading } from '@chakra-ui/react';
 import { useAnimation, useInView, motion } from 'framer-motion';
 import { getTransition } from 'src/util/transition';
+import ReactSVG from '@assets/react.svg';
 import Card from './_Card';
-import ReactSVG from '../../../assets/react.svg';
 
 const UnitShowcase = () => {
   const ref = useRef(null);
@@ -19,8 +19,8 @@ const UnitShowcase = () => {
         visibility: 'visible',
         transition: {
           type: 'spring',
-          duration: 1,
-        },
+          duration: 1
+        }
       });
     }
     if (!isInView) {
@@ -29,33 +29,35 @@ const UnitShowcase = () => {
         visibility: 'hidden',
         y: -10,
         transition: {
-          duration: 0.5,
-        },
+          duration: 0.5
+        }
       });
     }
   }, [isInView]);
 
   return (
     <Box h="100%" w="100%" overflowX="hidden" overflowY="hidden">
-      <motion.section {...getTransition('right', { delay: 0.5, duration: 2.25 })}>
+      <motion.section
+        {...getTransition('right', { delay: 0.5, duration: 2.25 })}
+      >
         <Box
           pt={{
             base: 10,
-            lg: 24,
+            lg: 24
           }}
           px={{
             md: 8,
-            lg: 20,
+            lg: 20
           }}
           overflowY="hidden"
         >
           <Heading
             size={{
-              base: '2xl',
+              base: '2xl'
             }}
             textAlign={{
               base: 'center',
-              md: 'left',
+              md: 'left'
             }}
             ref={ref}
           >
@@ -64,23 +66,23 @@ const UnitShowcase = () => {
           <Flex
             flexDir={{
               base: 'column',
-              md: 'row',
+              md: 'row'
             }}
             justifyContent="space-between"
             alignItems={{
-              base: 'center',
+              base: 'center'
             }}
             gap={{
-              base: 10,
+              base: 10
             }}
             mt={{
-              base: 10,
+              base: 10
             }}
             pb={20}
           >
-            <Card img={ReactSVG} label={'Unit A'} />
-            <Card img={ReactSVG} label={'Unit B'} />
-            <Card img={ReactSVG} label={'Unit C'} />
+            <Card img={ReactSVG} label="Unit A" />
+            <Card img={ReactSVG} label="Unit B" />
+            <Card img={ReactSVG} label="Unit C" />
           </Flex>
         </Box>
       </motion.section>

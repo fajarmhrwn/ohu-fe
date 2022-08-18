@@ -3,7 +3,6 @@ import Logo from '@assets/logo_sementara.png';
 import DashboardLogo from '@assets/dashboard_menu.svg';
 import LogoutLogo from '@assets/logout_menu.svg';
 import {
-  Avatar,
   Box,
   Button,
   Drawer,
@@ -33,13 +32,13 @@ const Navbar = () => {
   const links = [
     { label: 'Home', link: '/' },
     { label: 'Tour', link: '/tour' },
-    { label: 'Leaderboard', link: '/leaderboard' },
+    { label: 'Leaderboard', link: '/leaderboard' }
   ];
   const { isOpen, onOpen, onClose } = useDisclosure();
   const drawerRef = useRef<HTMLButtonElement>(null);
 
-  const UtilNav = () => {
-    return isLogin ? (
+  const UtilNav = () =>
+    isLogin ? (
       <Menu>
         <MenuButton
           as={Button}
@@ -79,7 +78,6 @@ const Navbar = () => {
         Log In
       </Button>
     );
-  };
 
   return (
     <Flex
@@ -95,27 +93,27 @@ const Navbar = () => {
       top="0"
       zIndex="999"
     >
-      <Box alignItems={'center'}>
+      <Box alignItems="center">
         <Link to="/">
           <HStack>
             {/* TODO: ganti logo */}
             <Image
               src={Logo}
-              w='50px'
-              objectFit='contain'
+              w="50px"
+              objectFit="contain"
               mr={{ base: 0, md: 2 }}
               mb={{ base: 2, md: 0 }}
-              transition='all 0.15s ease-in-out'
+              transition="all 0.15s ease-in-out"
               _hover={{
-                transform: 'scale(1.25)',
+                transform: 'scale(1.25)'
               }}
             />
             <Text
               fontSize="3xl"
               fontFamily="Heading"
               color="#F4A641"
-              transition='all 0.15s ease-in-out'
-              textShadow='-1px -2px 0px #000000'
+              transition="all 0.15s ease-in-out"
+              textShadow="-1px -2px 0px #000000"
               _hover={{
                 transform: 'scale(1.1)',
                 color: '#000000',
@@ -151,7 +149,7 @@ const Navbar = () => {
                 _hover={{
                   color: '#F4A641',
                   textDecoration: 'underline',
-                  textDecorationColor: '#FF7D4B',
+                  textDecorationColor: '#FF7D4B'
                 }}
               >
                 {item.label}
@@ -202,7 +200,7 @@ const Navbar = () => {
                         _hover={{
                           color: '#F4A641',
                           textDecoration: 'underline',
-                          textDecorationColor: '#FF7D4B',
+                          textDecorationColor: '#FF7D4B'
                         }}
                       >
                         {item.label}

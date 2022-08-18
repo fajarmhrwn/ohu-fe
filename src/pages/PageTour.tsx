@@ -19,9 +19,9 @@ export interface TourData {
 }
 
 const initTourData: TourData = {
-  centerPosition : [0, 0],
+  centerPosition: [0, 0],
   zoom: 0,
-  markers: [],
+  markers: []
 };
 
 const DUMMY_DATA: TourData = {
@@ -32,38 +32,38 @@ const DUMMY_DATA: TourData = {
       title: 'Gerbang Utama',
       logo: 'https://dti.itb.ac.id/wp-content/uploads/2020/11/logo_itb_1024_bw.png',
       position: [-6.889871, 107.612327],
-      linkTo: '/',
+      linkTo: '/'
     },
     {
       title: 'Gerbang Kiri',
       logo: 'https://dti.itb.ac.id/wp-content/uploads/2020/11/logo_itb_1024_bw.png',
       position: [-6.88836480365328, 107.60846698935434],
-      linkTo: '/',
+      linkTo: '/'
     },
     {
       title: 'Gerbang Kanan',
       logo: 'https://dti.itb.ac.id/wp-content/uploads/2020/11/logo_itb_1024_bw.png',
       position: [-6.888641905321302, 107.6120546576714],
-      linkTo: '/',
-    },
-  ],
+      linkTo: '/'
+    }
+  ]
 };
 
 export const Tour = () => {
   const [data, setData] = useState<TourData>(initTourData);
-  const [map, setMap]: [Map | null, (map: Map) => void | null] = useState<Map | null>(null);
-  const [isLoading, setIsLoading] =  useState<boolean>(true);
+  const [map, setMap] = useState<Map | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     setTimeout(() => {
       setData(DUMMY_DATA);
       setIsLoading(false);
-    }, 1000)
+    }, 1000);
   }, [data]);
 
   return (
-    <PageLayout title='Map Tour'>
-      <Heading py={6} fontSize={{base: '4xl', lg: '6xl' }} textAlign='center'>
+    <PageLayout title="Map Tour">
+      <Heading py={6} fontSize={{ base: '4xl', lg: '6xl' }} textAlign="center">
         H ap our
       </Heading>
       {isLoading ? (

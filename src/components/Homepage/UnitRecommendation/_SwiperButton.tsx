@@ -6,6 +6,7 @@ interface SwiperButtonProps {
   index: number;
   label: string;
   position: number;
+  /* eslint-disable-next-line no-unused-vars */
   setPosition: (i: number) => void;
 }
 
@@ -13,7 +14,7 @@ const SwiperButton = ({
   index,
   label,
   position,
-  setPosition,
+  setPosition
 }: SwiperButtonProps) => {
   const [hover, setHover] = useState(false);
   const swiper = useSwiper();
