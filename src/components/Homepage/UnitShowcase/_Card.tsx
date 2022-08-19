@@ -28,6 +28,7 @@ const Card = ({ img, label }: ICard) => (
     <Center h="70%">
       <Image
         src={img}
+        draggable="false"
         w={{
           base: '8em',
           lg: '11em'

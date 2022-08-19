@@ -156,7 +156,7 @@ export const Leaderboards = () => {
                 initial="initialBottom"
                 whileInView="view"
               >
-                <Image src={Image2} alt="Nyemangatin2" />
+                <Image src={Image2} alt="Nyemangatin2" draggable="false" />
               </motion.section>
             </Box>
           </Show>
@@ -198,7 +198,7 @@ export const Leaderboards = () => {
                 initial="initialTop"
                 whileInView="view"
               >
-                <Image src={Image1} alt="Nyemangatin1" />
+                <Image src={Image1} alt="Nyemangatin1" draggable="false" />
               </motion.section>
             </Box>
           </Show>

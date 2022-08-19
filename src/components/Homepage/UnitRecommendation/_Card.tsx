@@ -40,6 +40,7 @@ const Card = ({ label, isActive, isInView }: CardProps) => (
     >
       <Flex h="full" justifyContent="center" alignItems="center">
         <Image
+          draggable="false"
           w={{
             base: '7em',
             lg: '10em'
