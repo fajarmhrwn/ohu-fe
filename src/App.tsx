@@ -1,10 +1,9 @@
-/* eslint-ignore */
 import { Suspense } from 'react';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { Loading } from '@components/common/Loading';
-import { Routing } from './routing';
 import ReactAudioPlayer from 'react-audio-player';
+import { Routing } from './routing';
 import BackgroundMusic from './assets/background-music.mp3';
 
 function fixComponent<T>(component: T): T {
@@ -23,6 +22,7 @@ const App = () => {
   };
 
   return (
+    // eslint-disable-next-line
     <div onClick={musicTrigger}>
       <BrowserRouter>
         <AnimatePresence exitBeforeEnter>
@@ -48,7 +48,7 @@ const App = () => {
       <ReactAudioPlayerComponent
         id="backgroundMusic"
         src={BackgroundMusic}
-        autoPlay={true}
+        autoPlay
         loop
       />
     </div>
