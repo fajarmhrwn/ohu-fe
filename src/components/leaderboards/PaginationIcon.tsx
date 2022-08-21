@@ -1,26 +1,19 @@
-/* eslint-disable */
-// errornya: react/destructuring-assignment. mager benerin wkwkwk
 import { Stack, Box } from '@chakra-ui/react';
 import { ChevronRightIcon, ChevronLeftIcon } from '@chakra-ui/icons';
 import { useSearchParams } from 'react-router-dom';
 
 interface PaginationIconProps {
   pageSize: number;
-  currentPage: number;
-  parentPageSetter: Function;
-}
-
-interface PageProps {
-  page: number;
 }
 
 const PaginationIcon = (props: PaginationIconProps) => {
-  const [searchParams, setSearchParams]: any = useSearchParams();
-  const { pageSize, currentPage, parentPageSetter } = props;
+  const [params, setParams]: any = useSearchParams();
+  const { pageSize } = props;
+  const curParams = Object.fromEntries([...params]);
+  const currentPage = parseInt(params.get('page') ?? '1', 10);
 
   function changePage(destination: number) {
-    setSearchParams({ page: destination });
-    parentPageSetter(destination);
+    setParams({ ...curParams, page: destination });
   }
 
   const ButtonIcon = ({
@@ -73,20 +66,12 @@ const PaginationIcon = (props: PaginationIconProps) => {
     </Box>
   );
 
-  const PageButton = (props: PageProps) => (
+  const PageButton = ({ page }: { page: number }) => (
     <Box
       borderRadius="10px"
-      background={
-        props.page.toString() === currentPage.toString()
-          ? '#FFA06F'
-          : 'transparent'
-      }
-      onClick={() =>
-        props.page !== currentPage ? changePage(props.page) : null
-      }
-      color={
-        props.page.toString() === currentPage.toString() ? '#FFFFFF' : '#000000'
-      }
+      background={page === currentPage ? '#FFA06F' : 'transparent'}
+      onClick={() => (page !== currentPage ? changePage(page) : null)}
+      color={page === currentPage ? '#FFFFFF' : '#000000'}
       fontSize="xl"
       w={10}
       h={10}
@@ -97,7 +82,7 @@ const PaginationIcon = (props: PaginationIconProps) => {
       transition="all 0.15s ease-in-out"
       _hover={{ bg: '#FFA06F', color: '#FFFFFF' }}
     >
-      {props.page}
+      {page}
     </Box>
   );
 
