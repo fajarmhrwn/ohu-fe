@@ -9,25 +9,51 @@ import {
   ModalOverlay,
   ModalContent,
   Modal,
-  Link
+  Link,
+  Icon
 } from '@chakra-ui/react';
+import Card from '@components/Homepage/UnitRecommendation/_Card';
+import { FaTimes } from 'react-icons/fa';
 
-export const TourPopup = ({ children }: { children: React.ReactNode }) => {
+interface IPopup {
+  children?: React.ReactNode;
+  isCard?: boolean;
+  label?: string;
+  isActive?: boolean;
+  isInView?: boolean;
+}
+
+export const TourPopup = ({
+  children,
+  isCard,
+  label,
+  isActive,
+  isInView
+}: IPopup) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   // TODO: handle onair
   // TODO: handle data fix
   const onAir = true; // dummy data
   return (
     <>
-      <Text
-        color="#278DB5"
-        textAlign="center"
-        cursor="pointer"
-        onClick={onOpen}
-        _hover={{ textDecoration: 'underline' }}
-      >
-        {children}
-      </Text>
+      {isCard ? (
+        <Card
+          label={label}
+          isActive={isActive}
+          isInView={isInView}
+          onClick={onOpen}
+        />
+      ) : (
+        <Text
+          color="#278DB5"
+          textAlign="center"
+          cursor="pointer"
+          onClick={onOpen}
+          _hover={{ textDecoration: 'underline' }}
+        >
+          {children}
+        </Text>
+      )}
       <Modal isOpen={isOpen} onClose={onClose} size="2xl">
         <ModalOverlay />
         <ModalContent>
@@ -42,19 +68,18 @@ export const TourPopup = ({ children }: { children: React.ReactNode }) => {
             bgColor="#fffbf2"
           >
             <Flex alignItems="center" justifyContent="space-between">
-              <Flex flexDirection="row" alignItems="center">
-                <Text fontFamily="Heading" fontSize="32pt" mt={0}>
+              <Flex alignItems="center">
+                <Text fontFamily="Heading" fontSize="32pt">
                   Unit A
                 </Text>
                 <Flex
                   background="#79C7D4"
                   boxShadow="0px 1px 7px 2px rgba(121, 199, 212, 0.62)"
                   borderRadius="8.5px"
-                  flexDirection="row"
                   justifyContent="space-evenly"
                   alignItems="center"
                   w="4em"
-                  h="1.3em"
+                  h="1.5em"
                   ml="1em"
                 >
                   <Circle size="0.6em" bg={onAir ? '#CB3946' : '#363636'} />
@@ -69,9 +94,13 @@ export const TourPopup = ({ children }: { children: React.ReactNode }) => {
                   </Text>
                 </Flex>
               </Flex>
-              <Button onClick={onClose} fontSize={32} bgColor="#fffbf2">
-                &times;
-              </Button>
+              <Icon
+                as={FaTimes}
+                h={7}
+                w={7}
+                cursor="pointer"
+                onClick={onClose}
+              />
             </Flex>
             <Box
               borderRadius="5px"

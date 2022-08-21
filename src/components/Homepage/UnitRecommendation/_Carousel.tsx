@@ -4,8 +4,8 @@ import { useInView } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
+import { TourPopup } from '@components/map-tour/Popup';
 import SwiperButton from './_SwiperButton';
-import Card from './_Card';
 
 const slide = [
   {
@@ -46,7 +46,12 @@ const Carousel = () => {
                 setPosition(index);
               }
               return (
-                <Card label={s.label} isActive={isActive} isInView={isInView} />
+                <TourPopup
+                  isCard
+                  label={s.label}
+                  isActive={isActive}
+                  isInView={isInView}
+                />
               );
             }}
           </SwiperSlide>
