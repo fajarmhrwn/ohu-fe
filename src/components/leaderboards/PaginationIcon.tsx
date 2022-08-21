@@ -1,11 +1,12 @@
 /* eslint-disable */
 // errornya: react/destructuring-assignment. mager benerin wkwkwk
-import { useState } from 'react';
 import { Stack, Box } from '@chakra-ui/react';
 import { ChevronRightIcon, ChevronLeftIcon } from '@chakra-ui/icons';
+import { useSearchParams } from 'react-router-dom';
 
 interface PaginationIconProps {
   pageSize: number;
+  currentPage: number;
   parentPageSetter: Function;
 }
 
@@ -14,12 +15,12 @@ interface PageProps {
 }
 
 const PaginationIcon = (props: PaginationIconProps) => {
-  const { pageSize } = props;
-  const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams, setSearchParams]: any = useSearchParams();
+  const { pageSize, currentPage, parentPageSetter } = props;
 
   function changePage(destination: number) {
-    props.parentPageSetter(destination);
-    setCurrentPage(destination);
+    setSearchParams({ page: destination });
+    parentPageSetter(destination);
   }
 
   const ButtonIcon = ({
@@ -75,11 +76,17 @@ const PaginationIcon = (props: PaginationIconProps) => {
   const PageButton = (props: PageProps) => (
     <Box
       borderRadius="10px"
-      background={props.page === currentPage ? '#FFA06F' : 'transparent'}
+      background={
+        props.page.toString() === currentPage.toString()
+          ? '#FFA06F'
+          : 'transparent'
+      }
       onClick={() =>
         props.page !== currentPage ? changePage(props.page) : null
       }
-      color={props.page === currentPage ? '#FFFFFF' : '#000000'}
+      color={
+        props.page.toString() === currentPage.toString() ? '#FFFFFF' : '#000000'
+      }
       fontSize="xl"
       w={10}
       h={10}
