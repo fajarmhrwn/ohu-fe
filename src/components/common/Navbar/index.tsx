@@ -146,7 +146,6 @@ const Navbar = () => {
                 color={match ? '#F4A641' : '#000000'}
                 textDecoration={match ? 'underline' : 'none'}
                 textDecorationColor="#FF7D4B"
-                transition="all 0.15s ease-in-out"
                 _hover={{
                   color: '#F4A641',
                   textDecoration: 'underline',

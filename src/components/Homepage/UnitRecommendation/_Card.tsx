@@ -2,12 +2,13 @@ import { Box, Heading, Flex, Image } from '@chakra-ui/react';
 import reactIcon from '@assets/react.svg';
 
 interface CardProps {
-  label: string;
-  isActive: boolean;
-  isInView: boolean;
+  label?: string;
+  isActive?: boolean;
+  isInView?: boolean;
+  onClick: () => void;
 }
 
-const Card = ({ label, isActive, isInView }: CardProps) => (
+const Card = ({ label, isActive, isInView, onClick }: CardProps) => (
   <Box
     h={{
       base: '20em',
@@ -26,6 +27,12 @@ const Card = ({ label, isActive, isInView }: CardProps) => (
     }}
     position="relative"
     borderRadius="30px"
+    cursor={isActive ? 'pointer' : 'default'}
+    onClick={onClick}
+    pointerEvents={isActive ? 'all' : 'none'}
+    _hover={{
+      boxShadow: 'dark-lg'
+    }}
   >
     <Box
       bg="#588E50"
