@@ -1,11 +1,12 @@
 import { Box, Flex, Image, Text, Center } from '@chakra-ui/react';
 
 interface ICard {
-  img: string;
-  label: string;
+  img?: string;
+  label?: string;
+  onClick?: () => void;
 }
 
-const Card = ({ img, label }: ICard) => (
+const Card = ({ img, label, onClick }: ICard) => (
   <Box
     borderRadius="10px"
     bg="#FFFFFF"
@@ -24,6 +25,7 @@ const Card = ({ img, label }: ICard) => (
       transition: '200ms linear'
     }}
     cursor="pointer"
+    onClick={onClick}
   >
     <Center h="70%">
       <Image

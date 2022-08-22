@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import { useInView } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import ReactSVG from '@assets/react.svg';
 import 'swiper/css';
 
 import { TourPopup } from '@components/map-tour/Popup';
@@ -10,22 +11,27 @@ import SwiperButton from './_SwiperButton';
 const slide = [
   {
     id: 1,
+    img: ReactSVG,
     label: 'Unit A'
   },
   {
     id: 2,
+    img: ReactSVG,
     label: 'Unit B'
   },
   {
     id: 3,
+    img: ReactSVG,
     label: 'Unit C'
   },
   {
     id: 4,
+    img: ReactSVG,
     label: 'Unit D'
   },
   {
     id: 5,
+    img: ReactSVG,
     label: 'Unit E'
   }
 ];
@@ -47,7 +53,8 @@ const Carousel = () => {
               }
               return (
                 <TourPopup
-                  isCard
+                  isRec
+                  img={s.img}
                   label={s.label}
                   isActive={isActive}
                   isInView={isInView}
