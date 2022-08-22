@@ -18,8 +18,10 @@ import {
 import { LoadingOnly } from '@components/common/Loading';
 
 interface ScoreProps {
+  rank: number;
   name: string;
   username: string;
+  fakultas: string;
   score: number | null;
 }
 
@@ -121,11 +123,7 @@ export const Leaderboards = () => {
                       delay: idx * 0.12
                     }}
                   >
-                    <Card
-                      key={item.username}
-                      rank={(currentPage - 1) * 10 + idx + 1}
-                      {...item}
-                    />
+                    <Card key={item.username} {...item} />
                   </motion.div>
                 ))}
               </Flex>
