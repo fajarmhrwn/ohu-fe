@@ -3,7 +3,7 @@ import { Box, Flex, Heading } from '@chakra-ui/react';
 import { useAnimation, useInView, motion } from 'framer-motion';
 import { getTransition } from 'src/util/transition';
 import ReactSVG from '@assets/react.svg';
-import Card from './_Card';
+import { TourPopup } from '@components/map-tour/Popup';
 
 const UnitShowcase = () => {
   const ref = useRef(null);
@@ -80,9 +80,9 @@ const UnitShowcase = () => {
             }}
             pb={20}
           >
-            <Card img={ReactSVG} label="Unit A" />
-            <Card img={ReactSVG} label="Unit B" />
-            <Card img={ReactSVG} label="Unit C" />
+            <TourPopup isShowcase img={ReactSVG} label="Unit A" />
+            <TourPopup isShowcase img={ReactSVG} label="Unit B" />
+            <TourPopup isShowcase img={ReactSVG} label="Unit C" />
           </Flex>
         </Box>
       </motion.section>
