@@ -55,12 +55,22 @@ const Navbar = () => {
         </MenuButton>
         <MenuList borderColor="#FFA06E">
           <MenuItem fontFamily="Subheading">
-            <Image src={DashboardLogo} mr="4" alt="dashboard_logo" draggable="false"/>
+            <Image
+              src={DashboardLogo}
+              mr="4"
+              alt="dashboard_logo"
+              draggable="false"
+            />
             <Text>Dashboard</Text>
           </MenuItem>
           <MenuDivider />
           <MenuItem onClick={() => setIsLogin(false)} fontFamily="Subheading">
-            <Image src={LogoutLogo} mr="4" alt="logout_logo" draggable="false" />
+            <Image
+              src={LogoutLogo}
+              mr="4"
+              alt="logout_logo"
+              draggable="false"
+            />
             <Text>Logout</Text>
           </MenuItem>
         </MenuList>

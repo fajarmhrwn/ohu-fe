@@ -28,7 +28,9 @@ const Search = ({ handleSubmit }: Props) => {
         filter:
           filter.length === 0
             ? addedFilter
-            : filter.includes(addedFilter) ? filter : filter.concat(`,${addedFilter}`),
+            : filter.includes(addedFilter)
+            ? filter
+            : filter.concat(`,${addedFilter}`),
         query: ''
       });
     } else {

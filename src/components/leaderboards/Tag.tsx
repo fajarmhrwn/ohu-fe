@@ -8,7 +8,7 @@ export const TagList = () => {
   const fakultas: any = params.get('filter')?.split(',') ?? [];
 
   return (
-    <Wrap spacing={2} mt={3} mb={2} overflow='visible'>
+    <Wrap spacing={2} mt={3} mb={2} overflow="visible">
       {fakultas.map((item: string, idx: number) => (
         <motion.div
           // eslint-disable-next-line
@@ -28,14 +28,15 @@ export const TagList = () => {
             <TagLabel>{item}</TagLabel>
             <TagCloseButton
               onClick={() => {
-                const filterAfterClosed: string = fakultas.filter((x: string) => x !== item).toString();
+                const filterAfterClosed: string = fakultas
+                  .filter((x: string) => x !== item)
+                  .toString();
                 setParams({
                   ...curParams,
                   page: '1',
                   filter: filterAfterClosed === '' ? [] : filterAfterClosed
-                  });
-                }  
-              }
+                });
+              }}
             />
           </Tag>
         </motion.div>
