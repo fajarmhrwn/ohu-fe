@@ -1,4 +1,4 @@
-import { Box, useMediaQuery } from '@chakra-ui/react';
+import { Box} from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import L, { Map } from 'leaflet';
@@ -14,16 +14,15 @@ interface Props {
   // eslint-disable-next-line no-unused-vars
   setMap: (map: Map) => void | null;
 }
-
+<TileLayer/>
 export const TourMap = ({ data, setMap }: Props) => {
-  const isMobile = useMediaQuery('(max-width: 640px)');
   const icon = L.icon({ iconUrl: MarkerIcon });
 
   return (
     <motion.div {...getTransition('bottom', { delay: 0.1 })}>
       <Box
-        h={isMobile[0] ? '260px' : '560px'}
-        w={isMobile[0] ? '100%' : '92%'}
+        h={['20em','30em']}
+        w={['100%','92%']}
         m="auto"
       >
         <MapContainer
@@ -32,8 +31,9 @@ export const TourMap = ({ data, setMap }: Props) => {
           style={{ height: '100%', width: '100%' }}
           scrollWheelZoom={false}
           ref={setMap}
+          dragging={false}
         >
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+  
           {data.markers.map((marker) => (
             <Marker key={marker.title} icon={icon} position={marker.position}>
               <Popup>

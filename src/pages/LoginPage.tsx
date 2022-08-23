@@ -29,10 +29,8 @@ export const LoginPage = () => {
 
     if (!username) {
       setErrorText('Masukkan NIM kamu');
-      return
-        
     }
-    
+
     // auth logic here
   };
 
@@ -78,7 +76,7 @@ export const LoginPage = () => {
             <UserOutlined width="1em" />
             <FormLabel fontSize="0.7em">NIM</FormLabel>
           </Flex>
-          <Input type="number" ref={usernameRef}/>
+          <Input type="number" ref={usernameRef} />
           <Flex mt="1em">
             <LockOutlined />
             <FormLabel fontSize="0.7em">Password</FormLabel>
@@ -87,7 +85,7 @@ export const LoginPage = () => {
             <Input
               type={passwordIsShown ? 'text' : 'password'}
               ref={passwordRef}
-              w={['88%','93%']}
+              w={['88%', '93%']}
             />
             <Flex
               w="7%"
