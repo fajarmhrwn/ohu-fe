@@ -5,7 +5,10 @@ import {
   FormLabel,
   Image,
   Input,
-  Text
+  Text,
+  InputGroup,
+  InputRightElement,
+  Icon
 } from '@chakra-ui/react';
 import React, { useRef, useState } from 'react';
 import { PageLayout } from 'src/layout';
@@ -29,10 +32,8 @@ export const LoginPage = () => {
 
     if (!username) {
       setErrorText('Masukkan NIM kamu');
-      return
-        
     }
-    
+
     // auth logic here
   };
 
@@ -74,30 +75,35 @@ export const LoginPage = () => {
         borderRadius="10px"
       >
         <form onSubmit={submitHandler}>
-          <Flex>
+          <Flex gap="2">
             <UserOutlined width="1em" />
-            <FormLabel fontSize="0.7em">NIM</FormLabel>
+            <FormLabel fontSize="xl">NIM / No. Registrasi</FormLabel>
           </Flex>
-          <Input type="number" ref={usernameRef}/>
-          <Flex mt="1em">
+          <Input
+            type="text"
+            ref={usernameRef}
+            placeholder="Enter NIM/No. Registrasi"
+          />
+          <Flex mt="1em" gap="2">
             <LockOutlined />
-            <FormLabel fontSize="0.7em">Password</FormLabel>
+            <FormLabel fontSize="xl">Password</FormLabel>
           </Flex>
           <Flex mt="0.4em">
-            <Input
-              type={passwordIsShown ? 'text' : 'password'}
-              ref={passwordRef}
-              w={['88%','93%']}
-            />
-            <Flex
-              w="7%"
-              display="inline-flex"
-              alignItems="center"
-              onClick={toggleShowPassword}
-              mx="1%"
-            >
-              {passwordIsShown ? <EyeInvisibleOutlined /> : <EyeOutlined />}
-            </Flex>
+            <InputGroup>
+              <Input
+                type={passwordIsShown ? 'text' : 'password'}
+                placeholder="Enter password"
+                ref={passwordRef}
+              />
+              <InputRightElement>
+                <Icon
+                  as={passwordIsShown ? EyeInvisibleOutlined : EyeOutlined}
+                  onClick={toggleShowPassword}
+                  cursor="pointer"
+                  fontSize="xl"
+                />
+              </InputRightElement>
+            </InputGroup>
           </Flex>
 
           <Box h="1.2em" color="salmon">
