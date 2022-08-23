@@ -72,7 +72,7 @@ const Navbar = () => {
         px={8}
         color="white"
         bgColor="#F4A641"
-        onClick={() => setIsLogin(true)}
+        onClick={() => { window.location.href = '/login'} }
         fontFamily="Subheading"
       >
         Log In
