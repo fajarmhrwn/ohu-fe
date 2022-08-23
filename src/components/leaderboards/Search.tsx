@@ -22,12 +22,15 @@ const Search = ({ handleSubmit }: Props) => {
       e.target.value[e.target.value.length - 1] === TAG &&
       e.target.value.length > 1
     ) {
+      const addedFilter = e.target.value.slice(1, -1);
       setParams({
         page: '1',
         filter:
           filter.length === 0
-            ? e.target.value.slice(1, -1)
-            : filter.concat(`,${e.target.value.slice(1, -1)}`),
+            ? addedFilter
+            : filter.includes(addedFilter)
+            ? filter
+            : filter.concat(`,${addedFilter}`),
         query: ''
       });
     } else {
