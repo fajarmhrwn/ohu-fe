@@ -47,7 +47,7 @@ const UnitRecommendation = () => {
           </Flex>
         </Box>
       </motion.section>
-      <Image src={WaveTop} alt="wave_top" w="100%" h="20%" />
+      <Image src={WaveTop} alt="wave_top" w="100%" h="20%" pt="20" />
     </Box>
   );
 };
