@@ -55,7 +55,7 @@ const Carousel = () => {
               return (
                 <motion.div
                   {...getTransition('right', {
-                    delay: 0.5 * index,
+                    delay: index < 3 ? index * 0.35 : 0,
                     duration: 1
                   })}
                 >

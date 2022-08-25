@@ -83,7 +83,7 @@ export const TempFooter = () => (
       <Box>
         <Stack direction="row" spacing={{ base: 3, md: 6 }}>
           {socials.map(({ to, icon, hover }) => (
-            <a key={to} href={to}>
+            <a key={to} href={to} target="_blank" rel="noopener noreferrer">
               <Box
                 transition="all 0.15s ease-in-out"
                 _hover={{ color: hover, transform: 'scale(1.2)' }}
