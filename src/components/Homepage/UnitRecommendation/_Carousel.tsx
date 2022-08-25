@@ -54,7 +54,10 @@ const Carousel = () => {
               }
               return (
                 <motion.div
-                  {...getTransition('right', { delay: 0.5 * index, duration: 1 })}
+                  {...getTransition('right', {
+                    delay: 0.5 * index,
+                    duration: 1
+                  })}
                 >
                   <TourPopup
                     isRec
