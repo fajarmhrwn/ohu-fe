@@ -95,12 +95,16 @@ const UnitShowcase = () => {
             }}
             pb={20}
           >
-            {showcase.map((unit: any) => (
-              <TourPopup
-                isShowcase
-                img={`${import.meta.env.VITE_API_BASE_URL}${unit.image.url}`}
-                label={unit.name}
-              />
+            {showcase.map((unit: any, index: number) => (
+              <motion.div
+                {...getTransition('left', { delay: 0.5 * index, duration: 1 })}
+              >
+                <TourPopup
+                  isShowcase
+                  img={`${import.meta.env.VITE_API_BASE_URL}${unit.image.url}`}
+                  label={unit.name}
+                />
+              </motion.div>
             ))}
           </Flex>
         </Box>
