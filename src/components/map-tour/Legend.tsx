@@ -25,7 +25,7 @@ export const TourLegend = ({
     title,
     position
   }: {
-    logo: string;
+    logo?: string;
     title: string;
     position: [number, number];
   }) => (

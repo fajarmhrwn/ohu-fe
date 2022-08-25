@@ -1,30 +1,47 @@
-import { Box} from '@chakra-ui/react';
-import { ExternalLinkIcon } from '@chakra-ui/icons';
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import { Box } from '@chakra-ui/react';
+import {
+  ImageOverlay,
+  MapContainer,
+  Marker,
+  TileLayer,
+  useMapEvent
+} from 'react-leaflet';
 import L, { Map } from 'leaflet';
 import { TourData } from '@pages/PageTour';
-
-import MarkerIcon from '@assets/marker-icon.png';
+import MapOhuFull from '@assets/map_ohu_full.png';
 import { motion } from 'framer-motion';
 import { getTransition } from 'src/util/transition';
-import { TourPopup } from './Popup';
 
 interface Props {
   data: TourData;
   // eslint-disable-next-line no-unused-vars
   setMap: (map: Map) => void | null;
 }
-<TileLayer/>
 export const TourMap = ({ data, setMap }: Props) => {
-  const icon = L.icon({ iconUrl: MarkerIcon });
+
+  const MapImage = () => {
+    useMapEvent('click', () => {
+      // console.log(`[${  ev.latlng.lat  },${  ev.latlng.lng  }]`);
+    });
+    const imageSize = 0.003; // 0.5*image real width
+    const imageRatio = 45 / 35;
+    const imageBounds: [[number, number], [number, number]] = [
+      [
+        data.centerPosition[0] - imageSize,
+        data.centerPosition[1] + imageRatio * imageSize
+      ],
+      [
+        data.centerPosition[0] + imageSize,
+        data.centerPosition[1] - imageRatio * imageSize
+      ]
+    ];
+    return <ImageOverlay bounds={imageBounds} url={MapOhuFull} />;
+  };
+
 
   return (
     <motion.div {...getTransition('bottom', { delay: 0.1 })}>
-      <Box
-        h={['20em','30em']}
-        w={['100%','92%']}
-        m="auto"
-      >
+      <Box h={['32em', '34em']} w={['100%', '92%']} m="auto">
         <MapContainer
           center={data.centerPosition}
           zoom={data.zoom}
@@ -32,16 +49,14 @@ export const TourMap = ({ data, setMap }: Props) => {
           scrollWheelZoom={false}
           ref={setMap}
           dragging={false}
+          zoomControl={false}
         >
-  
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <MapImage/>
           {data.markers.map((marker) => (
-            <Marker key={marker.title} icon={icon} position={marker.position}>
-              <Popup>
-                <TourPopup>
-                  {marker.title} <ExternalLinkIcon />
-                </TourPopup>
-              </Popup>
-            </Marker>
+            <Marker position={marker.position} icon={L.icon({iconUrl: marker.icon})} eventHandlers={{click: () => {
+              // console.log(marker.title);
+            }}}/>
           ))}
         </MapContainer>
       </Box>
