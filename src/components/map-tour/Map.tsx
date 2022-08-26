@@ -11,6 +11,7 @@ import { TourData, MarkerData } from '@pages/PageTour';
 import MapOhuFull from '@assets/map_ohu_full.png';
 import { motion } from 'framer-motion';
 import { getTransition } from 'src/util/transition';
+import { TourPopup } from './Popup';
 
 interface Props {
   data: TourData;
@@ -24,7 +25,9 @@ export const TourMap = ({ data, setMap }: Props) => {
       radius={11}
       pathOptions={{ color: 'transparent', fillColor: 'transparent' }}
     >
-      <Popup>{title}</Popup>
+      <Popup>
+        <TourPopup id="c7043ac6-5291-4991-91e4-6851efa35022">{title}</TourPopup>
+      </Popup>
     </Circle>
   );
 
