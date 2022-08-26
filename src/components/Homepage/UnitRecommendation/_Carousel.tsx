@@ -1,56 +1,26 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { getUnits } from 'src/service/unit';
 import { Box, Flex } from '@chakra-ui/react';
 import { useInView, motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import ReactSVG from '@assets/react.svg';
-import Genshiken from '@assets/unitrec/genshiken.jpg';
-import PSM from '@assets/unitrec/psm.png';
 import 'swiper/css';
 
 import { TourPopup } from '@components/map-tour/Popup';
 import { getTransition } from 'src/util/transition';
 import SwiperButton from './_SwiperButton';
 
-const slide = [
-  {
-    id: 1,
-    img: ReactSVG,
-    label: 'Unit A',
-    isFull: true,
-    imgFull: Genshiken
-  },
-  {
-    id: 2,
-    img: ReactSVG,
-    label: 'Unit B',
-    isFull: true,
-    imgFull: PSM
-  },
-  {
-    id: 3,
-    img: ReactSVG,
-    label: 'Unit C',
-    isFull: false,
-    imgFull: ReactSVG
-  },
-  {
-    id: 4,
-    img: ReactSVG,
-    label: 'Unit D',
-    isFull: false,
-    imgFull: ReactSVG
-  },
-  {
-    id: 5,
-    img: ReactSVG,
-    label: 'Unit E',
-    isFull: false,
-    imgFull: ReactSVG
-  }
-];
-
 const Carousel = () => {
   const [position, setPosition] = useState(0);
+  const [units, setUnits] = useState<any[]>([]);
+
+  useEffect(() => {
+    const getUnitRecommendation = async () => {
+      const data = await getUnits('/units/recommendation');
+      setUnits(data);
+    };
+
+    getUnitRecommendation();
+  }, []);
 
   const ref = useRef(null);
   const isInView = useInView(ref);
@@ -58,8 +28,8 @@ const Carousel = () => {
   return (
     <Box pt={8} pb={6}>
       <Swiper slidesPerView={5} centeredSlides>
-        {slide.map((s, index) => (
-          <SwiperSlide key={s.id}>
+        {units.map((unit, index) => (
+          <SwiperSlide key={unit.ext_id}>
             {({ isActive }) => {
               if (isActive) {
                 setPosition(index);
@@ -73,12 +43,18 @@ const Carousel = () => {
                 >
                   <TourPopup
                     isRec
-                    img={s.img}
-                    label={s.label}
+                    img={`${import.meta.env.VITE_API_BASE_URL}${unit.logo.url}`}
+                    label={unit.name}
                     isActive={isActive}
                     isInView={isInView}
-                    isFull={s.isFull}
-                    imgFull={s.imgFull}
+                    isFull={unit.isFullImg}
+                    imgFull={
+                      unit.fullImage
+                        ? `${import.meta.env.VITE_API_BASE_URL}${
+                            unit.fullImage.url
+                          }`
+                        : ''
+                    }
                   />
                 </motion.div>
               );
@@ -96,13 +72,13 @@ const Carousel = () => {
           }}
           ref={ref}
         >
-          {slide.map((s, index) => (
+          {units.map((unit, index) => (
             <SwiperButton
               index={index}
-              label={s.label}
+              label={unit.name}
               position={position}
               setPosition={setPosition}
-              key={s.id}
+              key={unit.ext_id}
             />
           ))}
         </Flex>

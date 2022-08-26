@@ -22,11 +22,11 @@ const Card = ({
   <Box
     h={{
       base: '20em',
-      lg: '25em'
+      lg: '26em'
     }}
     w={{
       base: '12em',
-      lg: '15em'
+      lg: '16em'
     }}
     bg="#37662F"
     m="0 auto"
