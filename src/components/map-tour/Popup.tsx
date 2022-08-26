@@ -18,6 +18,7 @@ import ShowcaseCard from '@components/Homepage/UnitShowcase/_Card';
 import { FaTimes } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
 import { getUnitById, updateVisitors } from '../../service/unit';
+import { checkLive } from 'src/util/autoLive';
 import { Rundown } from './Rundown';
 
 interface RundownDetail {
@@ -42,6 +43,8 @@ interface IPopup {
   isInView?: boolean;
   img?: string;
   id: string;
+  isFull?: boolean;
+  imgFull?: string;
 }
 
 export const TourPopup = ({
@@ -52,17 +55,18 @@ export const TourPopup = ({
   isActive,
   isInView,
   img,
+  isFull,
+  imgFull,
   id
 }: IPopup) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   // TODO: handle onair
-  const onAir = true;
   const [name, setName] = useState('');
   const [video, setVideo] = useState('');
   const [rundown, setRundown] = useState<RundownProps[]>([]);
   const [description, setDescription] = useState('');
   const [link, setLink] = useState('');
-  // const [onAir, setOnAir] = useState(true);
+  const [onAir, setOnAir] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,7 +82,11 @@ export const TourPopup = ({
         data.video = data.video.replace('watch?v=', 'embed/');
         setVideo(data.video);
       }
-      // setOnAir(data.onAir);
+      const isLive =
+        data.rundown.data.length > 0
+          ? checkLive(data.rundown.data)
+          : data.isLive;
+      setOnAir(isLive);
     };
 
     fetchData();
@@ -93,6 +101,8 @@ export const TourPopup = ({
           isInView={isInView}
           img={img}
           onClick={onOpen}
+          isFull={isFull}
+          imgFull={imgFull}
         />
       ) : isShowcase ? (
         <ShowcaseCard img={img} label={label} onClick={onOpen} />
@@ -179,16 +189,15 @@ export const TourPopup = ({
               mt="-2"
               mb="3"
             />
-            <Text
+            <Box
               mt={2}
               fontFamily="Body"
               fontSize="lg"
-              align="justify"
               whiteSpace="pre-wrap"
               wordBreak="break-word"
             >
               <ReactMarkdown>{description}</ReactMarkdown>
-            </Text>
+            </Box>
             {rundown.length > 0 ? (
               <>
                 <Text fontFamily="Heading" fontSize="4xl" mt={6}>
