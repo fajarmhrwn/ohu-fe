@@ -51,7 +51,7 @@ const Hero = () => (
               ratio={16 / 9}
             >
               <iframe
-                src="https://www.youtube.com/embed/9EqZRAUfkuo"
+                src="https://www.youtube.com/embed/84CDEzG-IGw"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
