@@ -12,3 +12,10 @@ export const getUnitById = async (id: string) => {
   const { data } = await axios.get(`${BASE_URL}/units/${id}`);
   return data;
 };
+
+export const getScore = async (url: string) => {
+  console.log(import.meta.env);
+  const { data } = await axios.get(`${BASE_URL}${url}`);
+
+  return data;
+};
