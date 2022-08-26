@@ -59,7 +59,7 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem('isMute') || '')) {
+    if (localStorage.getItem('isMute') || '') {
       setIsMute(true);
     } else {
       setIsMute(false);
@@ -217,6 +217,7 @@ const Navbar = () => {
           size="lg"
           icon={<HamburgerIcon w={6} h={6} color="black" />}
           onClick={onOpen}
+          display={isOpen ? 'none' : 'block'}
         />
         <Drawer
           isOpen={isOpen}
