@@ -67,6 +67,7 @@
       {
         "extensions": [".js", ".jsx", ".tsx", ".ts"]
       }
-    ]
+    ],
+    "jsx-a11y/mouse-events-have-key-events": "off"
   }
 }

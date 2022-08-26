@@ -12,7 +12,6 @@ import { TourData, MarkerData } from '@pages/PageTour';
 import MapOhuFull from '@assets/map_ohu_full.png';
 import { motion } from 'framer-motion';
 import { getTransition } from 'src/util/transition';
-// import Mark from '@assets/marker-icon.png';
 import { TourPopup } from './Popup';
 
 interface Props {
@@ -24,7 +23,7 @@ export const TourMap = ({ data, setMap }: Props) => {
   const MapMarker = ({ id, position, name, coloredIcon }: MarkerData) => {
     const Icon = L.icon({
       iconUrl: coloredIcon,
-      iconSize: [200, 200]
+      iconSize: [45, 45]
     });
     return (
       <Marker icon={Icon} position={position}>
@@ -57,14 +56,15 @@ export const TourMap = ({ data, setMap }: Props) => {
         <MapContainer
           center={data.centerPosition}
           zoom={data.zoom}
+          maxZoom={100}
           style={{ height: '100%', width: '100%' }}
           scrollWheelZoom={false}
           ref={setMap}
         >
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           <MapImage />
-          {data.markers.map((marker) => (
-            <MapMarker {...marker} />
+          {data.markers.map((marker, index) => (
+            <MapMarker {...marker} key={index} />
           ))}
         </MapContainer>
       </Box>

@@ -35,7 +35,10 @@ export const TourLegend = ({
         boxSize="67px"
         src={url}
         draggable="false"
-        onClick={() => map?.setView(position)}
+        onClick={() => {
+          map?.setView(position);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
       />
       <Text textAlign="center" fontSize="30px" m="auto 27px" mr="0">
         {name}

@@ -12,7 +12,7 @@ import {
   Link,
   Icon
 } from '@chakra-ui/react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import RecCard from '@components/Homepage/UnitRecommendation/_Card';
 import ShowcaseCard from '@components/Homepage/UnitShowcase/_Card';
 import { FaTimes } from 'react-icons/fa';
@@ -67,30 +67,32 @@ export const TourPopup = ({
   const [description, setDescription] = useState('');
   const [link, setLink] = useState('');
   const [onAir, setOnAir] = useState(false);
-
-  useEffect(() => {
+  const [visitors, setVisitor] = useState(0);
+  const openWrapper = async () => {
+    onOpen();
     const fetchData = async () => {
       const data = await getUnitById(id);
-      await updateVisitors(id, data.visitors + 1);
 
       setName(data.name);
       setRundown(data.rundown.data);
       setDescription(data.description);
       setLink(data.link);
+      setVisitor(data.visitors);
       if (data.video) {
         data.video = data.video.replace('youtu.be', 'youtube.com/embed');
         data.video = data.video.replace('watch?v=', 'embed/');
         setVideo(data.video);
       }
       const isLive =
-        data.rundown.data.length > 0
+        data.rundown.data?.length > 0
           ? checkLive(data.rundown.data)
           : data.isLive;
       setOnAir(isLive);
     };
 
-    fetchData();
-  }, []);
+    await fetchData();
+    await updateVisitors(id, visitors + 1);
+  };
 
   return (
     <>
@@ -100,18 +102,18 @@ export const TourPopup = ({
           isActive={isActive}
           isInView={isInView}
           img={img}
-          onClick={onOpen}
+          onClick={openWrapper}
           isFull={isFull}
           imgFull={imgFull}
         />
       ) : isShowcase ? (
-        <ShowcaseCard img={img} label={label} onClick={onOpen} />
+        <ShowcaseCard img={img} label={label} onClick={openWrapper} />
       ) : (
         <Text
           color="#278DB5"
           textAlign="center"
           cursor="pointer"
-          onClick={onOpen}
+          onClick={openWrapper}
           _hover={{ textDecoration: 'underline' }}
         >
           {children}

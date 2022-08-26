@@ -35,26 +35,26 @@ export const Tour = () => {
   const [map, setMap] = useState<Map | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const fetchData = async () => {
-    const markers: {
-      id: string;
-      name: string;
-      url: string;
-      coloredIcon: string;
-      bnwIcon: string;
-      position: [number, number];
-    }[] = await getUnits('/units/map');
+  useEffect(() => {
+    const fetchData = async () => {
+      const markers: {
+        id: string;
+        name: string;
+        url: string;
+        coloredIcon: string;
+        bnwIcon: string;
+        position: [number, number];
+      }[] = await getUnits('/units/map');
 
-    const data: TourData = {
-      centerPosition: [1, 1],
-      zoom: 17,
-      markers
+      const data: TourData = {
+        centerPosition: [1, 1],
+        zoom: 17,
+        markers
+      };
+
+      setData(data);
     };
 
-    setData(data);
-  };
-
-  useEffect(() => {
     fetchData()
       .then(() => setIsLoading(false))
       .catch(() => setIsLoading(false));
