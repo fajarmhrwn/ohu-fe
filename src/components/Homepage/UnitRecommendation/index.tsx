@@ -19,11 +19,11 @@ const UnitRecommendation = () => {
       }}
       overflowX="hidden"
     >
-      <motion.section
-        {...getTransition('left', { delay: 0.5, duration: 2.25 })}
-      >
-        <Box pt={14}>
-          <Flex alignItems="center" flexDir="column" pt={3}>
+      <Box pt={14}>
+        <Flex alignItems="center" flexDir="column" pt={3}>
+          <motion.section
+            {...getTransition('left', { delay: 0.35, duration: 2.25 })}
+          >
             <Flex flexDir="column" alignItems="center" gap={5}>
               <Heading size="2xl" textAlign="center" mb={3}>
                 ni eommedato
@@ -43,10 +43,10 @@ const UnitRecommendation = () => {
                 View All Units
               </Button>
             </Flex>
-            <Carousel />
-          </Flex>
-        </Box>
-      </motion.section>
+          </motion.section>
+          <Carousel />
+        </Flex>
+      </Box>
       <Image src={WaveTop} alt="wave_top" w="100%" h="20%" pt="20" />
     </Box>
   );

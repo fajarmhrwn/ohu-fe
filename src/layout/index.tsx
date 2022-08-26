@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { Footer, Navbar } from '@components/common';
 import { motion } from 'framer-motion';
 import { Box } from '@chakra-ui/react';
-import { TempFooter } from '@components/common/footer/temp';
 
 interface Props {
   children: React.ReactNode;
@@ -81,7 +80,7 @@ export const PageLayout = ({ children, title }: Props) => {
       >
         <Box minH="100vh">{children}</Box>
       </motion.div>
-      <TempFooter />
+      <Footer />
     </>
   );
 };

@@ -15,7 +15,7 @@ import {
   nyemangatinAnimation,
   pageButtonAnimation
 } from 'src/util/transition';
-import { LoadingOnly } from '@components/common/Loading';
+import { ErrorNotFoundPage } from '@components/common';
 
 interface ScoreProps {
   rank: number;
@@ -157,12 +157,10 @@ export const Leaderboards = () => {
               </Center>
             </motion.section>
           </>
-        ) : meta.total <= 0 ? (
-          // TODO: ganti ke vistock
-          <LoadingOnly />
+        ) : meta.total <= 0 || currentPage > meta.pageCount ? (
+          <ErrorNotFoundPage message="Search not found" />
         ) : (
-          // TODO: ganti ke vistock
-          <LoadingOnly />
+          <ErrorNotFoundPage />
         )}
       </Flex>
     </PageLayout>
