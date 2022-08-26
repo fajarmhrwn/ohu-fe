@@ -13,6 +13,8 @@ export interface MarkerData {
   id: string;
   name: string;
   url: string;
+  coloredIcon: string;
+  bnwIcon: string;
   position: [number, number];
 }
 
@@ -38,6 +40,8 @@ export const Tour = () => {
       id: string;
       name: string;
       url: string;
+      coloredIcon: string;
+      bnwIcon: string;
       position: [number, number];
     }[] = await getUnits('/units/map');
 

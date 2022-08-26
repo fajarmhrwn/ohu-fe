@@ -1,16 +1,18 @@
 import { Box } from '@chakra-ui/react';
 import {
-  Circle,
   ImageOverlay,
   MapContainer,
   Popup,
-  TileLayer
+  TileLayer,
+  Marker
 } from 'react-leaflet';
-import { Map } from 'leaflet';
+import L, { Map } from 'leaflet';
+
 import { TourData, MarkerData } from '@pages/PageTour';
 import MapOhuFull from '@assets/map_ohu_full.png';
 import { motion } from 'framer-motion';
 import { getTransition } from 'src/util/transition';
+// import Mark from '@assets/marker-icon.png';
 import { TourPopup } from './Popup';
 
 interface Props {
@@ -19,17 +21,19 @@ interface Props {
   setMap: (map: Map) => void | null;
 }
 export const TourMap = ({ data, setMap }: Props) => {
-  const MapMarker = ({ id, position, name }: MarkerData) => (
-    <Circle
-      center={position}
-      radius={11}
-      pathOptions={{ color: 'transparent', fillColor: 'transparent' }}
-    >
-      <Popup>
-        <TourPopup id={id}>{name}</TourPopup>
-      </Popup>
-    </Circle>
-  );
+  const MapMarker = ({ id, position, name, coloredIcon }: MarkerData) => {
+    const Icon = L.icon({
+      iconUrl: coloredIcon,
+      iconSize: [200, 200]
+    });
+    return (
+      <Marker icon={Icon} position={position}>
+        <Popup>
+          <TourPopup id={id}>{name}</TourPopup>
+        </Popup>
+      </Marker>
+    );
+  };
 
   const MapImage = () => {
     const imageSize = 0.003; // 0.5*image real width
