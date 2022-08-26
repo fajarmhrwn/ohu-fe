@@ -16,7 +16,22 @@ import { useState, useEffect } from 'react';
 import RecCard from '@components/Homepage/UnitRecommendation/_Card';
 import ShowcaseCard from '@components/Homepage/UnitShowcase/_Card';
 import { FaTimes } from 'react-icons/fa';
+import ReactMarkdown from 'react-markdown';
 import { getUnitById } from '../../service/unit';
+import { Rundown } from './Rundown';
+
+interface RundownDetail {
+  nama: string;
+  waktu: string;
+}
+
+interface RundownProps {
+  nama: string;
+  start: string;
+  end: string;
+  hari: string;
+  detail: RundownDetail[];
+}
 
 interface IPopup {
   children?: React.ReactNode;
@@ -26,7 +41,7 @@ interface IPopup {
   isActive?: boolean;
   isInView?: boolean;
   img?: string;
-  id?: string;
+  id: string;
 }
 
 export const TourPopup = ({
@@ -44,25 +59,26 @@ export const TourPopup = ({
   const onAir = true;
   const [name, setName] = useState('');
   const [video, setVideo] = useState('');
-  const [rundown, setRundown] = useState<any[]>([]);
+  const [rundown, setRundown] = useState<RundownProps[]>([]);
   const [description, setDescription] = useState('');
   const [link, setLink] = useState('');
   // const [onAir, setOnAir] = useState(true);
 
-  const fetchData = async () => {
-    const data = await getUnitById(id);
-    setName(data.name);
-    setRundown(data.rundown.data);
-    setDescription(data.description);
-    setLink(data.link);
-    if (data.video) {
-      data.video = data.video.replace('youtu.be', 'youtube.com/embed');
-      data.video = data.video.replace('watch?v=', 'embed/');
-    }
-    setVideo(data.video);
-    // setOnAir(data.onAir);
-  };
   useEffect(() => {
+    const fetchData = async () => {
+      const data = await getUnitById(id);
+      setName(data.name);
+      setRundown(data.rundown.data);
+      setDescription(data.description);
+      setLink(data.link);
+      if (data.video) {
+        data.video = data.video.replace('youtu.be', 'youtube.com/embed');
+        data.video = data.video.replace('watch?v=', 'embed/');
+      }
+      setVideo(data.video);
+      // setOnAir(data.onAir);
+    };
+
     fetchData();
   }, []);
 
@@ -104,7 +120,7 @@ export const TourPopup = ({
           >
             <Flex alignItems="center" justifyContent="space-between">
               <Flex alignItems="center">
-                <Text fontFamily="Heading" fontSize="32pt">
+                <Text fontFamily="Heading" fontSize="4xl">
                   {name}
                 </Text>
                 <Flex
@@ -125,7 +141,7 @@ export const TourPopup = ({
                     fontFamily="Subheading"
                     fontStyle="normal"
                   >
-                    {onAir ? 'On Air' : 'Off Air'}
+                    {onAir ? 'Live' : 'Off Air'}
                   </Text>
                 </Flex>
               </Flex>
@@ -146,11 +162,32 @@ export const TourPopup = ({
               mb="3"
             />
             <AspectRatio maxW="560px" ratio={16 / 9}>
-              <Box as="iframe" title="liveStream" src={video} allowFullScreen />
+              <Box as="iframe" title="profile" src={video} allowFullScreen />
             </AspectRatio>
-            {rundown && (
+            <Text fontFamily="Heading" fontSize="4xl" mt={6}>
+              ecritin
+            </Text>
+            <Box
+              borderRadius="5px"
+              bgColor="#ff7d4c"
+              borderColor="#ff7d4c"
+              borderWidth="3px"
+              mt="-2"
+              mb="3"
+            />
+            <Text
+              mt={2}
+              fontFamily="Body"
+              fontSize="lg"
+              align="justify"
+              whiteSpace="pre-wrap"
+              wordBreak="break-word"
+            >
+              <ReactMarkdown>{description}</ReactMarkdown>
+            </Text>
+            {rundown.length > 0 ? (
               <>
-                <Text fontFamily="Heading" fontSize="32pt" mt={6}>
+                <Text fontFamily="Heading" fontSize="4xl" mt={6}>
                   unow
                 </Text>
                 <Box
@@ -161,55 +198,13 @@ export const TourPopup = ({
                   mt="-2"
                   mb="3"
                 />
+                {rundown.map((item: RundownProps, idx: number) => (
+                  // eslint-disable-next-line
+                  <Rundown key={idx} {...item} />
+                ))}
               </>
-            )}
-            {rundown &&
-              rundown.map((item) => (
-                <div>
-                  <Text fontFamily="Heading" fontSize="16pt" mt={4} mb={3}>
-                    {item.nama} {item.hari} {item.start} - {item.end} 
-                  </Text>
-                  {item.detail.map((detail) => (
-                    <Box
-                      borderRadius="5px"
-                      bgColor="#ff7d4c"
-                      borderColor="#ff7d4c"
-                      borderWidth="10px"
-                      mt="-2"
-                      mb="5"
-                    >
-                      {detail.waktu} {detail.nama}
-                    </Box>
-                  ))}
-                </div>
-              ))}
-            {description && (
-              <>
-                <Text fontFamily="Heading" fontSize="32pt" mt={6}>
-                  Description
-                </Text>
-                <Box
-                  borderRadius="5px"
-                  bgColor="#ff7d4c"
-                  borderColor="#ff7d4c"
-                  borderWidth="3px"
-                  mt="-2"
-                  mb="3"
-                />
-                <Text
-                  mt={2}
-                  fontFamily="Body"
-                  fontSize="12pt"
-                  lineHeight="short"
-                  align="justify"
-                  whiteSpace="pre-wrap"
-                  wordBreak="break-word"
-                >
-                  {description}
-                </Text>
-              </>
-            )}
-            <Text fontFamily="Heading" fontSize="24pt" mt={4} align="center">
+            ) : null}
+            <Text fontFamily="Heading" fontSize="3xl" mt={4} align="center">
               ntresed?
             </Text>
             <Link href={link || 'https://katitb22.com/'} isExternal>
