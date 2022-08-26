@@ -41,7 +41,7 @@ interface IPopup {
   isActive?: boolean;
   isInView?: boolean;
   img?: string;
-  id: string;
+  id?: string;
 }
 
 export const TourPopup = ({
