@@ -12,11 +12,11 @@ const Card = ({ img, label }: ICard) => (
     boxShadow="4px 9px 28px rgba(0, 0, 0, 0.25);"
     h={{
       base: '15em',
-      md: '23em'
+      md: '22.5em'
     }}
     w={{
       base: '12em',
-      md: '20em'
+      md: '19.5em'
     }}
     _hover={{
       boxShadow: '4px 9px 28px rgba(0, 0, 0, 0.5);',
