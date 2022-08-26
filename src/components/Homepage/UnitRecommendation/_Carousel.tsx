@@ -42,6 +42,7 @@ const Carousel = () => {
                   })}
                 >
                   <TourPopup
+                    id={unit.ext_id}
                     isRec
                     img={unit.logo}
                     label={unit.name}

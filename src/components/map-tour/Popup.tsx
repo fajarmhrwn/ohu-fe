@@ -18,7 +18,7 @@ import ShowcaseCard from '@components/Homepage/UnitShowcase/_Card';
 import { FaTimes } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
 import { checkLive } from 'src/util/autoLive';
-import { getUnitById } from '../../service/unit';
+import { getUnitById, updateVisitors } from '../../service/unit';
 import { Rundown } from './Rundown';
 
 interface RundownDetail {
@@ -42,9 +42,9 @@ interface IPopup {
   isActive?: boolean;
   isInView?: boolean;
   img?: string;
+  id: string;
   isFull?: boolean;
   imgFull?: string;
-  id?: string;
 }
 
 export const TourPopup = ({
@@ -70,7 +70,9 @@ export const TourPopup = ({
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getUnitById(id ?? '');
+      const data = await getUnitById(id);
+      await updateVisitors(id, data.visitors + 1);
+
       setName(data.name);
       setRundown(data.rundown.data);
       setDescription(data.description);
@@ -196,7 +198,7 @@ export const TourPopup = ({
             >
               <ReactMarkdown>{description}</ReactMarkdown>
             </Box>
-            {rundown.length > 0 ? (
+            {rundown && rundown.length > 0 ? (
               <>
                 <Text fontFamily="Heading" fontSize="4xl" mt={6}>
                   unow

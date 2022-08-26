@@ -1,10 +1,14 @@
-import { Box, useMediaQuery } from '@chakra-ui/react';
-import { ExternalLinkIcon } from '@chakra-ui/icons';
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
-import L, { Map } from 'leaflet';
-import { TourData } from '@pages/PageTour';
-
-import MarkerIcon from '@assets/marker-icon.png';
+import { Box } from '@chakra-ui/react';
+import {
+  Circle,
+  ImageOverlay,
+  MapContainer,
+  Popup,
+  TileLayer
+} from 'react-leaflet';
+import { Map } from 'leaflet';
+import { TourData, MarkerData } from '@pages/PageTour';
+import MapOhuFull from '@assets/map_ohu_full.png';
 import { motion } from 'framer-motion';
 import { getTransition } from 'src/util/transition';
 import { TourPopup } from './Popup';
@@ -14,18 +18,38 @@ interface Props {
   // eslint-disable-next-line no-unused-vars
   setMap: (map: Map) => void | null;
 }
-
 export const TourMap = ({ data, setMap }: Props) => {
-  const isMobile = useMediaQuery('(max-width: 640px)');
-  const icon = L.icon({ iconUrl: MarkerIcon });
+  const MapMarker = ({ id, position, name }: MarkerData) => (
+    <Circle
+      center={position}
+      radius={11}
+      pathOptions={{ color: 'transparent', fillColor: 'transparent' }}
+    >
+      <Popup>
+        <TourPopup id={id}>{name}</TourPopup>
+      </Popup>
+    </Circle>
+  );
+
+  const MapImage = () => {
+    const imageSize = 0.003; // 0.5*image real width
+    const imageRatio = 45 / 35;
+    const imageBounds: [[number, number], [number, number]] = [
+      [
+        data.centerPosition[1] - imageSize,
+        data.centerPosition[0] + imageRatio * imageSize
+      ],
+      [
+        data.centerPosition[0] + imageSize,
+        data.centerPosition[1] - imageRatio * imageSize
+      ]
+    ];
+    return <ImageOverlay bounds={imageBounds} url={MapOhuFull} />;
+  };
 
   return (
     <motion.div {...getTransition('bottom', { delay: 0.1 })}>
-      <Box
-        h={isMobile[0] ? '260px' : '560px'}
-        w={isMobile[0] ? '100%' : '92%'}
-        m="auto"
-      >
+      <Box h={['32em', '34em']} w={['100%', '92%']} m="auto">
         <MapContainer
           center={data.centerPosition}
           zoom={data.zoom}
@@ -34,14 +58,9 @@ export const TourMap = ({ data, setMap }: Props) => {
           ref={setMap}
         >
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <MapImage />
           {data.markers.map((marker) => (
-            <Marker key={marker.title} icon={icon} position={marker.position}>
-              <Popup>
-                <TourPopup id="c7043ac6-5291-4991-91e4-6851efa35022">
-                  {marker.title} <ExternalLinkIcon />
-                </TourPopup>
-              </Popup>
-            </Marker>
+            <MapMarker {...marker} />
           ))}
         </MapContainer>
       </Box>

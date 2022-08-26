@@ -25,3 +25,8 @@
 .leaflet-control-attribution {
   display: none;
 }
+
+.map-circle {
+  cursor: pointer;
+  visibility: hidden;
+}
