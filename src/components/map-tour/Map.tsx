@@ -37,7 +37,7 @@ export const TourMap = ({ data, setMap }: Props) => {
           {data.markers.map((marker) => (
             <Marker key={marker.title} icon={icon} position={marker.position}>
               <Popup>
-                <TourPopup>
+                <TourPopup id='15e39c03-bf1a-41aa-bd5e-7fcd94b5f9a5'>
                   {marker.title} <ExternalLinkIcon />
                 </TourPopup>
               </Popup>
