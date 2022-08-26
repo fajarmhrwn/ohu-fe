@@ -17,8 +17,8 @@ import RecCard from '@components/Homepage/UnitRecommendation/_Card';
 import ShowcaseCard from '@components/Homepage/UnitShowcase/_Card';
 import { FaTimes } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
-import { getUnitById, updateVisitors } from '../../service/unit';
 import { checkLive } from 'src/util/autoLive';
+import { getUnitById, updateVisitors } from '../../service/unit';
 import { Rundown } from './Rundown';
 
 interface RundownDetail {
