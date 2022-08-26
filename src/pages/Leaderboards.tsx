@@ -158,9 +158,9 @@ export const Leaderboards = () => {
             </motion.section>
           </>
         ) : meta.total <= 0 || currentPage > meta.pageCount ? (
-          <ErrorNotFoundPage message="Search not found" />
+          <ErrorNotFoundPage message="No Data" />
         ) : (
-          <ErrorNotFoundPage />
+          <ErrorNotFoundPage message="Perhatikan Input Kamu Kembali" />
         )}
       </Flex>
     </PageLayout>
