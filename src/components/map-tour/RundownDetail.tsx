@@ -25,10 +25,7 @@ export const RundownDetail = ({ detail }: { detail: Props[] }) => (
       </Thead>
       <Tbody>
         {detail.map((item, index) => {
-          let splitted = item.waktu.split(',');
-          if (splitted.length === 1) {
-            splitted = item.waktu.split(':');
-          }
+          const splitted = item.waktu.replace(/:/g, '.').split('-');
           const start = splitted[0];
           const end = splitted[1];
           return (
