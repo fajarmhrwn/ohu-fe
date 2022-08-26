@@ -47,7 +47,6 @@ const Navbar = () => {
     if (Object.keys(token).length > 0) {
       setIsLogin(true);
     }
-    
   };
 
   const handleLogout = async () => {
@@ -103,15 +102,21 @@ const Navbar = () => {
           {user.name}
         </MenuButton>
         <MenuList borderColor="#FFA06E">
-          <MenuItem fontFamily="Subheading">
-            <Image
-              src={DashboardLogo}
-              mr="4"
-              alt="dashboard_logo"
-              draggable="false"
-            />
-            <Text>Dashboard</Text>
-          </MenuItem>
+          <a
+            href="https://dashboard.katitb22.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <MenuItem fontFamily="Subheading">
+              <Image
+                src={DashboardLogo}
+                mr="4"
+                alt="dashboard_logo"
+                draggable="false"
+              />
+              <Text>Dashboard</Text>
+            </MenuItem>
+          </a>
           <MenuDivider />
           <MenuItem onClick={handleLogout} fontFamily="Subheading">
             <Image
