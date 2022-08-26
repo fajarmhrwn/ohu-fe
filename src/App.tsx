@@ -17,7 +17,7 @@ const App = () => {
       'backgroundMusic'
     ) as HTMLAudioElement;
     if (music != null) {
-      if (JSON.parse(localStorage.getItem('isMute'))) {
+      if (JSON.parse(localStorage.getItem('isMute') || '')) {
         return;
       }
       music.play();

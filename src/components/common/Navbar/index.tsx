@@ -59,7 +59,7 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem('isMute'))) {
+    if (JSON.parse(localStorage.getItem('isMute') || '')) {
       setIsMute(true);
     } else {
       setIsMute(false);
