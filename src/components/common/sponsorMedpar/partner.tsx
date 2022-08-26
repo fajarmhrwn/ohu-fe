@@ -25,7 +25,7 @@ const getSponsorHeight = (size: string) => {
 };
 
 const Partner: React.FC<Props> = ({ partners }: Props) => (
-  <Box maxWidth="container.xl">
+  <Box maxWidth="container.xl" overflowX="hidden">
     {Object.keys(partners).map((key) => (
       <Flex
         key={`size-${key}`}

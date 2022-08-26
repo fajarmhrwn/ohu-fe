@@ -79,6 +79,7 @@ const Card = ({
           h="25%"
           alignItems="center"
           justifyContent="center"
+          px="3"
         >
           <Heading
             opacity={{
@@ -89,6 +90,11 @@ const Card = ({
             transition="200ms ease-out"
             color="#eeeeee"
             fontWeight="400"
+            fontSize={{
+              base: 'lg',
+              md: '2xl'
+            }}
+            textAlign="center"
           >
             {label}
           </Heading>

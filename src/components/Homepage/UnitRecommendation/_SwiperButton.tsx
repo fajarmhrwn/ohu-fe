@@ -34,7 +34,7 @@ const SwiperButton = ({
       cursor="pointer"
     >
       <Text
-        fontSize="21px"
+        fontSize="sm"
         fontWeight={hover || position === index ? 'bold' : ''}
         position="relative"
       >

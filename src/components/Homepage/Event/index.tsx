@@ -21,7 +21,7 @@ const Event: () => JSX.Element = () => {
   ];
 
   return (
-    <Box backgroundColor="#FFEBB0" py={5} overflow="hidden">
+    <Box backgroundColor="#FFEBB0" py={5} overflowX="hidden">
       <Flex
         justifyContent={{ base: 'center', lg: 'space-around' }}
         alignItems="center"

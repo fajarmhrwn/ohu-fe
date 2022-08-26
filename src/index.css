@@ -30,3 +30,7 @@
   cursor: pointer;
   visibility: hidden;
 }
+
+body {
+  overflow-x: hidden;
+}

@@ -43,6 +43,7 @@ const Footer = () => (
       py={5}
       px={{ base: 5, md: 16 }}
       flexDirection={{ base: 'column', md: 'row' }}
+      overflowX="hidden"
     >
       <Box display="flex" flexDirection="column" alignSelf="center">
         <Link to="/">

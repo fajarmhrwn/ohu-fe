@@ -12,12 +12,16 @@ const Card = ({ img, label, onClick }: ICard) => (
     bg="#FFFFFF"
     boxShadow="4px 9px 28px rgba(0, 0, 0, 0.25);"
     h={{
-      base: '15em',
-      md: '22.5em'
+      base: '13em',
+      md: '14em',
+      lg: '18em',
+      xl: '20em'
     }}
     w={{
       base: '12em',
-      md: '19.5em'
+      md: '12em',
+      lg: '16em',
+      xl: '18em'
     }}
     _hover={{
       boxShadow: '4px 9px 28px rgba(0, 0, 0, 0.5);',
@@ -33,14 +37,23 @@ const Card = ({ img, label, onClick }: ICard) => (
         src={img}
         draggable="false"
         w={{
-          base: '8em',
-          lg: '11em'
+          base: '5em',
+          md: '7em',
+          lg: '9em'
         }}
         borderTopRadius="10px"
       />
     </Center>
     <Flex h="30%" justifyContent="center" alignItems="center">
-      <Text fontFamily="Subheading" fontSize="3xl" textAlign="center">
+      <Text
+        fontFamily="Subheading"
+        fontSize={{
+          base: 'lg',
+          md: 'xl',
+          lg: '3xl'
+        }}
+        textAlign="center"
+      >
         {label}
       </Text>
     </Flex>
