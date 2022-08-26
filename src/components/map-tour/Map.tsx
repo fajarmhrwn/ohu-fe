@@ -1,13 +1,13 @@
 import { Box } from '@chakra-ui/react';
 import {
+  Circle,
   ImageOverlay,
   MapContainer,
-  Marker,
   TileLayer,
   useMapEvent
 } from 'react-leaflet';
-import L, { Map } from 'leaflet';
-import { TourData } from '@pages/PageTour';
+import { Map } from 'leaflet';
+import { TourData, MarkerData } from '@pages/PageTour';
 import MapOhuFull from '@assets/map_ohu_full.png';
 import { motion } from 'framer-motion';
 import { getTransition } from 'src/util/transition';
@@ -18,17 +18,19 @@ interface Props {
   setMap: (map: Map) => void | null;
 }
 export const TourMap = ({ data, setMap }: Props) => {
+  const MapMarker = (marker: MarkerData) => <Circle center={marker.position} radius={12} eventHandlers={{click: () => {/* console.log(marker.title) */}}}/>;
 
   const MapImage = () => {
-    useMapEvent('click', () => {
-      // console.log(`[${  ev.latlng.lat  },${  ev.latlng.lng  }]`);
+    useMapEvent('click', (ev) => {
+      ev
+      // console.log('[' + ev.latlng.lat + ',' + ev.latlng.lng + ']');
     });
     const imageSize = 0.003; // 0.5*image real width
     const imageRatio = 45 / 35;
     const imageBounds: [[number, number], [number, number]] = [
       [
-        data.centerPosition[0] - imageSize,
-        data.centerPosition[1] + imageRatio * imageSize
+        data.centerPosition[1] - imageSize,
+        data.centerPosition[0] + imageRatio * imageSize
       ],
       [
         data.centerPosition[0] + imageSize,
@@ -37,7 +39,6 @@ export const TourMap = ({ data, setMap }: Props) => {
     ];
     return <ImageOverlay bounds={imageBounds} url={MapOhuFull} />;
   };
-
 
   return (
     <motion.div {...getTransition('bottom', { delay: 0.1 })}>
@@ -52,11 +53,9 @@ export const TourMap = ({ data, setMap }: Props) => {
           zoomControl={false}
         >
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          <MapImage/>
+          <MapImage />
           {data.markers.map((marker) => (
-            <Marker position={marker.position} icon={L.icon({iconUrl: marker.icon})} eventHandlers={{click: () => {
-              // console.log(marker.title);
-            }}}/>
+            <MapMarker {...marker} />
           ))}
         </MapContainer>
       </Box>
