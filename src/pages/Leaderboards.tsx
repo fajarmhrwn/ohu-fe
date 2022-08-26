@@ -160,7 +160,7 @@ export const Leaderboards = () => {
         ) : meta.total <= 0 || currentPage > meta.pageCount ? (
           <ErrorNotFoundPage message="No Data" />
         ) : (
-          <ErrorNotFoundPage message="Perhatikan Input Kamu Kembali" />
+          <ErrorNotFoundPage message="Sepertinya ada yang salah" />
         )}
       </Flex>
     </PageLayout>
