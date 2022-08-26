@@ -66,7 +66,7 @@ export const TourPopup = ({
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getUnitById(id);
+      const data = await getUnitById(id ?? '');
       setName(data.name);
       setRundown(data.rundown.data);
       setDescription(data.description);
@@ -74,8 +74,8 @@ export const TourPopup = ({
       if (data.video) {
         data.video = data.video.replace('youtu.be', 'youtube.com/embed');
         data.video = data.video.replace('watch?v=', 'embed/');
+        setVideo(data.video);
       }
-      setVideo(data.video);
       // setOnAir(data.onAir);
     };
 
@@ -161,9 +161,11 @@ export const TourPopup = ({
               mt="-2"
               mb="3"
             />
-            <AspectRatio maxW="560px" ratio={16 / 9}>
-              <Box as="iframe" title="profile" src={video} allowFullScreen />
-            </AspectRatio>
+            {video && (
+              <AspectRatio maxW="560px" ratio={16 / 9}>
+                <Box as="iframe" title="profile" src={video} allowFullScreen />
+              </AspectRatio>
+            )}
             <Text fontFamily="Heading" fontSize="4xl" mt={6}>
               ecritin
             </Text>
