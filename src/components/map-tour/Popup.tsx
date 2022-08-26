@@ -12,9 +12,26 @@ import {
   Link,
   Icon
 } from '@chakra-ui/react';
+import { useState, useEffect } from 'react';
 import RecCard from '@components/Homepage/UnitRecommendation/_Card';
 import ShowcaseCard from '@components/Homepage/UnitShowcase/_Card';
 import { FaTimes } from 'react-icons/fa';
+import ReactMarkdown from 'react-markdown';
+import { getUnitById } from '../../service/unit';
+import { Rundown } from './Rundown';
+
+interface RundownDetail {
+  nama: string;
+  waktu: string;
+}
+
+interface RundownProps {
+  nama: string;
+  start: string;
+  end: string;
+  hari: string;
+  detail: RundownDetail[];
+}
 
 interface IPopup {
   children?: React.ReactNode;
@@ -24,6 +41,7 @@ interface IPopup {
   isActive?: boolean;
   isInView?: boolean;
   img?: string;
+  id?: string;
 }
 
 export const TourPopup = ({
@@ -33,12 +51,37 @@ export const TourPopup = ({
   label,
   isActive,
   isInView,
-  img
+  img,
+  id
 }: IPopup) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   // TODO: handle onair
-  // TODO: handle data fix
-  const onAir = true; // dummy data
+  const onAir = true;
+  const [name, setName] = useState('');
+  const [video, setVideo] = useState('');
+  const [rundown, setRundown] = useState<RundownProps[]>([]);
+  const [description, setDescription] = useState('');
+  const [link, setLink] = useState('');
+  // const [onAir, setOnAir] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getUnitById(id ?? '');
+      setName(data.name);
+      setRundown(data.rundown.data);
+      setDescription(data.description);
+      setLink(data.link);
+      if (data.video) {
+        data.video = data.video.replace('youtu.be', 'youtube.com/embed');
+        data.video = data.video.replace('watch?v=', 'embed/');
+        setVideo(data.video);
+      }
+      // setOnAir(data.onAir);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       {isRec ? (
@@ -77,8 +120,8 @@ export const TourPopup = ({
           >
             <Flex alignItems="center" justifyContent="space-between">
               <Flex alignItems="center">
-                <Text fontFamily="Heading" fontSize="32pt">
-                  Unit A
+                <Text fontFamily="Heading" fontSize="4xl">
+                  {name}
                 </Text>
                 <Flex
                   background="#79C7D4"
@@ -98,7 +141,7 @@ export const TourPopup = ({
                     fontFamily="Subheading"
                     fontStyle="normal"
                   >
-                    {onAir ? 'On Air' : 'Off Air'}
+                    {onAir ? 'Live' : 'Off Air'}
                   </Text>
                 </Flex>
               </Flex>
@@ -118,16 +161,13 @@ export const TourPopup = ({
               mt="-2"
               mb="3"
             />
-            <AspectRatio maxW="560px" ratio={16 / 9}>
-              <Box
-                as="iframe"
-                title="liveStream"
-                src="https://www.youtube.com/embed/L5oAdk4x7a0"
-                allowFullScreen
-              />
-            </AspectRatio>
-            <Text fontFamily="Heading" fontSize="32pt" mt={6}>
-              unow
+            {video && (
+              <AspectRatio maxW="560px" ratio={16 / 9}>
+                <Box as="iframe" title="profile" src={video} allowFullScreen />
+              </AspectRatio>
+            )}
+            <Text fontFamily="Heading" fontSize="4xl" mt={6}>
+              ecritin
             </Text>
             <Box
               borderRadius="5px"
@@ -140,54 +180,36 @@ export const TourPopup = ({
             <Text
               mt={2}
               fontFamily="Body"
-              fontSize="12pt"
-              lineHeight="short"
+              fontSize="lg"
               align="justify"
+              whiteSpace="pre-wrap"
+              wordBreak="break-word"
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed diam
-              tellus, sodales non mauris id, placerat fringilla elit. In non sem
-              porta, tristique velit in, vestibulum turpis. Nulla quis elit
-              ipsum. Nunc non mi id diam accumsan posuere tincidunt in lectus.
-              Vivamus tempus purus dui, in luctus nisi commodo eget. Fusce
-              imperdiet metus arcu, ullamcorper vehicula nulla tempus sit amet.
-              In tortor purus, malesuada ac tempus sed, pharetra ut leo. Ut sit
-              amet turpis ut turpis iaculis elementum. Quisque convallis auctor
-              turpis eget pulvinar. Vestibulum blandit massa eu ipsum lobortis,
-              ac malesuada turpis pharetra.
+              <ReactMarkdown>{description}</ReactMarkdown>
             </Text>
-            <Text fontFamily="Heading" fontSize="32pt" mt={6}>
-              iio
-            </Text>
-            <Box
-              borderRadius="5px"
-              bgColor="#ff7d4c"
-              borderColor="#ff7d4c"
-              borderWidth="3px"
-              mt="-2"
-              mb="3"
-            />
-            <Text
-              mt={2}
-              fontFamily="Body"
-              fontSize="12pt"
-              lineHeight="short"
-              align="justify"
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed diam
-              tellus, sodales non mauris id, placerat fringilla elit. In non sem
-              porta, tristique velit in, vestibulum turpis. Nulla quis elit
-              ipsum. Nunc non mi id diam accumsan posuere tincidunt in lectus.
-              Vivamus tempus purus dui, in luctus nisi commodo eget. Fusce
-              imperdiet metus arcu, ullamcorper vehicula nulla tempus sit amet.
-              In tortor purus, malesuada ac tempus sed, pharetra ut leo. Ut sit
-              amet turpis ut turpis iaculis elementum. Quisque convallis auctor
-              turpis eget pulvinar. Vestibulum blandit massa eu ipsum lobortis,
-              ac malesuada turpis pharetra.
-            </Text>
-            <Text fontFamily="Heading" fontSize="24pt" mt={4} align="center">
+            {rundown.length > 0 ? (
+              <>
+                <Text fontFamily="Heading" fontSize="4xl" mt={6}>
+                  unow
+                </Text>
+                <Box
+                  borderRadius="5px"
+                  bgColor="#ff7d4c"
+                  borderColor="#ff7d4c"
+                  borderWidth="3px"
+                  mt="-2"
+                  mb="3"
+                />
+                {rundown.map((item: RundownProps, idx: number) => (
+                  // eslint-disable-next-line
+                  <Rundown key={idx} {...item} />
+                ))}
+              </>
+            ) : null}
+            <Text fontFamily="Heading" fontSize="3xl" mt={4} align="center">
               ntresed?
             </Text>
-            <Link href="https://google.com" isExternal>
+            <Link href={link || 'https://katitb22.com/'} isExternal>
               <Button
                 type="button"
                 fontSize="18pt"

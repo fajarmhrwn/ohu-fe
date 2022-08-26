@@ -19,14 +19,14 @@ interface Props {
   setMap: (map: Map) => void | null;
 }
 export const TourMap = ({ data, setMap }: Props) => {
-  const MapMarker = ({ position, name }: MarkerData) => (
+  const MapMarker = ({ id, position, name }: MarkerData) => (
     <Circle
       center={position}
       radius={11}
       pathOptions={{ color: 'transparent', fillColor: 'transparent' }}
     >
       <Popup>
-        <TourPopup id="c7043ac6-5291-4991-91e4-6851efa35022">{name}</TourPopup>
+        <TourPopup id={id}>{name}</TourPopup>
       </Popup>
     </Circle>
   );
