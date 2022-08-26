@@ -40,6 +40,7 @@ const Partner: React.FC<Props> = ({ partners }: Props) => (
               src={elmt.src}
               alt={elmt.name}
               key={`img-${elmt.name}`}
+              draggable="false"
               height={getSponsorHeight(elmt.size)}
             />
           </Box>
