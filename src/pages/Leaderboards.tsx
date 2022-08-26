@@ -61,7 +61,7 @@ export const Leaderboards = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [currentPage]);
 
   return (
     <PageLayout title="Leaderboard">
