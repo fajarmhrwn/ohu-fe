@@ -63,7 +63,7 @@ export const TourMap = ({ data, setMap }: Props) => {
         <MapContainer
           center={data.centerPosition}
           zoom={data.zoom}
-          maxZoom={100}
+          maxZoom={20}
           style={{ height: '100%', width: '100%' }}
           scrollWheelZoom={false}
           ref={setMap}
