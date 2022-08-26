@@ -198,7 +198,7 @@ export const TourPopup = ({
             >
               <ReactMarkdown>{description}</ReactMarkdown>
             </Box>
-            {rundown.length > 0 ? (
+            {rundown && rundown.length > 0 ? (
               <>
                 <Text fontFamily="Heading" fontSize="4xl" mt={6}>
                   unow
