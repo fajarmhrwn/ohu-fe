@@ -27,7 +27,7 @@ const Carousel = () => {
 
   return (
     <Box pt={8} pb={6}>
-      <Swiper slidesPerView={5} centeredSlides>
+      <Swiper slidesPerView={5} centeredSlides initialSlide={2} grabCursor>
         {units.map((unit, index) => (
           <SwiperSlide key={unit.id}>
             {({ isActive }) => {
