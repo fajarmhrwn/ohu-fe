@@ -5,7 +5,9 @@ import {
   Center,
   Image,
   Spacer,
-  AspectRatio
+  AspectRatio,
+  Link,
+  Button
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { getTransition } from 'src/util/transition';
@@ -39,22 +41,43 @@ const Hero = () => (
       <Spacer />
       <motion.section {...getTransition('bottom', { delay: 0.5 })}>
         <Center>
-          <AspectRatio
-            w={{
-              base: '15em',
-              md: '25em',
-              lg: '40em'
-            }}
-            ratio={16 / 9}
-          >
-            <iframe
-              src="https://www.youtube.com/embed/9EqZRAUfkuo"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </AspectRatio>
+          <Flex flexDir="column" alignItems="center" gap="5">
+            <AspectRatio
+              w={{
+                base: '15em',
+                md: '25em',
+                lg: '40em'
+              }}
+              ratio={16 / 9}
+            >
+              <iframe
+                src="https://www.youtube.com/embed/9EqZRAUfkuo"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </AspectRatio>
+            <motion.section {...getTransition('bottom', { delay: 0.5 })}>
+              <Link
+                href="https://s.id/ohuitb2022"
+                target="_blank"
+                _hover={{ textStyle: 'none' }}
+              >
+                <Button
+                  backgroundColor="#FFA06F"
+                  w={{ base: '250px', lg: '20vw' }}
+                  borderRadius="full"
+                  fontSize={{ base: 'md', lg: '2xl' }}
+                  color="white"
+                  transition="all 0.15s ease-in-out"
+                  _hover={{ backgroundColor: '#FFB08D' }}
+                >
+                  Panduan OHU
+                </Button>
+              </Link>
+            </motion.section>
+          </Flex>
         </Center>
       </motion.section>
       <Spacer />
