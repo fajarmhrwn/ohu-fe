@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import Logo from '@assets/logo_sementara.png';
 import DashboardLogo from '@assets/dashboard_menu.svg';
 import LogoutLogo from '@assets/logout_menu.svg';
@@ -26,9 +26,12 @@ import {
 import { HamburgerIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import { GiSpeaker, GiSpeakerOff } from 'react-icons/gi';
 import { Link, matchPath } from 'react-router-dom';
+import APIClient from '../../../util/api-client';
+import AuthService from '../../../service/auth';
+import { UserContext } from '../../../context';
 
 const Navbar = () => {
-  // TODO: handle login (BE)
+  const { user, setLoggedIn }: any = useContext(UserContext);
   const [isLogin, setIsLogin] = useState<boolean>(false);
   const [isMute, setIsMute] = useState<boolean>(false);
   const links = [
@@ -38,6 +41,23 @@ const Navbar = () => {
   ];
   const { isOpen, onOpen, onClose } = useDisclosure();
   const drawerRef = useRef<HTMLButtonElement>(null);
+
+  const setLoginIfHaveToken: Function = async () => {
+    const token = await APIClient.checkToken();
+    if (Object.keys(token).length > 0) {
+      setIsLogin(true);
+    }
+  };
+
+  const handleLogout = async () => {
+    await AuthService.logout();
+    setLoggedIn(false);
+    window.location.href = '/';
+  };
+
+  useEffect(() => {
+    setLoginIfHaveToken();
+  }, []);
 
   // music
   const musicTrigger = () => {
@@ -79,21 +99,26 @@ const Navbar = () => {
           fontFamily="Subheading"
           _hover={{ bg: 'transparent', textColor: '#F4A641' }}
         >
-          {/* TODO: Ganti sama user yang login? */}
-          Lorem Ipsum
+          {user.name}
         </MenuButton>
         <MenuList borderColor="#FFA06E">
-          <MenuItem fontFamily="Subheading">
-            <Image
-              src={DashboardLogo}
-              mr="4"
-              alt="dashboard_logo"
-              draggable="false"
-            />
-            <Text>Dashboard</Text>
-          </MenuItem>
+          <a
+            href="https://dashboard.katitb22.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <MenuItem fontFamily="Subheading">
+              <Image
+                src={DashboardLogo}
+                mr="4"
+                alt="dashboard_logo"
+                draggable="false"
+              />
+              <Text>Dashboard</Text>
+            </MenuItem>
+          </a>
           <MenuDivider />
-          <MenuItem onClick={() => setIsLogin(false)} fontFamily="Subheading">
+          <MenuItem onClick={handleLogout} fontFamily="Subheading">
             <Image
               src={LogoutLogo}
               mr="4"

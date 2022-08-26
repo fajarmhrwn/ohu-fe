@@ -64,7 +64,7 @@ export const Leaderboards = () => {
     };
 
     fetchData();
-  }, [currentPage, toggle, filter]);
+  }, [currentPage, toggle]);
 
   return (
     <PageLayout title="Leaderboard">
