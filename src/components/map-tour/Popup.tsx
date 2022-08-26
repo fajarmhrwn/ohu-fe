@@ -16,7 +16,7 @@ import { useState, useEffect } from 'react';
 import RecCard from '@components/Homepage/UnitRecommendation/_Card';
 import ShowcaseCard from '@components/Homepage/UnitShowcase/_Card';
 import { FaTimes } from 'react-icons/fa';
-import {getUnitById} from '../../service/unit';
+import { getUnitById } from '../../service/unit';
 
 interface IPopup {
   children?: React.ReactNode;
@@ -26,7 +26,7 @@ interface IPopup {
   isActive?: boolean;
   isInView?: boolean;
   img?: string;
-  id: string;
+  id?: string;
 }
 
 export const TourPopup = ({
@@ -41,21 +41,22 @@ export const TourPopup = ({
 }: IPopup) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   // TODO: handle onair
-
+  const onAir = true;
   const [name, setName] = useState('');
   const [video, setVideo] = useState('');
   const [rundown, setRundown] = useState<any[]>([]);
   const [description, setDescription] = useState('');
   const [link, setLink] = useState('');
-  const [onAir, setOnAir] = useState(true);
+  // const [onAir, setOnAir] = useState(true);
 
   const fetchData = async () => {
     const data = await getUnitById(id);
     setName(data.name);
-    setRundown(data.rundown);
+    setRundown(data.rundown.data);
     setDescription(data.description);
     setLink(data.link);
     if (data.video) {
+      data.video = data.video.replace('youtu.be', 'youtube.com/embed');
       data.video = data.video.replace('watch?v=', 'embed/');
     }
     setVideo(data.video);
@@ -145,37 +146,57 @@ export const TourPopup = ({
               mb="3"
             />
             <AspectRatio maxW="560px" ratio={16 / 9}>
-              <Box
-                as="iframe"
-                title="liveStream"
-                src={video}
-                allowFullScreen
-              />
+              <Box as="iframe" title="liveStream" src={video} allowFullScreen />
             </AspectRatio>
             {rundown && (
-              <><Text fontFamily="Heading" fontSize="32pt" mt={6}>
-                unow
-              </Text><Box borderRadius="5px" bgColor="#ff7d4c" borderColor="#ff7d4c" borderWidth="3px" mt="-2" mb="3" /></>
-            )}
-            {rundown && rundown.map(item => (
-              <div>
-                <Text fontFamily="Heading" fontSize="16pt" mt={4} mb={3}>{item.day} {item.start} - {item.end}</Text>
-                {
-                  item.detail.map(detail => (<Box borderRadius="5px" bgColor="#ff7d4c" borderColor="#ff7d4c" borderWidth="10px" mt="-2" mb="5">{detail.nama} {detail.start}</Box>))
-                }
-              </div>
-            ))}
-            {
-              description && (
-                <><Text fontFamily="Heading" fontSize="32pt" mt={6}>
-                  Description
-                </Text><Box
+              <>
+                <Text fontFamily="Heading" fontSize="32pt" mt={6}>
+                  unow
+                </Text>
+                <Box
                   borderRadius="5px"
                   bgColor="#ff7d4c"
                   borderColor="#ff7d4c"
                   borderWidth="3px"
                   mt="-2"
-                  mb="3" /><Text
+                  mb="3"
+                />
+              </>
+            )}
+            {rundown &&
+              rundown.map((item) => (
+                <div>
+                  <Text fontFamily="Heading" fontSize="16pt" mt={4} mb={3}>
+                    {item.nama} {item.hari} {item.start} - {item.end} 
+                  </Text>
+                  {item.detail.map((detail) => (
+                    <Box
+                      borderRadius="5px"
+                      bgColor="#ff7d4c"
+                      borderColor="#ff7d4c"
+                      borderWidth="10px"
+                      mt="-2"
+                      mb="5"
+                    >
+                      {detail.waktu} {detail.nama}
+                    </Box>
+                  ))}
+                </div>
+              ))}
+            {description && (
+              <>
+                <Text fontFamily="Heading" fontSize="32pt" mt={6}>
+                  Description
+                </Text>
+                <Box
+                  borderRadius="5px"
+                  bgColor="#ff7d4c"
+                  borderColor="#ff7d4c"
+                  borderWidth="3px"
+                  mt="-2"
+                  mb="3"
+                />
+                <Text
                   mt={2}
                   fontFamily="Body"
                   fontSize="12pt"
@@ -185,9 +206,9 @@ export const TourPopup = ({
                   wordBreak="break-word"
                 >
                   {description}
-                </Text></>
-              )
-            }
+                </Text>
+              </>
+            )}
             <Text fontFamily="Heading" fontSize="24pt" mt={4} align="center">
               ntresed?
             </Text>
