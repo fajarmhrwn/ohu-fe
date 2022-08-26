@@ -1,8 +1,18 @@
-import { Box, Flex, Image, Stack, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Image,
+  Stack,
+  Text,
+  Heading,
+  VStack
+} from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
 
 import Logo from '@assets/logo_sementara.png';
+import { sponsorObject, medparObject } from 'src/util/sponsorMedpar';
+import Partner from '../sponsorMedpar/partner';
 
 const socials = [
   {
@@ -94,6 +104,28 @@ export const TempFooter = () => (
           ))}
         </Stack>
       </Box>
+    </Flex>
+    <Flex alignItems="center" alignSelf="center" bg="#ffa06e">
+      <VStack width="full">
+        <Heading
+          fontFamily="Heading"
+          fontSize={{ base: '5xl', lg: '6xl' }}
+          color="gray.900"
+          text-align="center"
+        >
+          Sponsors
+        </Heading>
+        <Partner partners={sponsorObject} />
+        <Heading
+          fontFamily="Heading"
+          fontSize={{ base: '5xl', lg: '6xl' }}
+          color="gray.900"
+          text-align="center"
+        >
+          Media Partners
+        </Heading>
+        <Partner partners={medparObject} />
+      </VStack>
     </Flex>
   </Flex>
 );
