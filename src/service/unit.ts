@@ -19,7 +19,8 @@ export const updateVisitors = async (id: string, visitors: number) => {
       visitors
     }
   });
-  
+};
+
 export const getScore = async (url: string) => {
   const { data } = await axios.get(`${BASE_URL}${url}`);
 
