@@ -40,7 +40,7 @@ const UnitShowcase = () => {
   useEffect(() => {
     const fetchUnitShowcase = async () => {
       try {
-        const data = await getUnits('/units/showcase?populate=*');
+        const data = await getUnits('/units/showcase');
         setShowcase(data);
       } catch (err) {
         //
@@ -101,7 +101,7 @@ const UnitShowcase = () => {
               >
                 <TourPopup
                   isShowcase
-                  img={`${import.meta.env.VITE_API_BASE_URL}${unit.image.url}`}
+                  img={`${import.meta.env.VITE_API_BASE_URL}${unit.logo.url}`}
                   label={unit.name}
                 />
               </motion.div>
