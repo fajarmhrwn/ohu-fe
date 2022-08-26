@@ -102,7 +102,7 @@ const UnitShowcase = () => {
                 <TourPopup
                   id={unit.ext_id}
                   isShowcase
-                  img={`${import.meta.env.VITE_API_BASE_URL}${unit.logo.url}`}
+                  img={unit.logo}
                   label={unit.name}
                 />
               </motion.div>
