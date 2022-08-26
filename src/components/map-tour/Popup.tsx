@@ -66,7 +66,7 @@ export const TourPopup = ({
   const [rundown, setRundown] = useState<RundownProps[]>([]);
   const [description, setDescription] = useState('');
   const [link, setLink] = useState('');
-  const [onAir, setOnAir] = useState(true);
+  const [onAir, setOnAir] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
