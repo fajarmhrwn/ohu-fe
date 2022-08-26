@@ -43,18 +43,12 @@ const Carousel = () => {
                 >
                   <TourPopup
                     isRec
-                    img={`${import.meta.env.VITE_API_BASE_URL}${unit.logo.url}`}
+                    img={unit.logo}
                     label={unit.name}
                     isActive={isActive}
                     isInView={isInView}
                     isFull={unit.isFullImg}
-                    imgFull={
-                      unit.fullImage
-                        ? `${import.meta.env.VITE_API_BASE_URL}${
-                            unit.fullImage.url
-                          }`
-                        : ''
-                    }
+                    imgFull={unit.fullImage}
                   />
                 </motion.div>
               );
