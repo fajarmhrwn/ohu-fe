@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Logo from '@assets/logo_sementara.png';
 import DashboardLogo from '@assets/dashboard_menu.svg';
 import LogoutLogo from '@assets/logout_menu.svg';
@@ -24,11 +24,13 @@ import {
   IconButton
 } from '@chakra-ui/react';
 import { HamburgerIcon, ChevronDownIcon } from '@chakra-ui/icons';
+import { GiSpeaker, GiSpeakerOff } from 'react-icons/gi';
 import { Link, matchPath } from 'react-router-dom';
 
 const Navbar = () => {
   // TODO: handle login (BE)
   const [isLogin, setIsLogin] = useState<boolean>(false);
+  const [isMute, setIsMute] = useState<boolean>(false);
   const links = [
     { label: 'Home', link: '/' },
     { label: 'Tour', link: '/tour' },
@@ -36,6 +38,33 @@ const Navbar = () => {
   ];
   const { isOpen, onOpen, onClose } = useDisclosure();
   const drawerRef = useRef<HTMLButtonElement>(null);
+
+  // music
+  const musicTrigger = () => {
+    const music = document.getElementById(
+      'backgroundMusic'
+    ) as HTMLAudioElement;
+
+    if (music != null) {
+      if (!isMute) {
+        music.muted = true;
+        localStorage.setItem('isMute', 'true');
+        setIsMute(true);
+      } else {
+        music.muted = false;
+        localStorage.setItem('isMute', 'false');
+        setIsMute(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem('isMute'))) {
+      setIsMute(true);
+    } else {
+      setIsMute(false);
+    }
+  }, []);
 
   const UtilNav = () =>
     isLogin ? (
@@ -170,6 +199,16 @@ const Navbar = () => {
           );
         })}
         <UtilNav />
+        <IconButton
+          aria-label="music"
+          colorScheme="brown"
+          icon={!isMute ? <GiSpeaker /> : <GiSpeakerOff />}
+          onClick={musicTrigger}
+          fontSize="2xl"
+          _hover={{
+            opacity: '0.8'
+          }}
+        />
       </Flex>
       <Show below="lg">
         <IconButton
@@ -221,6 +260,16 @@ const Navbar = () => {
                   );
                 })}
                 <UtilNav />
+                <IconButton
+                  aria-label="music"
+                  colorScheme="brown"
+                  icon={!isMute ? <GiSpeaker /> : <GiSpeakerOff />}
+                  onClick={musicTrigger}
+                  fontSize="2xl"
+                  _hover={{
+                    opacity: '0.8'
+                  }}
+                />
               </Flex>
             </DrawerBody>
           </DrawerContent>
