@@ -1,53 +1,35 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { getUnits } from 'src/service/unit';
 import { Box, Flex } from '@chakra-ui/react';
 import { useInView, motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import ReactSVG from '@assets/react.svg';
 import 'swiper/css';
 
 import { TourPopup } from '@components/map-tour/Popup';
 import { getTransition } from 'src/util/transition';
 import SwiperButton from './_SwiperButton';
 
-const slide = [
-  {
-    id: 1,
-    img: ReactSVG,
-    label: 'Unit A'
-  },
-  {
-    id: 2,
-    img: ReactSVG,
-    label: 'Unit B'
-  },
-  {
-    id: 3,
-    img: ReactSVG,
-    label: 'Unit C'
-  },
-  {
-    id: 4,
-    img: ReactSVG,
-    label: 'Unit D'
-  },
-  {
-    id: 5,
-    img: ReactSVG,
-    label: 'Unit E'
-  }
-];
-
 const Carousel = () => {
   const [position, setPosition] = useState(0);
+  const [units, setUnits] = useState<any[]>([]);
+
+  useEffect(() => {
+    const getUnitRecommendation = async () => {
+      const data = await getUnits('/units/recommendation');
+      setUnits(data);
+    };
+
+    getUnitRecommendation();
+  }, []);
 
   const ref = useRef(null);
   const isInView = useInView(ref);
 
   return (
-    <Box pt={8}>
+    <Box pt={8} pb={6}>
       <Swiper slidesPerView={5} centeredSlides>
-        {slide.map((s, index) => (
-          <SwiperSlide key={s.id}>
+        {units.map((unit, index) => (
+          <SwiperSlide key={unit.ext_id}>
             {({ isActive }) => {
               if (isActive) {
                 setPosition(index);
@@ -61,10 +43,12 @@ const Carousel = () => {
                 >
                   <TourPopup
                     isRec
-                    img={s.img}
-                    label={s.label}
+                    img={unit.logo}
+                    label={unit.name}
                     isActive={isActive}
                     isInView={isInView}
+                    isFull={unit.isFullImg}
+                    imgFull={unit.fullImage}
                   />
                 </motion.div>
               );
@@ -82,13 +66,13 @@ const Carousel = () => {
           }}
           ref={ref}
         >
-          {slide.map((s, index) => (
+          {units.map((unit, index) => (
             <SwiperButton
               index={index}
-              label={s.label}
+              label={unit.name}
               position={position}
               setPosition={setPosition}
-              key={s.id}
+              key={unit.ext_id}
             />
           ))}
         </Flex>

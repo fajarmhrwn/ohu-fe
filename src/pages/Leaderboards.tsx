@@ -9,7 +9,7 @@ import Card from '@components/leaderboards/Card';
 import Search from '@components/leaderboards/Search';
 import Image1 from '@assets/leaderboard_blue.svg';
 import Image2 from '@assets/leaderboard_yellow.svg';
-import { getDataAPI } from 'src/util/api';
+import { getScore } from 'src/service/unit';
 import {
   cardAnimation,
   nyemangatinAnimation,
@@ -53,7 +53,7 @@ export const Leaderboards = () => {
       try {
         const fakultas = filter.length > 0 ? `&fakultas=${filter}` : '';
         const { data, metadata }: { data: ScoreProps[]; metadata: MetaProps } =
-          await getDataAPI(
+          await getScore(
             `/units/score?search=${search}${fakultas}&page=${currentPage}`
           );
         setScores(data);
@@ -64,7 +64,7 @@ export const Leaderboards = () => {
     };
 
     fetchData();
-  }, [currentPage, toggle, filter]);
+  }, [currentPage, toggle]);
 
   return (
     <PageLayout title="Leaderboard">

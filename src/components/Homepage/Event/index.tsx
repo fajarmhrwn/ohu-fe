@@ -15,10 +15,8 @@ import { motion } from 'framer-motion';
 import { getTransition } from 'src/util/transition';
 
 const Event: () => JSX.Element = () => {
-  // TODO: link mission where
   const links = [
     { label: 'OHU Map Tour', to: '/tour' },
-    { label: 'Mission', to: '/' },
     { label: 'Leaderboard', to: '/leaderboard' }
   ];
 

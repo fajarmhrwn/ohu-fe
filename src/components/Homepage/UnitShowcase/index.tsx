@@ -40,7 +40,7 @@ const UnitShowcase = () => {
   useEffect(() => {
     const fetchUnitShowcase = async () => {
       try {
-        const data = await getUnits('/units/showcase?populate=*');
+        const data = await getUnits('/units/showcase');
         setShowcase(data);
       } catch (err) {
         //
@@ -99,11 +99,7 @@ const UnitShowcase = () => {
               <motion.div
                 {...getTransition('left', { delay: 0.5 * index, duration: 1 })}
               >
-                <TourPopup
-                  isShowcase
-                  img={`${import.meta.env.VITE_API_BASE_URL}${unit.image.url}`}
-                  label={unit.name}
-                />
+                <TourPopup isShowcase img={unit.logo} label={unit.name} />
               </motion.div>
             ))}
           </Flex>
