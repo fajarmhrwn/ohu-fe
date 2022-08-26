@@ -96,7 +96,7 @@ const Hero = () => (
         base: '6.3em',
         md: '11em',
         lg: '14.5em',
-        xl: '18em'
+        xl: '18.5em'
       }}
     />
     <Image
