@@ -53,8 +53,6 @@ export const TourMap = ({ data, setMap }: Props) => {
           style={{ height: '100%', width: '100%' }}
           scrollWheelZoom={false}
           ref={setMap}
-          dragging={false}
-          zoomControl={false}
         >
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           <MapImage />

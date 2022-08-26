@@ -1,4 +1,5 @@
-[{
+[
+  {
     "title": "Unit Basket Ganesha (UBG ITB)",
     "position": [0.9994356098563035, 0.9998170771225912]
   },
@@ -231,8 +232,7 @@
     "position": [1.0018874722735494, 0.9975714741979004]
   },
   {
-    "title":
-      "Keluarga Mahasiswa Pecinta Alam Ganesha Institut Teknologi Bandung (KMPA Ganesha ITB)",
+    "title": "Keluarga Mahasiswa Pecinta Alam Ganesha Institut Teknologi Bandung (KMPA Ganesha ITB)",
     "position": [1.0020912889880098, 0.9973140937377157]
   },
   {
@@ -362,4 +362,5 @@
   {
     "title": "Pers Mahasiswa ITB",
     "position": [0.9992103385677251, 0.9994522891522408]
-  }]
+  }
+]
