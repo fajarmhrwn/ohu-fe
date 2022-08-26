@@ -29,7 +29,7 @@ const Carousel = () => {
     <Box pt={8} pb={6}>
       <Swiper slidesPerView={5} centeredSlides>
         {units.map((unit, index) => (
-          <SwiperSlide key={unit.ext_id}>
+          <SwiperSlide key={unit.id}>
             {({ isActive }) => {
               if (isActive) {
                 setPosition(index);
@@ -42,7 +42,7 @@ const Carousel = () => {
                   })}
                 >
                   <TourPopup
-                    id={unit.ext_id}
+                    id={unit.id}
                     isRec
                     img={unit.logo}
                     label={unit.name}
@@ -73,7 +73,7 @@ const Carousel = () => {
               label={unit.name}
               position={position}
               setPosition={setPosition}
-              key={unit.ext_id}
+              key={unit.id}
             />
           ))}
         </Flex>

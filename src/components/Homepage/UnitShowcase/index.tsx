@@ -100,7 +100,7 @@ const UnitShowcase = () => {
                 {...getTransition('left', { delay: 0.5 * index, duration: 1 })}
               >
                 <TourPopup
-                  id={unit.ext_id}
+                  id={unit.id}
                   isShowcase
                   img={unit.logo}
                   label={unit.name}

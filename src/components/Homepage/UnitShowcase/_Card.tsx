@@ -26,6 +26,7 @@ const Card = ({ img, label, onClick }: ICard) => (
     }}
     cursor="pointer"
     onClick={onClick}
+    p="2"
   >
     <Center h="70%">
       <Image
@@ -39,7 +40,7 @@ const Card = ({ img, label, onClick }: ICard) => (
       />
     </Center>
     <Flex h="30%" justifyContent="center" alignItems="center">
-      <Text fontFamily="Subheading" fontSize="4xl">
+      <Text fontFamily="Subheading" fontSize="3xl" textAlign="center">
         {label}
       </Text>
     </Flex>
