@@ -14,7 +14,6 @@ export const getUnitById = async (id: string) => {
 };
 
 export const getScore = async (url: string) => {
-  console.log(import.meta.env);
   const { data } = await axios.get(`${BASE_URL}${url}`);
 
   return data;
