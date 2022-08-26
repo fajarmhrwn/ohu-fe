@@ -1,13 +1,14 @@
 import { Avatar, Flex, Text } from '@chakra-ui/react';
 
 interface Props {
+  rank: number;
   name: string;
   username: string;
+  fakultas: string;
   score: number | null;
-  rank: number;
 }
 
-export const Card = ({ username, name, score, rank }: Props) => {
+export const Card = ({ username, name, score, rank, fakultas }: Props) => {
   const colors = ['#C9B037', '#B4B4B4', '#AD8A56'];
   return (
     <Flex
@@ -37,9 +38,8 @@ export const Card = ({ username, name, score, rank }: Props) => {
         <Text fontFamily="Caption" fontSize="xl" mb={-1}>
           {username}
         </Text>
-        {/* TODO: ubah ini nanti */}
         <Text fontFamily="Caption" fontSize="xl">
-          STEI-K
+          {fakultas}
         </Text>
       </Flex>
       <Text marginLeft="auto" fontFamily="Subheading" fontSize="3xl">

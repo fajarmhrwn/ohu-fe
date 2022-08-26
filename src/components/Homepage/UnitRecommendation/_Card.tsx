@@ -1,14 +1,14 @@
 import { Box, Heading, Flex, Image } from '@chakra-ui/react';
-import reactIcon from '@assets/react.svg';
 
 interface CardProps {
   label?: string;
   isActive?: boolean;
   isInView?: boolean;
+  img?: string;
   onClick: () => void;
 }
 
-const Card = ({ label, isActive, isInView, onClick }: CardProps) => (
+const Card = ({ label, isActive, isInView, img, onClick }: CardProps) => (
   <Box
     h={{
       base: '20em',
@@ -47,11 +47,12 @@ const Card = ({ label, isActive, isInView, onClick }: CardProps) => (
     >
       <Flex h="full" justifyContent="center" alignItems="center">
         <Image
+          draggable="false"
           w={{
             base: '7em',
             lg: '10em'
           }}
-          src={reactIcon}
+          src={img}
           zIndex="10"
           userSelect="none"
         />

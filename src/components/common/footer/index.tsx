@@ -1,27 +1,135 @@
-import { Box, Center, Text, Circle, VStack, HStack } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Image,
+  Stack,
+  Text,
+  Heading,
+  VStack
+} from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
+import { FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
+
+import Logo from '@assets/logo_sementara.png';
+import { sponsorObject, medparObject } from 'src/util/sponsorMedpar';
+import Partner from '../sponsorMedpar/partner';
+
+const socials = [
+  {
+    to: 'https://twitter.com/oskmitb',
+    icon: <FaTwitter size={27} />,
+    hover: '#1DA1F2'
+  },
+  {
+    to: 'https://www.instagram.com/oskm.itb/',
+    icon: <FaInstagram size={27} />,
+    hover: '#FD5949'
+  },
+  {
+    to: 'https://www.youtube.com/channel/UCmkkBEqwMZ1SEZN937pdpgA',
+    icon: <FaYoutube size={27} />,
+    hover: '#FF0000'
+  }
+];
 
 const Footer = () => (
-  // TODO: Ubah kalau dah ada content footernya
-  <Box bg="#ffa06e" px={4} py={6}>
-    <VStack
-      spacing={{ base: '20px', lg: '20px' }}
-      mt={{ base: '0px', lg: '20px' }}
+  <>
+    <Flex
+      bg="#ffa06e"
+      alignItems="center"
+      justifyContent={{ base: 'flex-start', md: 'space-between' }}
+      py={5}
+      px={{ base: 5, md: 16 }}
+      flexDirection={{ base: 'column', md: 'row' }}
     >
-      <HStack spacing={{ base: '17px', lg: '30px' }}>
-        <Circle size={{ base: '91px', lg: '186px' }} bg="#D9D9D9" />
-        <Box
+      <Box display="flex" flexDirection="column" alignSelf="center">
+        <Link to="/">
+          <Flex
+            alignItems="center"
+            justifyContent={{ base: 'center', md: 'flex-start' }}
+            flexDirection={{ base: 'column', md: 'row' }}
+          >
+            <Image
+              src={Logo}
+              draggable="false"
+              w="50px"
+              objectFit="contain"
+              mr={{ base: 0, md: 2 }}
+              mb={{ base: 2, md: 0 }}
+              borderRadius="50%"
+              transition="all 0.15s ease-in-out"
+              _hover={{
+                transform: 'scale(1.25)'
+              }}
+            />
+            <Text
+              fontSize="3xl"
+              fontFamily="Heading"
+              transition="all 0.15s ease-in-out"
+              textShadow="-1px -2px 0px #FFEBB0"
+              textAlign="center"
+              _hover={{
+                transform: 'scale(1.05)',
+                color: '#FFEBB0',
+                textShadow: '-1px -2px 0px #000000'
+              }}
+            >
+              OHU 2022
+            </Text>
+          </Flex>
+        </Link>
+        <Text mt={1} fontSize="xl" fontFamily="Caption" textAlign="center">
+          &copy; DEVA 2022 - Event & Attendance
+        </Text>
+      </Box>
+      <Flex flexDirection="column" alignSelf="center" mt={{ base: 5, md: 0 }}>
+        <Text
           fontFamily="Subheading"
-          fontSize={{ base: '36px', lg: '73px' }}
-          lineHeight={{ base: '33.12px', lg: '67.16px' }}
+          fontSize="2xl"
+          textAlign={{ base: 'center', md: 'right' }}
+          mb={2}
         >
-          <Text>KAT</Text>
-          <Text>ITB</Text>
-          <Text>2022</Text>
+          Find us on
+        </Text>
+        <Box>
+          <Stack direction="row" spacing={{ base: 3, md: 6 }}>
+            {socials.map(({ to, icon, hover }) => (
+              <a key={to} href={to} target="_blank" rel="noopener noreferrer">
+                <Box
+                  transition="all 0.15s ease-in-out"
+                  _hover={{ color: hover, transform: 'scale(1.2)' }}
+                >
+                  {icon}
+                </Box>
+              </a>
+            ))}
+          </Stack>
         </Box>
-      </HStack>
-      <Center bg="#D9D9D9" w="100%" h="13em" />
-    </VStack>
-  </Box>
+      </Flex>
+    </Flex>
+    <Flex alignItems="center" alignSelf="center" bg="#ffa06e">
+      <VStack width="full">
+        <Heading
+          fontFamily="Heading"
+          fontSize={{ base: '4xl', lg: '5xl' }}
+          color="gray.900"
+          text-align="center"
+        >
+          Sponsors
+        </Heading>
+        <Partner partners={sponsorObject} />
+        <Heading
+          fontFamily="Heading"
+          fontSize={{ base: '4xl', lg: '5xl' }}
+          color="gray.900"
+          text-align="center"
+        >
+          Media Partners
+        </Heading>
+        <Partner partners={medparObject} />
+      </VStack>
+    </Flex>
+  </>
 );
 
 export default Footer;

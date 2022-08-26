@@ -12,23 +12,28 @@ import {
   Link,
   Icon
 } from '@chakra-ui/react';
-import Card from '@components/Homepage/UnitRecommendation/_Card';
+import RecCard from '@components/Homepage/UnitRecommendation/_Card';
+import ShowcaseCard from '@components/Homepage/UnitShowcase/_Card';
 import { FaTimes } from 'react-icons/fa';
 
 interface IPopup {
   children?: React.ReactNode;
-  isCard?: boolean;
+  isRec?: boolean;
+  isShowcase?: boolean;
   label?: string;
   isActive?: boolean;
   isInView?: boolean;
+  img?: string;
 }
 
 export const TourPopup = ({
   children,
-  isCard,
+  isRec,
+  isShowcase,
   label,
   isActive,
-  isInView
+  isInView,
+  img
 }: IPopup) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   // TODO: handle onair
@@ -36,13 +41,16 @@ export const TourPopup = ({
   const onAir = true; // dummy data
   return (
     <>
-      {isCard ? (
-        <Card
+      {isRec ? (
+        <RecCard
           label={label}
           isActive={isActive}
           isInView={isInView}
+          img={img}
           onClick={onOpen}
         />
+      ) : isShowcase ? (
+        <ShowcaseCard img={img} label={label} onClick={onOpen} />
       ) : (
         <Text
           color="#278DB5"

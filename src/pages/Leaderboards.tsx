@@ -15,11 +15,13 @@ import {
   nyemangatinAnimation,
   pageButtonAnimation
 } from 'src/util/transition';
-import { LoadingOnly } from '@components/common/Loading';
+import { ErrorNotFoundPage } from '@components/common';
 
 interface ScoreProps {
+  rank: number;
   name: string;
   username: string;
+  fakultas: string;
   score: number | null;
 }
 
@@ -28,40 +30,21 @@ interface MetaProps {
   pageCount: number;
 }
 
-const TAG: string = '|';
-
 export const Leaderboards = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [meta, setMeta]: any = useState({ total: 1, pageCount: 1 });
-  const [currentPage, setCurrentPage]: any = useState(
-    searchParams.get('page') ?? 1
-  );
+  const [params, setParams] = useSearchParams();
   const [scores, setScores]: any = useState([]);
-  const [search, setSearch] = useState('');
-  const [filter, setFilter]: any = useState([]);
+  const [meta, setMeta]: any = useState({ total: 1, pageCount: 1 });
   const [toggle, setToggle] = useState(false);
-
-  const onChange = (e: any) => {
-    if (
-      e.target.value[0] === TAG &&
-      e.target.value[e.target.value.length - 1] === TAG &&
-      e.target.value.length > 1
-    ) {
-      setFilter(filter.concat(e.target.value.slice(1, -1)));
-      setCurrentPage(1);
-      setSearchParams({});
-      setSearch('');
-    } else {
-      setSearch(e.target.value);
-    }
-  };
+  const curParams = Object.fromEntries([...params]);
+  const currentPage = parseInt(params.get('page') ?? '1', 10);
+  const search = params.get('query') ?? '';
+  const filter = params.get('filter') ?? '';
 
   const handleSearch = () => {
     if (currentPage === 1) {
       setToggle(!toggle);
     } else {
-      setCurrentPage(1);
-      setSearchParams({});
+      setParams({ ...curParams, page: '1' });
     }
   };
 
@@ -98,13 +81,7 @@ export const Leaderboards = () => {
         >
           Laerboad
         </Heading>
-        <Search
-          onChange={onChange}
-          keyword={search}
-          handleSubmit={handleSearch}
-          filter={filter}
-          setFilter={setFilter}
-        />
+        <Search handleSubmit={handleSearch} />
         {meta.total > 0 && currentPage > 0 && currentPage <= meta.pageCount ? (
           <>
             <Flex flexDirection="row" justifyContent="space-evenly" w="100%">
@@ -142,15 +119,11 @@ export const Leaderboards = () => {
                     animate="animate"
                     exit={idx % 2 === 0 ? 'exitLeft' : 'exitRight'}
                     transition={{
-                      duration: 0.5,
+                      duration: 0.4,
                       delay: idx * 0.12
                     }}
                   >
-                    <Card
-                      key={item.username}
-                      rank={(currentPage - 1) * 10 + idx + 1}
-                      {...item}
-                    />
+                    <Card key={item.username} {...item} />
                   </motion.div>
                 ))}
               </Flex>
@@ -180,20 +153,14 @@ export const Leaderboards = () => {
               animate="animate"
             >
               <Center mt={6} mb={5}>
-                <PaginationIcon
-                  currentPage={currentPage}
-                  pageSize={meta.pageCount}
-                  parentPageSetter={setCurrentPage}
-                />
+                <PaginationIcon pageSize={meta.pageCount} />
               </Center>
             </motion.section>
           </>
-        ) : meta.total <= 0 ? (
-          // TODO: ganti ke vistock
-          <LoadingOnly />
+        ) : meta.total <= 0 || currentPage > meta.pageCount ? (
+          <ErrorNotFoundPage message="Search not found" />
         ) : (
-          // TODO: ganti ke vistock
-          <LoadingOnly />
+          <ErrorNotFoundPage />
         )}
       </Flex>
     </PageLayout>

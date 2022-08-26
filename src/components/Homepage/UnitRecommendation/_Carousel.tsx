@@ -1,31 +1,38 @@
 import { useState, useRef } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
-import { useInView } from 'framer-motion';
+import { useInView, motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import ReactSVG from '@assets/react.svg';
 import 'swiper/css';
 
 import { TourPopup } from '@components/map-tour/Popup';
+import { getTransition } from 'src/util/transition';
 import SwiperButton from './_SwiperButton';
 
 const slide = [
   {
     id: 1,
+    img: ReactSVG,
     label: 'Unit A'
   },
   {
     id: 2,
+    img: ReactSVG,
     label: 'Unit B'
   },
   {
     id: 3,
+    img: ReactSVG,
     label: 'Unit C'
   },
   {
     id: 4,
+    img: ReactSVG,
     label: 'Unit D'
   },
   {
     id: 5,
+    img: ReactSVG,
     label: 'Unit E'
   }
 ];
@@ -46,12 +53,20 @@ const Carousel = () => {
                 setPosition(index);
               }
               return (
-                <TourPopup
-                  isCard
-                  label={s.label}
-                  isActive={isActive}
-                  isInView={isInView}
-                />
+                <motion.div
+                  {...getTransition('right', {
+                    delay: index < 3 ? index * 0.35 : 0,
+                    duration: 1
+                  })}
+                >
+                  <TourPopup
+                    isRec
+                    img={s.img}
+                    label={s.label}
+                    isActive={isActive}
+                    isInView={isInView}
+                  />
+                </motion.div>
               );
             }}
           </SwiperSlide>
