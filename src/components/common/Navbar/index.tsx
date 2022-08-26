@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import Logo from '@assets/logo_sementara.png';
+import Logo from '@assets/logo.png';
 import DashboardLogo from '@assets/dashboard_menu.svg';
 import LogoutLogo from '@assets/logout_menu.svg';
 import {

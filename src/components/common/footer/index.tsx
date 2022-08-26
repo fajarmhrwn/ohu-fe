@@ -9,9 +9,11 @@ import {
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
-import Logo from '@assets/logo_sementara.png';
+import Logo from '@assets/logo.png';
 import { sponsorObject, medparObject } from 'src/util/sponsorMedpar';
+import { getTransition } from 'src/util/transition';
 import Partner from '../sponsorMedpar/partner';
 
 const socials = [
@@ -109,24 +111,32 @@ const Footer = () => (
     </Flex>
     <Flex alignItems="center" alignSelf="center" bg="#ffa06e">
       <VStack width="full">
-        <Heading
-          fontFamily="Heading"
-          fontSize={{ base: '4xl', lg: '5xl' }}
-          color="gray.900"
-          text-align="center"
-        >
-          Sponsors
-        </Heading>
-        <Partner partners={sponsorObject} />
-        <Heading
-          fontFamily="Heading"
-          fontSize={{ base: '4xl', lg: '5xl' }}
-          color="gray.900"
-          text-align="center"
-        >
-          Media Partners
-        </Heading>
-        <Partner partners={medparObject} />
+        <motion.div {...getTransition('bottom', { duration: 2 })}>
+          <Heading
+            fontFamily="Heading"
+            fontSize={{ base: '4xl', lg: '5xl' }}
+            color="gray.900"
+            text-align="center"
+          >
+            Sponsors
+          </Heading>
+        </motion.div>
+        <motion.div {...getTransition('left', { duration: 2 })}>
+          <Partner partners={sponsorObject} />
+        </motion.div>
+        <motion.div {...getTransition('bottom', { duration: 2 })}>
+          <Heading
+            fontFamily="Heading"
+            fontSize={{ base: '4xl', lg: '5xl' }}
+            color="gray.900"
+            text-align="center"
+          >
+            Media Partners
+          </Heading>
+        </motion.div>
+        <motion.div {...getTransition('right', { duration: 2 })}>
+          <Partner partners={medparObject} />
+        </motion.div>
       </VStack>
     </Flex>
   </>

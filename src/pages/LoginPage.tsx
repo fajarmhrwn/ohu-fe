@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { PageLayout } from 'src/layout';
-import Logo from '@assets/logo_sementara.png';
+import Logo from '@assets/logo.png';
 import {
   AiFillLock,
   AiOutlineUser,
