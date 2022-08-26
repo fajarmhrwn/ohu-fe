@@ -32,7 +32,6 @@ export const LoginPage = () => {
 
     if (!username) {
       setErrorText('Masukkan NIM kamu!');
-
     }
 
     // auth logic here
