@@ -42,6 +42,7 @@ const Carousel = () => {
                   })}
                 >
                   <TourPopup
+                    id={unit.ext_id}
                     isRec
                     img={`${import.meta.env.VITE_API_BASE_URL}${unit.logo.url}`}
                     label={unit.name}
