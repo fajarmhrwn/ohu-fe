@@ -3,8 +3,8 @@ import {
   Circle,
   ImageOverlay,
   MapContainer,
-  TileLayer,
-  useMapEvent
+  Popup,
+  TileLayer
 } from 'react-leaflet';
 import { Map } from 'leaflet';
 import { TourData, MarkerData } from '@pages/PageTour';
@@ -18,13 +18,17 @@ interface Props {
   setMap: (map: Map) => void | null;
 }
 export const TourMap = ({ data, setMap }: Props) => {
-  const MapMarker = (marker: MarkerData) => <Circle center={marker.position} radius={12} eventHandlers={{click: () => {/* console.log(marker.title) */}}}/>;
+  const MapMarker = ({ position, title }: MarkerData) => (
+    <Circle
+      center={position}
+      radius={11}
+      pathOptions={{ color: 'transparent', fillColor: 'transparent' }}
+    >
+      <Popup>{title}</Popup>
+    </Circle>
+  );
 
   const MapImage = () => {
-    useMapEvent('click', (ev) => {
-      ev
-      // console.log('[' + ev.latlng.lat + ',' + ev.latlng.lng + ']');
-    });
     const imageSize = 0.003; // 0.5*image real width
     const imageRatio = 45 / 35;
     const imageBounds: [[number, number], [number, number]] = [
