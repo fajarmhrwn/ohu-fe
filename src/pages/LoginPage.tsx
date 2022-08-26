@@ -10,7 +10,7 @@ import {
   InputRightElement,
   Icon
 } from '@chakra-ui/react';
-import React, { useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { PageLayout } from 'src/layout';
 import Logo from '@assets/logo_sementara.png';
 import {
@@ -19,22 +19,60 @@ import {
   AiOutlineEye,
   AiOutlineEyeInvisible
 } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
+import APIClient from '../util/api-client';
+import AuthService from '../service/auth';
+import { UserContext } from '../context';
 
 export const LoginPage = () => {
+  const { setUser, setLoggedIn }: any = useContext(UserContext);
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const [errorText, setErrorText] = useState('');
   const [passwordIsShown, setPasswordIsShown] = useState(false);
+  const navigate = useNavigate();
 
-  const submitHandler = (event: React.FormEvent) => {
+  const redirectIfHaveToken: Function = async () => {
+    const token = await APIClient.checkToken();
+    if (Object.keys(token).length > 0) {
+      navigate('/');
+    }
+  };
+
+  useEffect(() => {
+    redirectIfHaveToken();
+  }, []);
+
+  const submitHandler = async (event: React.FormEvent) => {
     event.preventDefault();
     const username = usernameRef.current?.value;
+    const password = passwordRef.current?.value;
 
     if (!username) {
       setErrorText('Masukkan NIM kamu!');
     }
 
     // auth logic here
+    await AuthService.login(
+      username,
+      password,
+      (response) => {
+        setLoggedIn(true);
+        setErrorText(`Login berhasil! (${response.user.username})`);
+        setUser(response.user);
+        navigate('/');
+      },
+      (error) => {
+        if (error.toString().includes('Invalid identifier')) {
+          setErrorText(
+            'NIM/No. Registrasi atau password salah atau tidak ditemukan!'
+          );
+        } else {
+          setErrorText(error.toString());
+        }
+        setLoggedIn(false);
+      }
+    );
   };
 
   const toggleShowPassword = () => {
