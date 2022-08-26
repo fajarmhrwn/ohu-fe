@@ -24,6 +24,8 @@ interface IPopup {
   isActive?: boolean;
   isInView?: boolean;
   img?: string;
+  isFull?: boolean;
+  imgFull?: string;
 }
 
 export const TourPopup = ({
@@ -33,7 +35,9 @@ export const TourPopup = ({
   label,
   isActive,
   isInView,
-  img
+  img,
+  isFull,
+  imgFull
 }: IPopup) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   // TODO: handle onair
@@ -48,6 +52,8 @@ export const TourPopup = ({
           isInView={isInView}
           img={img}
           onClick={onOpen}
+          isFull={isFull}
+          imgFull={imgFull}
         />
       ) : isShowcase ? (
         <ShowcaseCard img={img} label={label} onClick={onOpen} />

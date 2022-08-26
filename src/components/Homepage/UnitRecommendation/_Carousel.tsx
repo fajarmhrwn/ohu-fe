@@ -3,6 +3,8 @@ import { Box, Flex } from '@chakra-ui/react';
 import { useInView, motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ReactSVG from '@assets/react.svg';
+import Genshiken from '@assets/unitrec/genshiken.jpg';
+import PSM from '@assets/unitrec/psm.png';
 import 'swiper/css';
 
 import { TourPopup } from '@components/map-tour/Popup';
@@ -13,27 +15,37 @@ const slide = [
   {
     id: 1,
     img: ReactSVG,
-    label: 'Unit A'
+    label: 'Unit A',
+    isFull: true,
+    imgFull: Genshiken
   },
   {
     id: 2,
     img: ReactSVG,
-    label: 'Unit B'
+    label: 'Unit B',
+    isFull: true,
+    imgFull: PSM
   },
   {
     id: 3,
     img: ReactSVG,
-    label: 'Unit C'
+    label: 'Unit C',
+    isFull: false,
+    imgFull: ReactSVG
   },
   {
     id: 4,
     img: ReactSVG,
-    label: 'Unit D'
+    label: 'Unit D',
+    isFull: false,
+    imgFull: ReactSVG
   },
   {
     id: 5,
     img: ReactSVG,
-    label: 'Unit E'
+    label: 'Unit E',
+    isFull: false,
+    imgFull: ReactSVG
   }
 ];
 
@@ -44,7 +56,7 @@ const Carousel = () => {
   const isInView = useInView(ref);
 
   return (
-    <Box pt={8}>
+    <Box pt={8} pb={6}>
       <Swiper slidesPerView={5} centeredSlides>
         {slide.map((s, index) => (
           <SwiperSlide key={s.id}>
@@ -65,6 +77,8 @@ const Carousel = () => {
                     label={s.label}
                     isActive={isActive}
                     isInView={isInView}
+                    isFull={s.isFull}
+                    imgFull={s.imgFull}
                   />
                 </motion.div>
               );
