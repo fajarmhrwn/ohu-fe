@@ -21,7 +21,7 @@ interface ScoreProps {
   rank: number;
   name: string;
   username: string;
-  fakultas: string;
+  faculty: string;
   score: number | null;
 }
 
@@ -34,37 +34,34 @@ export const Leaderboards = () => {
   const [params, setParams] = useSearchParams();
   const [scores, setScores]: any = useState([]);
   const [meta, setMeta]: any = useState({ total: 1, pageCount: 1 });
-  const [toggle, setToggle] = useState(false);
   const curParams = Object.fromEntries([...params]);
   const currentPage = parseInt(params.get('page') ?? '1', 10);
   const search = params.get('query') ?? '';
   const filter = params.get('filter') ?? '';
 
-  const handleSearch = () => {
-    if (currentPage === 1) {
-      setToggle(!toggle);
-    } else {
-      setParams({ ...curParams, page: '1' });
+  const fetchData = async () => {
+    try {
+      const fakultas =
+        filter.length > 0 ? `&facultys=${filter.toUpperCase()}` : '';
+      const { data, metadata }: { data: ScoreProps[]; metadata: MetaProps } =
+        await getScore(
+          `/units/score?search=${search}${fakultas}&page=${currentPage}`
+        );
+      setScores(data);
+      setMeta(metadata);
+    } catch (err: any) {
+      //
     }
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const fakultas = filter.length > 0 ? `&fakultas=${filter}` : '';
-        const { data, metadata }: { data: ScoreProps[]; metadata: MetaProps } =
-          await getScore(
-            `/units/score?search=${search}${fakultas}&page=${currentPage}`
-          );
-        setScores(data);
-        setMeta(metadata);
-      } catch (err: any) {
-        //
-      }
-    };
+  const handleSearch = async () => {
+    setParams({ ...curParams, page: '1' });
+    await fetchData();
+  };
 
+  useEffect(() => {
     fetchData();
-  }, [currentPage, toggle]);
+  }, []);
 
   return (
     <PageLayout title="Leaderboard">

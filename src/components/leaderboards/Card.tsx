@@ -4,11 +4,11 @@ interface Props {
   rank: number;
   name: string;
   username: string;
-  fakultas: string;
+  faculty: string;
   score: number | null;
 }
 
-export const Card = ({ username, name, score, rank, fakultas }: Props) => {
+export const Card = ({ username, name, score, rank, faculty }: Props) => {
   const colors = ['#C9B037', '#B4B4B4', '#AD8A56'];
   return (
     <Flex
@@ -39,7 +39,7 @@ export const Card = ({ username, name, score, rank, fakultas }: Props) => {
           {username}
         </Text>
         <Text fontFamily="Caption" fontSize="xl">
-          {fakultas}
+          {faculty}
         </Text>
       </Flex>
       <Text marginLeft="auto" fontFamily="Subheading" fontSize="3xl">
