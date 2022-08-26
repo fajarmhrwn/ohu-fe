@@ -19,11 +19,18 @@ interface Props {
   // eslint-disable-next-line no-unused-vars
   setMap: (map: Map) => void | null;
 }
+
+const list = [
+  'Genshiken',
+  'Paduan Suara Mahasiswa ITB',
+  'Unit Kebudayaan Tionghoa ITB'
+];
+
 export const TourMap = ({ data, setMap }: Props) => {
   const MapMarker = ({ id, position, name, coloredIcon }: MarkerData) => {
     const Icon = L.icon({
       iconUrl: coloredIcon,
-      iconSize: [45, 45]
+      iconSize: list.includes(name) ? [60, 60] : [45, 45]
     });
     return (
       <Marker icon={Icon} position={position}>
