@@ -34,8 +34,8 @@ const Partner: React.FC<Props> = ({ partners }: Props) => (
         justifyContent="center"
         flexWrap="wrap"
       >
-        {partners[key].map((elmt) => (
-          <Box marginX={2} marginY={2}>
+        {partners[key].map((elmt, index) => (
+          <Box marginX={2} marginY={2} key={index}>
             <Image
               src={elmt.src}
               alt={elmt.name}

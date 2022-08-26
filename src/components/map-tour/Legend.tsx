@@ -99,6 +99,7 @@ export const TourLegend = ({
               initial={idx % 2 === 0 ? 'initialLeft' : 'initialRight'}
               whileInView="viewLegend"
               viewport={{ once: true }}
+              key={idx}
             >
               <Legend {...marker} />
             </motion.section>

@@ -24,12 +24,12 @@ export const RundownDetail = ({ detail }: { detail: Props[] }) => (
         </Tr>
       </Thead>
       <Tbody>
-        {detail.map((item) => {
+        {detail.map((item, index) => {
           const splitted = item.waktu.split(',');
           const start = splitted[0];
           const end = splitted[1];
           return (
-            <Tr>
+            <Tr key={index}>
               <Td fontSize="sm">{item.nama}</Td>
               <Td fontSize="sm">{start}</Td>
               <Td fontSize="sm">{end}</Td>
